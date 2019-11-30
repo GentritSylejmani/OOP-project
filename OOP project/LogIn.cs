@@ -18,6 +18,7 @@ namespace OOP_project
             InitializeComponent();
             //test me ndryshim
             //tash ndryshimi tjeter
+            //hajde edhe nje ndryshim
             
         }
 
