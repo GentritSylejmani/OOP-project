@@ -16,6 +16,7 @@ namespace OOP_project
         public LogIn()
         {
             InitializeComponent();
+            //test me ndryshim
             
         }
 
