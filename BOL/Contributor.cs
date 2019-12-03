@@ -28,7 +28,7 @@ namespace BOL
 
         public override Person GetUserInfo(string username)
         {
-            Contributor person = new Contributor();
+            var person = new Contributor();
 
             foreach (var user in Lists.ContributorsList)
             {

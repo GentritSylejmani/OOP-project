@@ -33,6 +33,9 @@
             this.tab_AddListing = new System.Windows.Forms.TabPage();
             this.tab_MyListings = new System.Windows.Forms.TabPage();
             this.tab_Llogaria = new System.Windows.Forms.TabPage();
+            this.lbl_Balanci = new System.Windows.Forms.Label();
+            this.lbl_numriLlogarise = new System.Windows.Forms.Label();
+            this.lbl_Balance = new System.Windows.Forms.Label();
             this.lbl_AccountNo = new System.Windows.Forms.Label();
             this.lbl_Emaili = new System.Windows.Forms.Label();
             this.lbl_NoTelefonit = new System.Windows.Forms.Label();
@@ -47,9 +50,8 @@
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.pcb_LogOut = new System.Windows.Forms.PictureBox();
             this.pcb_eAnkandiLogo = new System.Windows.Forms.PictureBox();
-            this.lbl_Balance = new System.Windows.Forms.Label();
-            this.lbl_numriLlogarise = new System.Windows.Forms.Label();
-            this.lbl_Balanci = new System.Windows.Forms.Label();
+            this.btn_AddCredit = new System.Windows.Forms.Button();
+            this.txt_AddCredit = new System.Windows.Forms.TextBox();
             this.tab_Tabs.SuspendLayout();
             this.tab_Llogaria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_LogOut)).BeginInit();
@@ -104,6 +106,8 @@
             // tab_Llogaria
             // 
             this.tab_Llogaria.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_Llogaria.Controls.Add(this.txt_AddCredit);
+            this.tab_Llogaria.Controls.Add(this.btn_AddCredit);
             this.tab_Llogaria.Controls.Add(this.lbl_Balanci);
             this.tab_Llogaria.Controls.Add(this.lbl_numriLlogarise);
             this.tab_Llogaria.Controls.Add(this.lbl_Balance);
@@ -124,6 +128,39 @@
             this.tab_Llogaria.Size = new System.Drawing.Size(1339, 626);
             this.tab_Llogaria.TabIndex = 5;
             this.tab_Llogaria.Text = "Llogaria";
+            // 
+            // lbl_Balanci
+            // 
+            this.lbl_Balanci.AutoSize = true;
+            this.lbl_Balanci.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Balanci.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Balanci.Location = new System.Drawing.Point(112, 128);
+            this.lbl_Balanci.Name = "lbl_Balanci";
+            this.lbl_Balanci.Size = new System.Drawing.Size(36, 19);
+            this.lbl_Balanci.TabIndex = 16;
+            this.lbl_Balanci.Text = "N/A";
+            // 
+            // lbl_numriLlogarise
+            // 
+            this.lbl_numriLlogarise.AutoSize = true;
+            this.lbl_numriLlogarise.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_numriLlogarise.ForeColor = System.Drawing.Color.Black;
+            this.lbl_numriLlogarise.Location = new System.Drawing.Point(112, 109);
+            this.lbl_numriLlogarise.Name = "lbl_numriLlogarise";
+            this.lbl_numriLlogarise.Size = new System.Drawing.Size(36, 19);
+            this.lbl_numriLlogarise.TabIndex = 15;
+            this.lbl_numriLlogarise.Text = "N/A";
+            // 
+            // lbl_Balance
+            // 
+            this.lbl_Balance.AutoSize = true;
+            this.lbl_Balance.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Balance.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_Balance.Location = new System.Drawing.Point(44, 128);
+            this.lbl_Balance.Name = "lbl_Balance";
+            this.lbl_Balance.Size = new System.Drawing.Size(62, 19);
+            this.lbl_Balance.TabIndex = 14;
+            this.lbl_Balance.Text = "Balanci:";
             // 
             // lbl_AccountNo
             // 
@@ -279,38 +316,22 @@
             this.pcb_eAnkandiLogo.TabIndex = 2;
             this.pcb_eAnkandiLogo.TabStop = false;
             // 
-            // lbl_Balance
+            // btn_AddCredit
             // 
-            this.lbl_Balance.AutoSize = true;
-            this.lbl_Balance.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_Balance.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_Balance.Location = new System.Drawing.Point(44, 128);
-            this.lbl_Balance.Name = "lbl_Balance";
-            this.lbl_Balance.Size = new System.Drawing.Size(62, 19);
-            this.lbl_Balance.TabIndex = 14;
-            this.lbl_Balance.Text = "Balanci:";
+            this.btn_AddCredit.Location = new System.Drawing.Point(271, 118);
+            this.btn_AddCredit.Name = "btn_AddCredit";
+            this.btn_AddCredit.Size = new System.Drawing.Size(95, 29);
+            this.btn_AddCredit.TabIndex = 17;
+            this.btn_AddCredit.Text = "Shto para";
+            this.btn_AddCredit.UseVisualStyleBackColor = true;
+            this.btn_AddCredit.Click += new System.EventHandler(this.btn_AddCredit_Click);
             // 
-            // lbl_numriLlogarise
+            // txt_AddCredit
             // 
-            this.lbl_numriLlogarise.AutoSize = true;
-            this.lbl_numriLlogarise.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_numriLlogarise.ForeColor = System.Drawing.Color.Black;
-            this.lbl_numriLlogarise.Location = new System.Drawing.Point(112, 109);
-            this.lbl_numriLlogarise.Name = "lbl_numriLlogarise";
-            this.lbl_numriLlogarise.Size = new System.Drawing.Size(36, 19);
-            this.lbl_numriLlogarise.TabIndex = 15;
-            this.lbl_numriLlogarise.Text = "N/A";
-            // 
-            // lbl_Balanci
-            // 
-            this.lbl_Balanci.AutoSize = true;
-            this.lbl_Balanci.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_Balanci.ForeColor = System.Drawing.Color.Black;
-            this.lbl_Balanci.Location = new System.Drawing.Point(112, 128);
-            this.lbl_Balanci.Name = "lbl_Balanci";
-            this.lbl_Balanci.Size = new System.Drawing.Size(36, 19);
-            this.lbl_Balanci.TabIndex = 16;
-            this.lbl_Balanci.Text = "N/A";
+            this.txt_AddCredit.Location = new System.Drawing.Point(372, 120);
+            this.txt_AddCredit.Name = "txt_AddCredit";
+            this.txt_AddCredit.Size = new System.Drawing.Size(95, 27);
+            this.txt_AddCredit.TabIndex = 18;
             // 
             // MainPanel
             // 
@@ -360,5 +381,7 @@
         private System.Windows.Forms.Label lbl_Balanci;
         private System.Windows.Forms.Label lbl_numriLlogarise;
         private System.Windows.Forms.Label lbl_Balance;
+        private System.Windows.Forms.TextBox txt_AddCredit;
+        private System.Windows.Forms.Button btn_AddCredit;
     }
 }

@@ -29,7 +29,8 @@ namespace BOL
 
         public override Person GetUserInfo(string username)
         {
-            Client person = new Client();          
+            
+            var person = new Client();          
 
             foreach(var user in Lists.ClientsList)
             {

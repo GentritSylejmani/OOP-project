@@ -8,6 +8,8 @@ namespace BOL
 {
     public abstract class Person
     {
+       
+
         public Person()
         {
 
@@ -28,10 +30,6 @@ namespace BOL
             PersonalNo = personalno;
             Password = password;
             Email = email;
-
-            
-
-
         }
 
         public enum usertype
@@ -39,9 +37,7 @@ namespace BOL
             Administrator = 1,
             Contributor = 2,
             Client = 3
-
         }
-
 
         private string _name;
         private string _surname;
@@ -102,27 +98,8 @@ namespace BOL
         }
 
 
-
-        public class Transactions
-        {
-            public double CreditMoney(double balance, double money)
-            {
-                return balance + money;
-            }
-
-            public double DebitMoney(double balance, double money)
-            {
-                return balance - money;
-            }
-        }
-        
-
-
-
         public usertype UserType;
         
-
-
         public virtual bool LogInCheck(string username, string password)
         {
             throw new NotImplementedException();

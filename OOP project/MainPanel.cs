@@ -13,6 +13,9 @@ namespace OOP_project
 {
     public partial class MainPanel : Form
     {
+        public static object userPerson;
+        public static Person.usertype userType;
+
         public MainPanel()
         {
             InitializeComponent();
@@ -29,38 +32,51 @@ namespace OOP_project
             logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
             _user = user;
 
+            userType = usertype;
+            
+            if(userType==Person.usertype.Client)
+            {
+                userPerson = new Client();
+            }
+            else
+            {
+                userPerson = new Contributor();
+            }
+
             Client client = new Client();
-            
-            
+
+            var userperson = new Client();
 
             if(usertype==Person.usertype.Client)
             {
-
-                client.GetUserInfo(_user);
-
-                lbl_Welcome.Text = client.GetUserInfo(_user).Name.ToString() + " miresevini ne ";
-                lbl_Emri.Text = client.GetUserInfo(_user).Name.ToString();
-                lbl_Mbiemri.Text = client.GetUserInfo(_user).Surname.ToString();
-                lbl_NoPersonal.Text = client.GetUserInfo(_user).PersonalNo.ToString();
-                lbl_NoTelefonit.Text = client.GetUserInfo(_user).PhoneNo.ToString();
-                lbl_Emaili.Text = client.GetUserInfo(_user).Email.ToString();
-                lbl_numriLlogarise.Text = client.GetUserInfo(_user).AccountNo.ToString();
-                lbl_Balanci.Text = String.Format("{0:0.00}", client.GetUserInfo(_user).Credit);
+                userPerson = (Client)client.GetUserInfo(_user);
+                
+                
+                lbl_Welcome.Text = ((Client)userPerson).Name.ToString() + " miresevini ne ";
+                lbl_Emri.Text = ((Client)userPerson).Name.ToString();
+                lbl_Mbiemri.Text = ((Client)userPerson).Surname.ToString();
+                lbl_NoPersonal.Text = ((Client)userPerson).PersonalNo.ToString();
+                lbl_NoTelefonit.Text = ((Client)userPerson).PhoneNo.ToString();
+                lbl_Emaili.Text = ((Client)userPerson).Email.ToString();
+                lbl_numriLlogarise.Text = ((Client)userPerson).AccountNo.ToString();
+                lbl_Balanci.Text = String.Format("{0:0.00}", ((Client)userPerson).Credit);
             }
             else if(usertype == Person.usertype.Contributor)
 
             {
                 client = new Contributor();
-                client.GetUserInfo(_user);
+                userPerson = (Contributor)client.GetUserInfo(_user);
 
-                lbl_Welcome.Text = client.GetUserInfo(_user).Name.ToString() + " miresevini ne :";
-                lbl_Emri.Text = client.GetUserInfo(_user).Name.ToString();
-                lbl_Mbiemri.Text = client.GetUserInfo(_user).Surname.ToString();
-                lbl_NoPersonal.Text = client.GetUserInfo(_user).PersonalNo.ToString();
-                lbl_NoTelefonit.Text = client.GetUserInfo(_user).PhoneNo.ToString();
-                lbl_Emaili.Text = client.GetUserInfo(_user).Email.ToString();
-                lbl_numriLlogarise.Text = client.GetUserInfo(_user).AccountNo.ToString();
-                lbl_Balanci.Text = String.Format("{0:0.00}", client.GetUserInfo(_user).Credit);
+                //userPerson = userperson;
+
+                lbl_Welcome.Text = ((Contributor)userPerson).Name.ToString() + " miresevini ne :";
+                lbl_Emri.Text = ((Contributor)userPerson).Name.ToString();
+                lbl_Mbiemri.Text = ((Contributor)userPerson).Surname.ToString();
+                lbl_NoPersonal.Text = ((Contributor)userPerson).PersonalNo.ToString();
+                lbl_NoTelefonit.Text = ((Contributor)userPerson).PhoneNo.ToString();
+                lbl_Emaili.Text = ((Contributor)userPerson).Email.ToString();
+                lbl_numriLlogarise.Text = ((Contributor)userPerson).AccountNo.ToString();
+                lbl_Balanci.Text = String.Format("{0:0.00}", ((Contributor)userPerson).Credit);
 
             }
             
@@ -76,6 +92,38 @@ namespace OOP_project
             this.Close();
         }
 
-        
+        private void btn_AddCredit_Click(object sender, EventArgs e)
+        {
+            Transactions t = new Transactions();
+
+            if (userType == Person.usertype.Client)
+            {
+                ((Client)userPerson).Credit = t.CreditMoney(((Client)userPerson).Credit, Convert.ToDouble(txt_AddCredit.Text));
+
+                foreach (var user in Lists.ClientsList)
+                {
+                    if (user.Username == _user)
+                    {
+                        user.Credit = ((Client)userPerson).Credit;
+                    }
+
+                    lbl_Balanci.Text = String.Format("{0:0.00}", ((Client)userPerson).Credit);
+                }
+            }
+            else if (userType == Person.usertype.Contributor)
+            {
+                ((Contributor)userPerson).Credit = t.CreditMoney(((Contributor)userPerson).Credit, Convert.ToDouble(txt_AddCredit.Text));
+
+                foreach (var user in Lists.ContributorsList)
+                {
+                    if (user.Username == _user)
+                    {
+                        user.Credit = ((Contributor)userPerson).Credit;
+                    }
+                }
+
+                lbl_Balanci.Text = String.Format("{0:0.00}", ((Contributor)userPerson).Credit);
+            }
+        }
     }
 }
