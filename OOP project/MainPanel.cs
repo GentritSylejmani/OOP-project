@@ -30,35 +30,38 @@ namespace OOP_project
             _user = user;
 
             Client client = new Client();
-            Client.Finances finance = new Client.Finances();
+            
             
 
             if(usertype==Person.usertype.Client)
             {
 
+                client.GetUserInfo(_user);
 
-                lbl_Welcome.Text = client.GetUserInfo(_user).Name.ToString() + " miresevini ne client :";
+                lbl_Welcome.Text = client.GetUserInfo(_user).Name.ToString() + " miresevini ne ";
                 lbl_Emri.Text = client.GetUserInfo(_user).Name.ToString();
                 lbl_Mbiemri.Text = client.GetUserInfo(_user).Surname.ToString();
                 lbl_NoPersonal.Text = client.GetUserInfo(_user).PersonalNo.ToString();
                 lbl_NoTelefonit.Text = client.GetUserInfo(_user).PhoneNo.ToString();
                 lbl_Emaili.Text = client.GetUserInfo(_user).Email.ToString();
-
-                //label1.Text = "Llogaria: " + client.finance.AccountNo.ToString() + "-- Balanci: " + client.finance.Balance.ToString();
+                lbl_numriLlogarise.Text = client.GetUserInfo(_user).AccountNo.ToString();
+                lbl_Balanci.Text = String.Format("{0:0.00}", client.GetUserInfo(_user).Credit);
             }
             else if(usertype == Person.usertype.Contributor)
 
             {
                 client = new Contributor();
+                client.GetUserInfo(_user);
 
-                lbl_Welcome.Text = client.GetUserInfo(_user).Name.ToString() + " miresevini ne client :";
+                lbl_Welcome.Text = client.GetUserInfo(_user).Name.ToString() + " miresevini ne :";
                 lbl_Emri.Text = client.GetUserInfo(_user).Name.ToString();
                 lbl_Mbiemri.Text = client.GetUserInfo(_user).Surname.ToString();
                 lbl_NoPersonal.Text = client.GetUserInfo(_user).PersonalNo.ToString();
                 lbl_NoTelefonit.Text = client.GetUserInfo(_user).PhoneNo.ToString();
                 lbl_Emaili.Text = client.GetUserInfo(_user).Email.ToString();
+                lbl_numriLlogarise.Text = client.GetUserInfo(_user).AccountNo.ToString();
+                lbl_Balanci.Text = String.Format("{0:0.00}", client.GetUserInfo(_user).Credit);
 
-                //label1.Text = "Llogaria: " + client.finance.AccountNo.ToString() + "-- Balanci: " + client.finance.Balance.ToString();
             }
             
         }

@@ -13,7 +13,14 @@ namespace BOL
 
         }
 
-        public Person(string name,string surname, string username, string personalno, string password,string email)
+        //public Person(string username, int accountNo, double moneyAmount)
+        //{
+        //    Username = username;
+        //    finances.AccountNo = accountNo;
+        //    finances.Balance = moneyAmount;
+        //}
+
+        public Person(string name, string surname, string username, string personalno, string password, string email, int accountNo, double moneyAmount)
         {
             Name = name;
             Surname = surname;
@@ -21,6 +28,9 @@ namespace BOL
             PersonalNo = personalno;
             Password = password;
             Email = email;
+
+            
+
 
         }
 
@@ -32,7 +42,7 @@ namespace BOL
 
         }
 
-        
+
         private string _name;
         private string _surname;
         private string _username;
@@ -79,47 +89,34 @@ namespace BOL
             set { _email = value; }
         }
 
-        public class Finances //transactions
+        public int AccountNo
         {
-            public Finances()
-            {
-
-            }
-
-            public Finances(int accountno, double balance)
-            {
-                _accountNo = accountno;
-                _balance = balance;
-            }
-
-            private int _accountNo;
-            private double _balance;
-
-            public int AccountNo
-            {
-                get { return _accountNo; }
-                set { value = _accountNo; }
-            }
-
-            public double Balance
-            {
-                get { return _balance; }
-                set { value = _balance; }
-
-            }
-
-            private void AddCredit(double value)
-            {
-                _balance += value;
-            }
-
-            private void DebitCredit(double value)
-            {
-                _balance -= value;
-            }
-
-
+            get { return _accountNo; }
+            set { _accountNo = value; }
         }
+
+        public double Credit
+        {
+            get { return _balance; }
+            set { _balance = value; }
+        }
+
+
+
+        public class Transactions
+        {
+            public double CreditMoney(double balance, double money)
+            {
+                return balance + money;
+            }
+
+            public double DebitMoney(double balance, double money)
+            {
+                return balance - money;
+            }
+        }
+        
+
 
 
         public usertype UserType;
@@ -130,31 +127,25 @@ namespace BOL
         {
             throw new NotImplementedException();
         }
-        public bool SignUp(int ct,string name, string surname,string username,string phoneNo ,string personalNo, string password, string email,usertype usertype,int account,double moneyValue)
+
+        public bool SignUp(int ct,string name, string surname,string username,string phoneNo ,string personalNo, string password, string email,usertype usertype, int account, double balance)
         {
             int clienttype = ct;
 
-            Finances f = new Finances();
-
-            int llog = f.AccountNo;
-            double vlera = f.Balance;
-
             if (ct == 2)
-
             {
-                Lists.ClientsList.Add(new Contributor { Name = name, Surname = surname, Username = username, PersonalNo = personalNo, PhoneNo = phoneNo, Password = password, Email = email, UserType = Person.usertype.Client, });
-                return true;
-
-                
+                Lists.ClientsList.Add(new Client { Name = name, Surname = surname, Username = username, PersonalNo = personalNo, PhoneNo = phoneNo, Password = password, Email = email, UserType = Person.usertype.Client, AccountNo=account,Credit = balance});               
+                return true;               
             }
             else if (ct == 3)
             {
-                Lists.ContributorsList.Add(new Contributor { Name = name, Surname = surname, Username = username, PersonalNo = personalNo, PhoneNo = phoneNo, Password = password, Email = email, UserType = Person.usertype.Client});
+                Lists.ContributorsList.Add(new Contributor { Name = name, Surname = surname, Username = username, PersonalNo = personalNo, PhoneNo = phoneNo, Password = password, Email = email, UserType = Person.usertype.Client, AccountNo=account,Credit=balance});             
                 return true;
             }
-
             else return false;
         }
+
+        
 
         public virtual Person GetUserInfo(string username)
         {

@@ -14,8 +14,6 @@ namespace BOL
 
         }
 
-        
-
         public override bool LogInCheck(string username, string password)
         {
             
@@ -31,7 +29,7 @@ namespace BOL
 
         public override Person GetUserInfo(string username)
         {
-            Client person = new Client();
+            Client person = new Client();          
 
             foreach(var user in Lists.ClientsList)
             {
@@ -43,7 +41,8 @@ namespace BOL
                     person.Username = user.Username;
                     person.Email = user.Email;
                     person.PersonalNo = user.PersonalNo;
-                   // person.account.Balance = user.account.Balance;
+                    person.AccountNo = user.AccountNo;
+                    person.Credit = user.Credit;
                  }
                 return person;
             }

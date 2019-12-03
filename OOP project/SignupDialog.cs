@@ -46,7 +46,7 @@ namespace OOP_project
                 pcb_Confirmation.Image = OOP_project.Properties.Resources.x;
                 pcb_Confirmation.SizeMode = PictureBoxSizeMode.StretchImage;
             }
-            else if(txt_passwordcheck.Text==null)
+            else if(txt_passwordcheck.Text=="")
             {
                 pcb_Confirmation.Hide();
             }
@@ -61,18 +61,18 @@ namespace OOP_project
 
             Client user = new Client();
 
-            Client.Finances finance = new Client.Finances();
+            
 
             if (rb_Client.Checked == true)
             {
                 
-                check=user.SignUp(2, txt_Name.Text, txt_Surname.Text, txt_Username.Text, txt_phoneno.Text, txt_personalno.Text, txt_Password.Text, txt_email.Text, Person.usertype.Client,finance.AccountNo=12345,finance.Balance=100.00);
+                check=user.SignUp(2, txt_Name.Text, txt_Surname.Text, txt_Username.Text, txt_phoneno.Text, txt_personalno.Text, txt_Password.Text, txt_email.Text, Person.usertype.Client,321456,100.00);
             }
             else if (rb_Contributor.Checked == true)
             {
-                finance = new Contributor.Finances();
+               
                 user = new Contributor();
-                check=user.SignUp(3, txt_Name.Text, txt_Surname.Text, txt_Username.Text, txt_phoneno.Text, txt_personalno.Text, txt_Password.Text, txt_email.Text, Person.usertype.Contributor, finance.AccountNo = 12345, finance.Balance = 100.00);
+                check=user.SignUp(3, txt_Name.Text, txt_Surname.Text, txt_Username.Text, txt_phoneno.Text, txt_personalno.Text, txt_Password.Text, txt_email.Text, Person.usertype.Contributor,321456, 100.00);
             }
             if (check == true)
             {
@@ -89,8 +89,13 @@ namespace OOP_project
 
             foreach (var person in Lists.ContributorsList)
             {
-                userslist += "Emri:" + person.Name + " Mbiemri: "+ person.Surname + "Perdoruesi: " + person.Username + "\n"; 
+                userslist += "Emri:" + person.Name + " - Mbiemri: " + person.Surname + " - Perdoruesi: " + person.Username + "AccountNo: " + person.AccountNo.ToString() + "\n"; 
                 
+            }
+            foreach (var person in Lists.ClientsList)
+            {
+                userslist += "Emri:" + person.Name + " - Mbiemri: " + person.Surname + " - Perdoruesi: " + person.Username + "AccountNo: "+ person.AccountNo.ToString()  + "\n";
+
             }
 
             MessageBox.Show(userslist);

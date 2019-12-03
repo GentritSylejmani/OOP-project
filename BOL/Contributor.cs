@@ -40,7 +40,8 @@ namespace BOL
                     person.Username = user.Username;
                     person.Email = user.Email;
                     person.PersonalNo = user.PersonalNo;
-                   // person.account.Balance = user.account.Balance;
+                    person.AccountNo = user.AccountNo;
+                    person.Credit = user.Credit;
                 }
                 return person;
             }

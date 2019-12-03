@@ -33,6 +33,7 @@
             this.tab_AddListing = new System.Windows.Forms.TabPage();
             this.tab_MyListings = new System.Windows.Forms.TabPage();
             this.tab_Llogaria = new System.Windows.Forms.TabPage();
+            this.lbl_AccountNo = new System.Windows.Forms.Label();
             this.lbl_Emaili = new System.Windows.Forms.Label();
             this.lbl_NoTelefonit = new System.Windows.Forms.Label();
             this.lbl_NoPersonal = new System.Windows.Forms.Label();
@@ -46,7 +47,9 @@
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.pcb_LogOut = new System.Windows.Forms.PictureBox();
             this.pcb_eAnkandiLogo = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_Balance = new System.Windows.Forms.Label();
+            this.lbl_numriLlogarise = new System.Windows.Forms.Label();
+            this.lbl_Balanci = new System.Windows.Forms.Label();
             this.tab_Tabs.SuspendLayout();
             this.tab_Llogaria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_LogOut)).BeginInit();
@@ -101,7 +104,10 @@
             // tab_Llogaria
             // 
             this.tab_Llogaria.BackColor = System.Drawing.SystemColors.Control;
-            this.tab_Llogaria.Controls.Add(this.label1);
+            this.tab_Llogaria.Controls.Add(this.lbl_Balanci);
+            this.tab_Llogaria.Controls.Add(this.lbl_numriLlogarise);
+            this.tab_Llogaria.Controls.Add(this.lbl_Balance);
+            this.tab_Llogaria.Controls.Add(this.lbl_AccountNo);
             this.tab_Llogaria.Controls.Add(this.lbl_Emaili);
             this.tab_Llogaria.Controls.Add(this.lbl_NoTelefonit);
             this.tab_Llogaria.Controls.Add(this.lbl_NoPersonal);
@@ -118,6 +124,17 @@
             this.tab_Llogaria.Size = new System.Drawing.Size(1339, 626);
             this.tab_Llogaria.TabIndex = 5;
             this.tab_Llogaria.Text = "Llogaria";
+            // 
+            // lbl_AccountNo
+            // 
+            this.lbl_AccountNo.AutoSize = true;
+            this.lbl_AccountNo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_AccountNo.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_AccountNo.Location = new System.Drawing.Point(12, 109);
+            this.lbl_AccountNo.Name = "lbl_AccountNo";
+            this.lbl_AccountNo.Size = new System.Drawing.Size(94, 19);
+            this.lbl_AccountNo.TabIndex = 13;
+            this.lbl_AccountNo.Text = "No llogarise:";
             // 
             // lbl_Emaili
             // 
@@ -262,16 +279,38 @@
             this.pcb_eAnkandiLogo.TabIndex = 2;
             this.pcb_eAnkandiLogo.TabStop = false;
             // 
-            // label1
+            // lbl_Balance
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(279, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 19);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "E-mail :";
+            this.lbl_Balance.AutoSize = true;
+            this.lbl_Balance.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Balance.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_Balance.Location = new System.Drawing.Point(44, 128);
+            this.lbl_Balance.Name = "lbl_Balance";
+            this.lbl_Balance.Size = new System.Drawing.Size(62, 19);
+            this.lbl_Balance.TabIndex = 14;
+            this.lbl_Balance.Text = "Balanci:";
+            // 
+            // lbl_numriLlogarise
+            // 
+            this.lbl_numriLlogarise.AutoSize = true;
+            this.lbl_numriLlogarise.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_numriLlogarise.ForeColor = System.Drawing.Color.Black;
+            this.lbl_numriLlogarise.Location = new System.Drawing.Point(112, 109);
+            this.lbl_numriLlogarise.Name = "lbl_numriLlogarise";
+            this.lbl_numriLlogarise.Size = new System.Drawing.Size(36, 19);
+            this.lbl_numriLlogarise.TabIndex = 15;
+            this.lbl_numriLlogarise.Text = "N/A";
+            // 
+            // lbl_Balanci
+            // 
+            this.lbl_Balanci.AutoSize = true;
+            this.lbl_Balanci.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Balanci.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Balanci.Location = new System.Drawing.Point(112, 128);
+            this.lbl_Balanci.Name = "lbl_Balanci";
+            this.lbl_Balanci.Size = new System.Drawing.Size(36, 19);
+            this.lbl_Balanci.TabIndex = 16;
+            this.lbl_Balanci.Text = "N/A";
             // 
             // MainPanel
             // 
@@ -285,6 +324,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainPanel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainPanel";
             this.tab_Tabs.ResumeLayout(false);
             this.tab_Llogaria.ResumeLayout(false);
@@ -316,6 +356,9 @@
         private System.Windows.Forms.Label lbl_Emri;
         private System.Windows.Forms.Label lbl_Email;
         private System.Windows.Forms.Label lbl_PhoneNo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_AccountNo;
+        private System.Windows.Forms.Label lbl_Balanci;
+        private System.Windows.Forms.Label lbl_numriLlogarise;
+        private System.Windows.Forms.Label lbl_Balance;
     }
 }
