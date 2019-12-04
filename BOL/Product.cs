@@ -16,9 +16,8 @@ namespace BOL
         public double SoldPrice;
         public DateTime AuctionStartDateTime;
         public DateTime AuctionEndDateTime;
-        public Contributor sellersUsername
-            ;
+        public Contributor sellersUsername;
         public Client buyerID;
-        string ProductPicture;
+        string[] ProductPicture;
     }
 }

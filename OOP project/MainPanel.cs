@@ -23,7 +23,7 @@ namespace OOP_project
             logoutExplanation.ShowAlways = true;
             logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
         }
-        public MainPanel(string user,Person.usertype usertype)
+        public MainPanel(string user, Person.usertype usertype)
         {
 
             InitializeComponent();
@@ -33,8 +33,8 @@ namespace OOP_project
             _user = user;
 
             userType = usertype;
-            
-            if(userType==Person.usertype.Client)
+
+            if (userType == Person.usertype.Client)
             {
                 userPerson = new Client();
             }
@@ -47,11 +47,11 @@ namespace OOP_project
 
             var userperson = new Client();
 
-            if(usertype==Person.usertype.Client)
+            if (usertype == Person.usertype.Client)
             {
                 userPerson = (Client)client.GetUserInfo(_user);
-                
-                
+
+
                 lbl_Welcome.Text = ((Client)userPerson).Name.ToString() + " miresevini ne ";
                 lbl_Emri.Text = ((Client)userPerson).Name.ToString();
                 lbl_Mbiemri.Text = ((Client)userPerson).Surname.ToString();
@@ -61,7 +61,7 @@ namespace OOP_project
                 lbl_numriLlogarise.Text = ((Client)userPerson).AccountNo.ToString();
                 lbl_Balanci.Text = String.Format("{0:0.00}", ((Client)userPerson).Credit);
             }
-            else if(usertype == Person.usertype.Contributor)
+            else if (usertype == Person.usertype.Contributor)
 
             {
                 client = new Contributor();
@@ -79,7 +79,7 @@ namespace OOP_project
                 lbl_Balanci.Text = String.Format("{0:0.00}", ((Contributor)userPerson).Credit);
 
             }
-            
+
         }
 
         private string _user;
@@ -94,11 +94,19 @@ namespace OOP_project
 
         private void btn_AddCredit_Click(object sender, EventArgs e)
         {
+            if (txt_AddCredit.Text == null || txt_AddCredit.Text == "")
+            {
+                MessageBox.Show("Ju lutem shkruani ne rubrike shumen qe doni te shtoni!");
+                return;
+            }
+            
+
             Transactions t = new Transactions();
 
             if (userType == Person.usertype.Client)
             {
                 ((Client)userPerson).Credit = t.CreditMoney(((Client)userPerson).Credit, Convert.ToDouble(txt_AddCredit.Text));
+                txt_AddCredit.Text = "";
 
                 foreach (var user in Lists.ClientsList)
                 {
@@ -113,6 +121,7 @@ namespace OOP_project
             else if (userType == Person.usertype.Contributor)
             {
                 ((Contributor)userPerson).Credit = t.CreditMoney(((Contributor)userPerson).Credit, Convert.ToDouble(txt_AddCredit.Text));
+                txt_AddCredit.Text = "";
 
                 foreach (var user in Lists.ContributorsList)
                 {
@@ -124,6 +133,24 @@ namespace OOP_project
 
                 lbl_Balanci.Text = String.Format("{0:0.00}", ((Contributor)userPerson).Credit);
             }
+        }
+
+        private void btn_AddImage_Click(object sender, EventArgs e)
+        {
+            string image="";
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            if(openFileDialog.ShowDialog()==DialogResult.OK)
+            {
+                image = openFileDialog.FileName;
+            }
+
+            //pcb_Main.SizeMode = PictureBoxSizeMode.StretchImage;
+            //pcb_Main.ImageLocation = "@" + image;
+            lbl_imagePath.Text = image;
+
+           
         }
     }
 }

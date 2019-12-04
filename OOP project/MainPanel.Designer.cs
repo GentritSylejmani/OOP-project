@@ -31,8 +31,14 @@
             this.tab_Tabs = new System.Windows.Forms.TabControl();
             this.tab_Listings = new System.Windows.Forms.TabPage();
             this.tab_AddListing = new System.Windows.Forms.TabPage();
+            this.lbl_EndDateTime = new System.Windows.Forms.Label();
+            this.lbl_StartingPrice = new System.Windows.Forms.Label();
+            this.lbl_Descripton = new System.Windows.Forms.Label();
+            this.lbl_Title = new System.Windows.Forms.Label();
             this.tab_MyListings = new System.Windows.Forms.TabPage();
             this.tab_Llogaria = new System.Windows.Forms.TabPage();
+            this.txt_AddCredit = new System.Windows.Forms.TextBox();
+            this.btn_AddCredit = new System.Windows.Forms.Button();
             this.lbl_Balanci = new System.Windows.Forms.Label();
             this.lbl_numriLlogarise = new System.Windows.Forms.Label();
             this.lbl_Balance = new System.Windows.Forms.Label();
@@ -50,12 +56,33 @@
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.pcb_LogOut = new System.Windows.Forms.PictureBox();
             this.pcb_eAnkandiLogo = new System.Windows.Forms.PictureBox();
-            this.btn_AddCredit = new System.Windows.Forms.Button();
-            this.txt_AddCredit = new System.Windows.Forms.TextBox();
+            this.lbl_imagePath = new System.Windows.Forms.Label();
+            this.lbl_Image = new System.Windows.Forms.Label();
+            this.btn_AddImage = new System.Windows.Forms.Button();
+            this.pcb_Main = new System.Windows.Forms.PictureBox();
+            this.pcb_Small1 = new System.Windows.Forms.PictureBox();
+            this.pcb_Small2 = new System.Windows.Forms.PictureBox();
+            this.pcb_Small3 = new System.Windows.Forms.PictureBox();
+            this.pcb_Small4 = new System.Windows.Forms.PictureBox();
+            this.pcb_Small5 = new System.Windows.Forms.PictureBox();
+            this.pcb_Small6 = new System.Windows.Forms.PictureBox();
+            this.btn_RemoveImage = new System.Windows.Forms.Button();
+            this.txt_ProductTitle = new System.Windows.Forms.TextBox();
+            this.rtxt_Description = new System.Windows.Forms.RichTextBox();
+            this.txt_StartingPrice = new System.Windows.Forms.TextBox();
+            this.dtp_AuctionEndTime = new System.Windows.Forms.DateTimePicker();
             this.tab_Tabs.SuspendLayout();
+            this.tab_AddListing.SuspendLayout();
             this.tab_Llogaria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_LogOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_eAnkandiLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small6)).BeginInit();
             this.SuspendLayout();
             // 
             // tab_Tabs
@@ -86,12 +113,67 @@
             // tab_AddListing
             // 
             this.tab_AddListing.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_AddListing.Controls.Add(this.dtp_AuctionEndTime);
+            this.tab_AddListing.Controls.Add(this.txt_StartingPrice);
+            this.tab_AddListing.Controls.Add(this.rtxt_Description);
+            this.tab_AddListing.Controls.Add(this.txt_ProductTitle);
+            this.tab_AddListing.Controls.Add(this.btn_RemoveImage);
+            this.tab_AddListing.Controls.Add(this.pcb_Small6);
+            this.tab_AddListing.Controls.Add(this.pcb_Small5);
+            this.tab_AddListing.Controls.Add(this.pcb_Small4);
+            this.tab_AddListing.Controls.Add(this.pcb_Small3);
+            this.tab_AddListing.Controls.Add(this.pcb_Small2);
+            this.tab_AddListing.Controls.Add(this.pcb_Small1);
+            this.tab_AddListing.Controls.Add(this.pcb_Main);
+            this.tab_AddListing.Controls.Add(this.btn_AddImage);
+            this.tab_AddListing.Controls.Add(this.lbl_Image);
+            this.tab_AddListing.Controls.Add(this.lbl_imagePath);
+            this.tab_AddListing.Controls.Add(this.lbl_EndDateTime);
+            this.tab_AddListing.Controls.Add(this.lbl_StartingPrice);
+            this.tab_AddListing.Controls.Add(this.lbl_Descripton);
+            this.tab_AddListing.Controls.Add(this.lbl_Title);
             this.tab_AddListing.Location = new System.Drawing.Point(4, 28);
             this.tab_AddListing.Name = "tab_AddListing";
             this.tab_AddListing.Padding = new System.Windows.Forms.Padding(3);
             this.tab_AddListing.Size = new System.Drawing.Size(1339, 626);
             this.tab_AddListing.TabIndex = 3;
             this.tab_AddListing.Text = "Posto shpallje";
+            // 
+            // lbl_EndDateTime
+            // 
+            this.lbl_EndDateTime.Location = new System.Drawing.Point(6, 198);
+            this.lbl_EndDateTime.Name = "lbl_EndDateTime";
+            this.lbl_EndDateTime.Size = new System.Drawing.Size(129, 45);
+            this.lbl_EndDateTime.TabIndex = 3;
+            this.lbl_EndDateTime.Text = "Koha e mbylljes se ankandit";
+            this.lbl_EndDateTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_StartingPrice
+            // 
+            this.lbl_StartingPrice.AutoSize = true;
+            this.lbl_StartingPrice.Location = new System.Drawing.Point(25, 168);
+            this.lbl_StartingPrice.Name = "lbl_StartingPrice";
+            this.lbl_StartingPrice.Size = new System.Drawing.Size(110, 19);
+            this.lbl_StartingPrice.TabIndex = 2;
+            this.lbl_StartingPrice.Text = "Cmimi fillestar:";
+            // 
+            // lbl_Descripton
+            // 
+            this.lbl_Descripton.AutoSize = true;
+            this.lbl_Descripton.Location = new System.Drawing.Point(49, 43);
+            this.lbl_Descripton.Name = "lbl_Descripton";
+            this.lbl_Descripton.Size = new System.Drawing.Size(86, 19);
+            this.lbl_Descripton.TabIndex = 1;
+            this.lbl_Descripton.Text = "Pershkrimi:";
+            // 
+            // lbl_Title
+            // 
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Location = new System.Drawing.Point(83, 9);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(52, 19);
+            this.lbl_Title.TabIndex = 0;
+            this.lbl_Title.Text = "Titulli:";
             // 
             // tab_MyListings
             // 
@@ -128,6 +210,23 @@
             this.tab_Llogaria.Size = new System.Drawing.Size(1339, 626);
             this.tab_Llogaria.TabIndex = 5;
             this.tab_Llogaria.Text = "Llogaria";
+            // 
+            // txt_AddCredit
+            // 
+            this.txt_AddCredit.Location = new System.Drawing.Point(372, 120);
+            this.txt_AddCredit.Name = "txt_AddCredit";
+            this.txt_AddCredit.Size = new System.Drawing.Size(95, 27);
+            this.txt_AddCredit.TabIndex = 18;
+            // 
+            // btn_AddCredit
+            // 
+            this.btn_AddCredit.Location = new System.Drawing.Point(271, 118);
+            this.btn_AddCredit.Name = "btn_AddCredit";
+            this.btn_AddCredit.Size = new System.Drawing.Size(95, 29);
+            this.btn_AddCredit.TabIndex = 17;
+            this.btn_AddCredit.Text = "Shto para";
+            this.btn_AddCredit.UseVisualStyleBackColor = true;
+            this.btn_AddCredit.Click += new System.EventHandler(this.btn_AddCredit_Click);
             // 
             // lbl_Balanci
             // 
@@ -308,7 +407,7 @@
             // pcb_eAnkandiLogo
             // 
             this.pcb_eAnkandiLogo.Image = global::OOP_project.Properties.Resources.e_ankandi_logo_;
-            this.pcb_eAnkandiLogo.Location = new System.Drawing.Point(233, 1);
+            this.pcb_eAnkandiLogo.Location = new System.Drawing.Point(185, 1);
             this.pcb_eAnkandiLogo.Name = "pcb_eAnkandiLogo";
             this.pcb_eAnkandiLogo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.pcb_eAnkandiLogo.Size = new System.Drawing.Size(149, 66);
@@ -316,22 +415,131 @@
             this.pcb_eAnkandiLogo.TabIndex = 2;
             this.pcb_eAnkandiLogo.TabStop = false;
             // 
-            // btn_AddCredit
+            // lbl_imagePath
             // 
-            this.btn_AddCredit.Location = new System.Drawing.Point(271, 118);
-            this.btn_AddCredit.Name = "btn_AddCredit";
-            this.btn_AddCredit.Size = new System.Drawing.Size(95, 29);
-            this.btn_AddCredit.TabIndex = 17;
-            this.btn_AddCredit.Text = "Shto para";
-            this.btn_AddCredit.UseVisualStyleBackColor = true;
-            this.btn_AddCredit.Click += new System.EventHandler(this.btn_AddCredit_Click);
+            this.lbl_imagePath.AutoSize = true;
+            this.lbl_imagePath.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_imagePath.Location = new System.Drawing.Point(689, 3);
+            this.lbl_imagePath.Name = "lbl_imagePath";
+            this.lbl_imagePath.Size = new System.Drawing.Size(36, 19);
+            this.lbl_imagePath.TabIndex = 4;
+            this.lbl_imagePath.Text = "N/A";
             // 
-            // txt_AddCredit
+            // lbl_Image
             // 
-            this.txt_AddCredit.Location = new System.Drawing.Point(372, 120);
-            this.txt_AddCredit.Name = "txt_AddCredit";
-            this.txt_AddCredit.Size = new System.Drawing.Size(95, 27);
-            this.txt_AddCredit.TabIndex = 18;
+            this.lbl_Image.AutoSize = true;
+            this.lbl_Image.Location = new System.Drawing.Point(629, 3);
+            this.lbl_Image.Name = "lbl_Image";
+            this.lbl_Image.Size = new System.Drawing.Size(54, 19);
+            this.lbl_Image.TabIndex = 5;
+            this.lbl_Image.Text = "Image:";
+            // 
+            // btn_AddImage
+            // 
+            this.btn_AddImage.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_AddImage.Location = new System.Drawing.Point(633, 25);
+            this.btn_AddImage.Name = "btn_AddImage";
+            this.btn_AddImage.Size = new System.Drawing.Size(50, 28);
+            this.btn_AddImage.TabIndex = 6;
+            this.btn_AddImage.Text = "+";
+            this.btn_AddImage.UseVisualStyleBackColor = true;
+            this.btn_AddImage.Click += new System.EventHandler(this.btn_AddImage_Click);
+            // 
+            // pcb_Main
+            // 
+            this.pcb_Main.Location = new System.Drawing.Point(690, 26);
+            this.pcb_Main.Name = "pcb_Main";
+            this.pcb_Main.Size = new System.Drawing.Size(642, 386);
+            this.pcb_Main.TabIndex = 7;
+            this.pcb_Main.TabStop = false;
+            // 
+            // pcb_Small1
+            // 
+            this.pcb_Small1.Location = new System.Drawing.Point(690, 418);
+            this.pcb_Small1.Name = "pcb_Small1";
+            this.pcb_Small1.Size = new System.Drawing.Size(102, 75);
+            this.pcb_Small1.TabIndex = 8;
+            this.pcb_Small1.TabStop = false;
+            // 
+            // pcb_Small2
+            // 
+            this.pcb_Small2.Location = new System.Drawing.Point(798, 418);
+            this.pcb_Small2.Name = "pcb_Small2";
+            this.pcb_Small2.Size = new System.Drawing.Size(102, 75);
+            this.pcb_Small2.TabIndex = 9;
+            this.pcb_Small2.TabStop = false;
+            // 
+            // pcb_Small3
+            // 
+            this.pcb_Small3.Location = new System.Drawing.Point(906, 418);
+            this.pcb_Small3.Name = "pcb_Small3";
+            this.pcb_Small3.Size = new System.Drawing.Size(102, 75);
+            this.pcb_Small3.TabIndex = 10;
+            this.pcb_Small3.TabStop = false;
+            // 
+            // pcb_Small4
+            // 
+            this.pcb_Small4.Location = new System.Drawing.Point(1014, 418);
+            this.pcb_Small4.Name = "pcb_Small4";
+            this.pcb_Small4.Size = new System.Drawing.Size(102, 75);
+            this.pcb_Small4.TabIndex = 11;
+            this.pcb_Small4.TabStop = false;
+            // 
+            // pcb_Small5
+            // 
+            this.pcb_Small5.Location = new System.Drawing.Point(1122, 418);
+            this.pcb_Small5.Name = "pcb_Small5";
+            this.pcb_Small5.Size = new System.Drawing.Size(102, 75);
+            this.pcb_Small5.TabIndex = 12;
+            this.pcb_Small5.TabStop = false;
+            // 
+            // pcb_Small6
+            // 
+            this.pcb_Small6.Location = new System.Drawing.Point(1230, 418);
+            this.pcb_Small6.Name = "pcb_Small6";
+            this.pcb_Small6.Size = new System.Drawing.Size(102, 75);
+            this.pcb_Small6.TabIndex = 13;
+            this.pcb_Small6.TabStop = false;
+            // 
+            // btn_RemoveImage
+            // 
+            this.btn_RemoveImage.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_RemoveImage.Location = new System.Drawing.Point(633, 59);
+            this.btn_RemoveImage.Name = "btn_RemoveImage";
+            this.btn_RemoveImage.Size = new System.Drawing.Size(50, 28);
+            this.btn_RemoveImage.TabIndex = 14;
+            this.btn_RemoveImage.Text = "x";
+            this.btn_RemoveImage.UseVisualStyleBackColor = true;
+            // 
+            // txt_ProductTitle
+            // 
+            this.txt_ProductTitle.Location = new System.Drawing.Point(141, 6);
+            this.txt_ProductTitle.Name = "txt_ProductTitle";
+            this.txt_ProductTitle.Size = new System.Drawing.Size(482, 27);
+            this.txt_ProductTitle.TabIndex = 15;
+            // 
+            // rtxt_Description
+            // 
+            this.rtxt_Description.Location = new System.Drawing.Point(141, 40);
+            this.rtxt_Description.Name = "rtxt_Description";
+            this.rtxt_Description.Size = new System.Drawing.Size(482, 119);
+            this.rtxt_Description.TabIndex = 16;
+            this.rtxt_Description.Text = "";
+            // 
+            // txt_StartingPrice
+            // 
+            this.txt_StartingPrice.Location = new System.Drawing.Point(141, 165);
+            this.txt_StartingPrice.Name = "txt_StartingPrice";
+            this.txt_StartingPrice.Size = new System.Drawing.Size(107, 27);
+            this.txt_StartingPrice.TabIndex = 17;
+            // 
+            // dtp_AuctionEndTime
+            // 
+            this.dtp_AuctionEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtp_AuctionEndTime.Location = new System.Drawing.Point(141, 205);
+            this.dtp_AuctionEndTime.Name = "dtp_AuctionEndTime";
+            this.dtp_AuctionEndTime.Size = new System.Drawing.Size(247, 27);
+            this.dtp_AuctionEndTime.TabIndex = 18;
             // 
             // MainPanel
             // 
@@ -348,10 +556,19 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainPanel";
             this.tab_Tabs.ResumeLayout(false);
+            this.tab_AddListing.ResumeLayout(false);
+            this.tab_AddListing.PerformLayout();
             this.tab_Llogaria.ResumeLayout(false);
             this.tab_Llogaria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_LogOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_eAnkandiLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Small6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,5 +600,24 @@
         private System.Windows.Forms.Label lbl_Balance;
         private System.Windows.Forms.TextBox txt_AddCredit;
         private System.Windows.Forms.Button btn_AddCredit;
+        private System.Windows.Forms.Label lbl_Descripton;
+        private System.Windows.Forms.Label lbl_Title;
+        private System.Windows.Forms.Label lbl_EndDateTime;
+        private System.Windows.Forms.Label lbl_StartingPrice;
+        private System.Windows.Forms.PictureBox pcb_Small6;
+        private System.Windows.Forms.PictureBox pcb_Small5;
+        private System.Windows.Forms.PictureBox pcb_Small4;
+        private System.Windows.Forms.PictureBox pcb_Small3;
+        private System.Windows.Forms.PictureBox pcb_Small2;
+        private System.Windows.Forms.PictureBox pcb_Small1;
+        private System.Windows.Forms.PictureBox pcb_Main;
+        private System.Windows.Forms.Button btn_AddImage;
+        private System.Windows.Forms.Label lbl_Image;
+        private System.Windows.Forms.Label lbl_imagePath;
+        private System.Windows.Forms.Button btn_RemoveImage;
+        private System.Windows.Forms.DateTimePicker dtp_AuctionEndTime;
+        private System.Windows.Forms.TextBox txt_StartingPrice;
+        private System.Windows.Forms.RichTextBox rtxt_Description;
+        private System.Windows.Forms.TextBox txt_ProductTitle;
     }
 }

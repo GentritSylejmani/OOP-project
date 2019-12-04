@@ -10,11 +10,7 @@ namespace BOL
     {
         public Lists()
         {
-            AdministratorsList.Add(new Administrator { Name = "Gentrit", Surname = "Sylejmani", Username = "chromgos", PersonalNo = "1170808050", Password = "Genti1234", Email = "gentrit.sylejmani@riinvest.net" });
-            ContributorsList.Add(new Contributor { Name = "Kastriot", Surname = "Selmani", Username = "kastro", PersonalNo = "123456789", Password = "kastro1", Email = "kastriot@hotmail.com" });
-            ClientsList.Add(new Client { Name = "Benjamin", Surname = "Gecaj", Username = "beni", PersonalNo = "987654321", Password = "beni1", Email = "benjamin@hotmail.com" });
-
-
+        
         }
         public Lists(string name,string surname,string username,string personalno,string password,string email)
         {

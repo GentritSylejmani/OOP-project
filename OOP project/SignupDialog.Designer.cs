@@ -41,7 +41,7 @@
             this.lbl_personalno = new System.Windows.Forms.Label();
             this.lbl_phoneno = new System.Windows.Forms.Label();
             this.lbl_password = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_PasswordCheck = new System.Windows.Forms.Label();
             this.btn_Register = new System.Windows.Forms.Button();
             this.pcb_Confirmation = new System.Windows.Forms.PictureBox();
             this.pcb_X = new System.Windows.Forms.PictureBox();
@@ -197,15 +197,15 @@
             this.lbl_password.TabIndex = 15;
             this.lbl_password.Text = "Fjalekalimi";
             // 
-            // label1
+            // lbl_PasswordCheck
             // 
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 251);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 40);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Konfirmo fjalekalimin";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_PasswordCheck.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_PasswordCheck.Location = new System.Drawing.Point(53, 251);
+            this.lbl_PasswordCheck.Name = "lbl_PasswordCheck";
+            this.lbl_PasswordCheck.Size = new System.Drawing.Size(90, 40);
+            this.lbl_PasswordCheck.TabIndex = 16;
+            this.lbl_PasswordCheck.Text = "Konfirmo fjalekalimin";
+            this.lbl_PasswordCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_Register
             // 
@@ -319,7 +319,7 @@
             this.Controls.Add(this.rb_Client);
             this.Controls.Add(this.pcb_Confirmation);
             this.Controls.Add(this.btn_Register);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_PasswordCheck);
             this.Controls.Add(this.lbl_password);
             this.Controls.Add(this.lbl_phoneno);
             this.Controls.Add(this.lbl_personalno);
@@ -365,7 +365,7 @@
         private System.Windows.Forms.Label lbl_personalno;
         private System.Windows.Forms.Label lbl_phoneno;
         private System.Windows.Forms.Label lbl_password;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_PasswordCheck;
         private System.Windows.Forms.Button btn_Register;
         private System.Windows.Forms.PictureBox pcb_Confirmation;
         private System.Windows.Forms.RadioButton rb_Client;
