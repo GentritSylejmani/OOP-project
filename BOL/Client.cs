@@ -32,9 +32,9 @@ namespace BOL
             
             var person = new Client();          
 
-            foreach(var user in Lists.ClientsList)
+            foreach(Person user in Lists.ClientsList)
             {
-                 if(username==user.Username)
+                 if(user.Username==username)
                  {
                     person.Name = user.Name;
                     person.Surname = user.Surname;
@@ -44,8 +44,9 @@ namespace BOL
                     person.PersonalNo = user.PersonalNo;
                     person.AccountNo = user.AccountNo;
                     person.Credit = user.Credit;
-                 }
-                return person;
+                    return person;
+                }
+                
             }
             return null; ;
         }

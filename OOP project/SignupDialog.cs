@@ -26,6 +26,29 @@ namespace OOP_project
 
         }
 
+        private bool mouseDown;
+        private static Point lastLocation;
+
+        private void Form_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void Form_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                this.Update();
+            }
+        }
+
+        private void Form_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
         private void pcb_X_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -66,13 +89,13 @@ namespace OOP_project
             if (rb_Client.Checked == true)
             {
                 
-                check=user.SignUp(2, txt_Name.Text, txt_Surname.Text, txt_Username.Text, txt_phoneno.Text, txt_personalno.Text, txt_Password.Text, txt_email.Text, Person.usertype.Client,321456,100.00);
+                check=user.SignUp(2, txt_Name.Text, txt_Surname.Text, txt_Username.Text, txt_phoneno.Text, txt_personalno.Text, txt_Password.Text, txt_email.Text, Person.usertype.Client,321456,0.00);
             }
             else if (rb_Contributor.Checked == true)
             {
                
                 user = new Contributor();
-                check=user.SignUp(3, txt_Name.Text, txt_Surname.Text, txt_Username.Text, txt_phoneno.Text, txt_personalno.Text, txt_Password.Text, txt_email.Text, Person.usertype.Contributor,321456, 100.00);
+                check=user.SignUp(3, txt_Name.Text, txt_Surname.Text, txt_Username.Text, txt_phoneno.Text, txt_personalno.Text, txt_Password.Text, txt_email.Text, Person.usertype.Contributor,321456, 0.00);
             }
             if (check == true)
             {

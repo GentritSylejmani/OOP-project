@@ -17,7 +17,7 @@ namespace OOP_project
         public static Person.usertype userType;
         public int imageCount = 0;
         public PictureBox[] pcb = new PictureBox[6];
-        public string[] image = new string[6];
+        public string[] image = new string[] { "", "", "", "", "", "" };
         public int selectedImg;
 
 
@@ -28,6 +28,30 @@ namespace OOP_project
             logoutExplanation.ShowAlways = true;
             logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
         }
+
+        private bool mouseDown;
+        private static Point lastLocation;
+
+        private void Form_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void Form_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                this.Update();
+            }
+        }
+
+        private void Form_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
         public MainPanel(string user, Person.usertype usertype)
         {
 
@@ -37,7 +61,7 @@ namespace OOP_project
             logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
             _user = user;
 
-            pcb[0]=pcb_Small1;
+            pcb[0] = pcb_Small1;
             pcb[1] = pcb_Small2;
             pcb[2] = pcb_Small3;
             pcb[3] = pcb_Small4;
@@ -76,7 +100,7 @@ namespace OOP_project
 
             {
                 client = new Contributor();
-                userPerson = (Contributor)client.GetUserInfo(_user);              
+                userPerson = (Contributor)client.GetUserInfo(_user);
 
                 lbl_Welcome.Text = ((Contributor)userPerson).Name.ToString() + " miresevini ne :";
                 lbl_Emri.Text = ((Contributor)userPerson).Name.ToString();
@@ -108,7 +132,7 @@ namespace OOP_project
                 MessageBox.Show("Ju lutem shkruani ne rubrike shumen qe doni te shtoni!");
                 return;
             }
-            
+
 
             Transactions t = new Transactions();
 
@@ -146,8 +170,8 @@ namespace OOP_project
 
         private void btn_AddImage_Click(object sender, EventArgs e)
         {
-            string imagepath="";
-           
+            string imagepath = "";
+
 
             if (imageCount >= 6)
             {
@@ -162,6 +186,8 @@ namespace OOP_project
                     imagepath = openFileDialog.FileName.ToString();
                     openFileDialog.Dispose();
                 }
+                else return;
+
                 switch (imageCount)
                 {
                     case 0:
@@ -218,18 +244,22 @@ namespace OOP_project
                 pcb_Main.Image = Image.FromFile(imagepath);
             }
 
-           
+
         }
 
         private void pcb_Small1_Click(object sender, EventArgs e)
         {
+
             if (image[0] != "")
             {
+                //MessageBox.Show(image[0]);
                 pcb_Main.Image = Image.FromFile(image[0]);
                 lbl_imagePath.Text = image[0];
                 selectedImg = 0;
             }
-            else return;
+            else
+                return;
+
         }
 
         private void pcb_Small2_Click(object sender, EventArgs e)
@@ -241,7 +271,8 @@ namespace OOP_project
                 lbl_imagePath.Text = image[1];
                 selectedImg = 1;
             }
-            else return;
+            else
+                return;
         }
 
         private void pcb_Small3_Click(object sender, EventArgs e)
@@ -253,7 +284,8 @@ namespace OOP_project
                 lbl_imagePath.Text = image[2];
                 selectedImg = 2;
             }
-            else return;
+            else
+                return;
         }
 
         private void pcb_Small4_Click(object sender, EventArgs e)
@@ -265,7 +297,8 @@ namespace OOP_project
                 lbl_imagePath.Text = image[3];
                 selectedImg = 3;
             }
-            else return;
+            else
+                return;
         }
 
         private void pcb_Small5_Click(object sender, EventArgs e)
@@ -277,7 +310,8 @@ namespace OOP_project
                 lbl_imagePath.Text = image[4];
                 selectedImg = 4;
             }
-            else return;
+            else
+                return;
         }
 
         private void pcb_Small6_Click(object sender, EventArgs e)
@@ -289,23 +323,39 @@ namespace OOP_project
                 lbl_imagePath.Text = image[5];
                 selectedImg = 5;
             }
-            else return;
+            else
+                return;
         }
 
         private void pcb_Delete_Click(object sender, EventArgs e)
         {
+            string message = "";
+            if(image[selectedImg]=="")
+            {
+                selectedImg -= 1;
+            }
+
             image[selectedImg] = "";
             imageCount -= 1;
+            //lbl_imagePath.Text = image[selectedImg];
 
             sortImageArray();
-            populatePCBs();          
+            populatePCBs();
+
+            //for (int i = 0; i < 6; i++)
+            //{
+            //    message = message + i + " : " + image[i] + "\n";
+            //}
+
+            //MessageBox.Show(message);
+
         }
 
         private void sortImageArray()
         {
             //string tempImagepath;
 
-            for(int i = 0;i<5;i++)
+            for (int i = 0; i < 5; i++)
             {
                 if (image[i] == "" || image[i] == null)
                 {
@@ -318,21 +368,74 @@ namespace OOP_project
 
         private void populatePCBs()
         {
-            for(int i = 0;i<6;i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (image[i] == "" || image[i] == null)
                 {
                     pcb[i].Image = null;
+                    
                 }
-                else pcb[i].Image = Image.FromFile(image[i]);
-            }
+                else
+                {
+                    pcb[i].Image = Image.FromFile(image[i]);
+                }
 
-            if(image[0]=="")
-            {
-                pcb_Main.Image = null;
+                if (image[0] == "")
+                {
+                    pcb_Main.Image = null;
+                    lbl_imagePath.Text = "N/A";
+                }
+                else
+                    pcb_Main.Image = Image.FromFile(image[0]);
             }
-            else
-            pcb_Main.Image = Image.FromFile(image[0]);
+        }
+
+        private DateTime GetAcutionEndTime(int day,int hours)
+        {
+            DateTime dt = DateTime.Now;
+
+            dt = dt.AddDays(day);
+            dt = dt.AddHours(hours);
+
+            return dt;
+        }
+
+        private void btn_AddListingRequest_Click(object sender, EventArgs e)
+        {
+            if(tab_auctionTimes.SelectedTab==tab_auctionTimes.TabPages["tab_Time"])
+            {
+                int Days = 0;
+                int Hours = 0;
+
+                if(txt_Days.Text=="" || txt_Days.Text==null)
+                {
+                    Days = 0;
+                }else
+                {
+                    Days = Convert.ToInt32(txt_Days.Text);
+                }
+
+                if (txt_Hours.Text == "" || txt_Hours.Text == null)
+                {
+                    Hours = 0;
+                }
+                else
+                {
+                    Hours = Convert.ToInt32(txt_Hours.Text);
+                }
+
+                DateTime dt = DateTime.Now;
+
+                MessageBox.Show(GetAcutionEndTime(Days,Hours).ToString());
+
+                //MessageBox.Show(GetAcutionEndTime(Convert.ToInt32(txt_Days.Text),Convert.ToInt32(txt_Hours.Text)).ToString());
+
+                
+            }
+            else if(tab_auctionTimes.SelectedTab == tab_auctionTimes.TabPages["tab_Date"])
+            {
+                MessageBox.Show("tabdate is selecetd");
+            }
         }
     }
 }

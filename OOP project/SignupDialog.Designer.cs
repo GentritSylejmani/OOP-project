@@ -339,6 +339,9 @@
             this.Name = "SignupDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign up";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Confirmation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_X)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
