@@ -433,11 +433,22 @@ namespace OOP_project
 
         private void btn_AddListingRequest_Click(object sender, EventArgs e)
         {
+            string message="";
+
             if (AuctionETA() > DateTime.Now)
             {
-                AuctionETA();
+                AddAuction(txt_ProductTitle.Text, rtxt_Description.Text, Convert.ToDouble(txt_StartingPrice.Text), Convert.ToDouble(txt_StartingPrice.Text), AuctionETA(), image, ((Contributor)userPerson));
             }
-            else MessageBox.Show("Zgjedhni date valide!");           
+            else MessageBox.Show("Zgjedhni date valide!");   
+            
+            //ARSYE TESTUESE
+
+            foreach(var product in Lists.ApprovedRequests)
+            {
+                message = message + product.Name +"\n" +product.productPicture[1] + "\n" + product.AuctionEndDateTime+ "\n" + product.sellersUsername.Username.ToString()+"\n" ;
+            }
+
+            MessageBox.Show("LISTA TESTUESE \n\n" + message);
         }
 
         private DateTime AuctionETA()
@@ -523,12 +534,30 @@ namespace OOP_project
         {
             DateTime dt = dtp_AuctionEndTime.Value;
             dtp_AuctionEndTime.Value = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0);
+
+            AuctionETA();
         }
 
-        private void AddAuction(string Title,string Description,double startingPrice, string[] images,DateTime auctionEta)
+        private void AddAuction(string name, string description,double startingPrice,double currentBidPrice,DateTime auctionEta, string[] images,Contributor seller)
         {
-            //Lists.ApprovedRequests.Add(new Product())
+            Lists.ApprovedRequests.Add(new Product { Name = name, Description = description, StartingPrice = startingPrice,CurrentBidPrice = currentBidPrice, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller }); 
         }
-       
+
+        private void timeTXTnumberenter(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+
+            }                  
+        } 
+               
+        private void EnterTimeETA(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AuctionETA();
+            }
+        }
     }
 }
