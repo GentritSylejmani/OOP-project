@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace BOL
 {
+    public enum ProductCategory
+    {
+        Veture,
+        Teknike
+
+    }
+
     public class Product
     {
         public string ProductID;
@@ -18,7 +25,7 @@ namespace BOL
         public DateTime AuctionEndDateTime;
         public Contributor sellersUsername;
         public Client buyerID;
-        string[] roductPicture;
+        string[] productPicture;
 
         
 

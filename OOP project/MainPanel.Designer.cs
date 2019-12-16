@@ -31,6 +31,8 @@
             this.tab_Tabs = new System.Windows.Forms.TabControl();
             this.tab_Listings = new System.Windows.Forms.TabPage();
             this.tab_AddListing = new System.Windows.Forms.TabPage();
+            this.lbl_AuctionTimeETA = new System.Windows.Forms.Label();
+            this.lbl_AuctionTime = new System.Windows.Forms.Label();
             this.lbl_EndDateTime = new System.Windows.Forms.Label();
             this.tab_auctionTimes = new System.Windows.Forms.TabControl();
             this.tab_Date = new System.Windows.Forms.TabPage();
@@ -125,6 +127,8 @@
             // tab_AddListing
             // 
             this.tab_AddListing.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_AddListing.Controls.Add(this.lbl_AuctionTimeETA);
+            this.tab_AddListing.Controls.Add(this.lbl_AuctionTime);
             this.tab_AddListing.Controls.Add(this.lbl_EndDateTime);
             this.tab_AddListing.Controls.Add(this.tab_auctionTimes);
             this.tab_AddListing.Controls.Add(this.btn_AddListingRequest);
@@ -151,6 +155,24 @@
             this.tab_AddListing.Size = new System.Drawing.Size(1339, 626);
             this.tab_AddListing.TabIndex = 3;
             this.tab_AddListing.Text = "Posto shpallje";
+            // 
+            // lbl_AuctionTimeETA
+            // 
+            this.lbl_AuctionTimeETA.Location = new System.Drawing.Point(406, 226);
+            this.lbl_AuctionTimeETA.Name = "lbl_AuctionTimeETA";
+            this.lbl_AuctionTimeETA.Size = new System.Drawing.Size(217, 50);
+            this.lbl_AuctionTimeETA.TabIndex = 23;
+            this.lbl_AuctionTimeETA.Text = "N/A";
+            this.lbl_AuctionTimeETA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_AuctionTime
+            // 
+            this.lbl_AuctionTime.Location = new System.Drawing.Point(308, 226);
+            this.lbl_AuctionTime.Name = "lbl_AuctionTime";
+            this.lbl_AuctionTime.Size = new System.Drawing.Size(92, 57);
+            this.lbl_AuctionTime.TabIndex = 22;
+            this.lbl_AuctionTime.Text = "Perfundimi i ankandit:";
+            this.lbl_AuctionTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbl_EndDateTime
             // 
@@ -189,6 +211,7 @@
             this.dtp_AuctionEndTime.Name = "dtp_AuctionEndTime";
             this.dtp_AuctionEndTime.Size = new System.Drawing.Size(153, 27);
             this.dtp_AuctionEndTime.TabIndex = 18;
+            this.dtp_AuctionEndTime.ValueChanged += new System.EventHandler(this.dtp_AuctionEndTime_ValueChanged);
             // 
             // tab_Time
             // 
@@ -732,5 +755,7 @@
         private System.Windows.Forms.Label lb_Hours;
         private System.Windows.Forms.Label lbl_Day;
         private System.Windows.Forms.Button btn_AddListingRequest;
+        private System.Windows.Forms.Label lbl_AuctionTimeETA;
+        private System.Windows.Forms.Label lbl_AuctionTime;
     }
 }

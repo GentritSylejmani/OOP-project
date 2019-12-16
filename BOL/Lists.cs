@@ -19,10 +19,10 @@ namespace BOL
 
        
         #region ProductLists
-        public List<Product> PendingRequests = new List<Product>();
-        public List<Product> ApprovedRequests = new List<Product>();
-        public List<Product> DeniedRequests = new List<Product>();
-        public List<Product> SoldProducts = new List<Product>();
+        public static List<Product> PendingRequests = new List<Product>();
+        public static List<Product> ApprovedRequests = new List<Product>();
+        public static List<Product> DeniedRequests = new List<Product>();
+        public static List<Product> SoldProducts = new List<Product>();
         #endregion
 
         #region UserLists

@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+
 using BOL;
 
 namespace OOP_project
@@ -19,6 +21,8 @@ namespace OOP_project
         public PictureBox[] pcb = new PictureBox[6];
         public string[] image = new string[] { "", "", "", "", "", "" };
         public int selectedImg;
+        
+        
 
 
         public MainPanel()
@@ -27,6 +31,9 @@ namespace OOP_project
             ToolTip logoutExplanation = new ToolTip();
             logoutExplanation.ShowAlways = true;
             logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
+            
+
+            
         }
 
         private bool mouseDown;
@@ -329,25 +336,33 @@ namespace OOP_project
 
         private void pcb_Delete_Click(object sender, EventArgs e)
         {
-            string message = "";
-            if(image[selectedImg]=="")
+            if (imageCount == 0)
             {
-                selectedImg -= 1;
+                MessageBox.Show("Nuk keni asnje fotografi te zgjedhur!");
+                return;
             }
+            else
+            {
+                //string message = "";
+                if (image[selectedImg] == "")
+                {
+                    selectedImg -= 1;
+                }
 
-            image[selectedImg] = "";
-            imageCount -= 1;
-            //lbl_imagePath.Text = image[selectedImg];
+                image[selectedImg] = "";
+                imageCount -= 1;
+                //lbl_imagePath.Text = image[selectedImg];
 
-            sortImageArray();
-            populatePCBs();
+                sortImageArray();
+                populatePCBs();
 
-            //for (int i = 0; i < 6; i++)
-            //{
-            //    message = message + i + " : " + image[i] + "\n";
-            //}
+                //for (int i = 0; i < 6; i++)
+                //{
+                //    message = message + i + " : " + image[i] + "\n";
+                //}
 
-            //MessageBox.Show(message);
+                //MessageBox.Show(message);
+            }
 
         }
 
@@ -397,25 +412,51 @@ namespace OOP_project
             dt = dt.AddDays(day);
             dt = dt.AddHours(hours);
 
+            dt = new DateTime(dt.Year, dt.Month,dt.Day, dt.Hour, 0, 0);
+
             return dt;
         }
 
+        private TimeSpan GetAuctionEndTime(DateTime EndTime)
+        {
+            DateTime dt = DateTime.Now;
+            TimeSpan ts = EndTime - dt;
+      
+            return ts;
+        }
+
+        //private string AuctionTimeETA(string time)
+        //{
+        //    return time;
+           
+        //}
+
         private void btn_AddListingRequest_Click(object sender, EventArgs e)
         {
-            if(tab_auctionTimes.SelectedTab==tab_auctionTimes.TabPages["tab_Time"])
+            if (AuctionETA() > DateTime.Now)
+            {
+                AuctionETA();
+            }
+            else MessageBox.Show("Zgjedhni date valide!");           
+        }
+
+        private DateTime AuctionETA()
+        {
+            if (tab_auctionTimes.SelectedTab == tab_auctionTimes.TabPages["tab_Time"])
             {
                 int Days = 0;
                 int Hours = 0;
 
-                if(txt_Days.Text=="" || txt_Days.Text==null)
+                if (txt_Days.Text == "" || txt_Days.Text == null)
                 {
                     Days = 0;
-                }else
+                }
+                else
                 {
                     Days = Convert.ToInt32(txt_Days.Text);
                 }
 
-                if (txt_Hours.Text == "" || txt_Hours.Text == null)
+                if (txt_Hours.Text =="" || txt_Hours.Text==null)
                 {
                     Hours = 0;
                 }
@@ -424,18 +465,70 @@ namespace OOP_project
                     Hours = Convert.ToInt32(txt_Hours.Text);
                 }
 
-                DateTime dt = DateTime.Now;
-
-                MessageBox.Show(GetAcutionEndTime(Days,Hours).ToString());
-
-                //MessageBox.Show(GetAcutionEndTime(Convert.ToInt32(txt_Days.Text),Convert.ToInt32(txt_Hours.Text)).ToString());
-
+                if (Days == 0 && Hours == 0)
+                {                  
+                        MessageBox.Show("Koha minimale per ankand eshte 1 ore");
+                        txt_Hours.Text = (1).ToString();
+                        txt_Days.Text = (0).ToString();
+                        Hours = 1;                
+                }
                 
+                
+
+                //DateTime dateTime = GetAcutionEndTime(Days, Hours);
+
+                //lbl_AuctionTimeETA.Text = GetAcutionEndTime(10, 10);
+               
+
+                DateTime formatedDate = GetAcutionEndTime(Days, Hours+1);
+
+                TimeSpan timeSpan = formatedDate - DateTime.Now;
+            
+                lbl_AuctionTimeETA.Text = "Me " + formatedDate.ToString() + "\n ose ne " + timeSpan.Days.ToString() + " dite e " + timeSpan.Hours.ToString() + " ore";
+                //txt_Days.Text = formatedDate.Day.ToString();
+                //txt_Hours.Text = formatedDate.Hour.ToString();
+
+                return formatedDate;
+
             }
-            else if(tab_auctionTimes.SelectedTab == tab_auctionTimes.TabPages["tab_Date"])
+            else if (tab_auctionTimes.SelectedTab == tab_auctionTimes.TabPages["tab_Date"])
             {
-                MessageBox.Show("tabdate is selecetd");
+                DateTime dt = dtp_AuctionEndTime.Value;
+                TimeSpan timeSpan;
+                timeSpan = (dt - DateTime.Now);
+                if (timeSpan.TotalHours <1)
+                {
+                    MessageBox.Show("Koha me e vogel duhet te jete se paku 1 ore");                                 
+                }
+                else
+                {
+                    DateTime formatedDate = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0);
+
+                    //dtp_AuctionEndTime.Value = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0);
+                    //MessageBox.Show(formatedDate.ToString());
+
+                    TimeSpan ts = GetAuctionEndTime(formatedDate);
+                    int days = ts.Days;
+                    int hours = ts.Hours;
+
+                    lbl_AuctionTimeETA.Text = "Me " + dtp_AuctionEndTime.Value.ToString() + "\n ose ne " + days.ToString() + " dite e " + hours.ToString() + " ore";
+
+                    return formatedDate;
+                }               
             }
+            return DateTime.Now;
         }
+
+        private void dtp_AuctionEndTime_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dt = dtp_AuctionEndTime.Value;
+            dtp_AuctionEndTime.Value = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0);
+        }
+
+        private void AddAuction(string Title,string Description,double startingPrice, string[] images,DateTime auctionEta)
+        {
+            //Lists.ApprovedRequests.Add(new Product())
+        }
+       
     }
 }
