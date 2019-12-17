@@ -12,6 +12,7 @@ namespace BOL
         {
         
         }
+
         public Lists(string name,string surname,string username,string personalno,string password,string email)
         {
 

@@ -445,7 +445,15 @@ namespace OOP_project
 
             foreach(var product in Lists.ApprovedRequests)
             {
-                message = message + product.Name +"\n" +product.productPicture[1] + "\n" + product.AuctionEndDateTime+ "\n" + product.sellersUsername.Username.ToString()+"\n" ;
+                message = message + product.Name;
+                
+                for(int i=0;i<6;i++)
+                {
+                    if (product.productPicture[i] != "")
+                        message = message + "\n" +product.productPicture[i];
+                }
+                    
+                    message = message + "\n" + product.AuctionEndDateTime+ "\n" + product.sellersUsername.Username.ToString()+"\n" ;
             }
 
             MessageBox.Show("LISTA TESTUESE \n\n" + message);

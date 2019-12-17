@@ -8,8 +8,9 @@ namespace BOL
 {
     public enum ProductCategory
     {
-        Veture,
-        Teknike
+        Automjet,
+        TeknikeEBardhe,
+        PaisjeTeknologjike,
 
     }
 
@@ -33,6 +34,7 @@ namespace BOL
         public double StartingPrice;
         public double CurrentBidPrice;
         public double SoldPrice;
+        public ProductCategory Category;
         public DateTime AuctionStartDateTime;
         public DateTime AuctionEndDateTime;
         public Contributor sellersUsername;
