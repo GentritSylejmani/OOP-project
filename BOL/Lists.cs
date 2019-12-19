@@ -24,6 +24,11 @@ namespace BOL
         public static List<Product> ApprovedRequests = new List<Product>();
         public static List<Product> DeniedRequests = new List<Product>();
         public static List<Product> SoldProducts = new List<Product>();
+
+        public List<Product> listings
+        {
+            get { return ApprovedRequests; }
+        }
         #endregion
 
         #region UserLists

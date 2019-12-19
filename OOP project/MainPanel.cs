@@ -22,7 +22,7 @@ namespace OOP_project
         public string[] image = new string[] { "", "", "", "", "", "" };
         public int selectedImg;
         
-        
+
 
 
         public MainPanel()
@@ -33,7 +33,6 @@ namespace OOP_project
             logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
             
 
-            
         }
 
         private bool mouseDown;
@@ -388,7 +387,7 @@ namespace OOP_project
                 if (image[i] == "" || image[i] == null)
                 {
                     pcb[i].Image = null;
-                    
+
                 }
                 else
                 {
@@ -405,14 +404,14 @@ namespace OOP_project
             }
         }
 
-        private DateTime GetAcutionEndTime(int day,int hours)
+        private DateTime GetAcutionEndTime(int day, int hours)
         {
             DateTime dt = DateTime.Now;
 
             dt = dt.AddDays(day);
             dt = dt.AddHours(hours);
 
-            dt = new DateTime(dt.Year, dt.Month,dt.Day, dt.Hour, 0, 0);
+            dt = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0);
 
             return dt;
         }
@@ -421,39 +420,39 @@ namespace OOP_project
         {
             DateTime dt = DateTime.Now;
             TimeSpan ts = EndTime - dt;
-      
+
             return ts;
         }
 
         //private string AuctionTimeETA(string time)
         //{
         //    return time;
-           
+
         //}
 
         private void btn_AddListingRequest_Click(object sender, EventArgs e)
         {
-            string message="";
+            string message = "";
 
             if (AuctionETA() > DateTime.Now)
             {
                 AddAuction(txt_ProductTitle.Text, rtxt_Description.Text, Convert.ToDouble(txt_StartingPrice.Text), Convert.ToDouble(txt_StartingPrice.Text), AuctionETA(), image, ((Contributor)userPerson));
             }
-            else MessageBox.Show("Zgjedhni date valide!");   
-            
+            else MessageBox.Show("Zgjedhni date valide!");
+
             //ARSYE TESTUESE
 
-            foreach(var product in Lists.ApprovedRequests)
+            foreach (var product in Lists.ApprovedRequests)
             {
                 message = message + product.Name;
-                
-                for(int i=0;i<6;i++)
+
+                for (int i = 0; i < 6; i++)
                 {
                     if (product.productPicture[i] != "")
-                        message = message + "\n" +product.productPicture[i];
+                        message = message + "\n" + product.productPicture[i];
                 }
-                    
-                    message = message + "\n" + product.AuctionEndDateTime+ "\n" + product.sellersUsername.Username.ToString()+"\n" ;
+
+                message = message + "\n" + product.AuctionEndDateTime + "\n" + product.sellersUsername.Username.ToString() + "\n";
             }
 
             MessageBox.Show("LISTA TESTUESE \n\n" + message);
@@ -475,7 +474,7 @@ namespace OOP_project
                     Days = Convert.ToInt32(txt_Days.Text);
                 }
 
-                if (txt_Hours.Text =="" || txt_Hours.Text==null)
+                if (txt_Hours.Text == "" || txt_Hours.Text == null)
                 {
                     Hours = 0;
                 }
@@ -485,24 +484,24 @@ namespace OOP_project
                 }
 
                 if (Days == 0 && Hours == 0)
-                {                  
-                        MessageBox.Show("Koha minimale per ankand eshte 1 ore");
-                        txt_Hours.Text = (1).ToString();
-                        txt_Days.Text = (0).ToString();
-                        Hours = 1;                
+                {
+                    MessageBox.Show("Koha minimale per ankand eshte 1 ore");
+                    txt_Hours.Text = (1).ToString();
+                    txt_Days.Text = (0).ToString();
+                    Hours = 1;
                 }
-                
-                
+
+
 
                 //DateTime dateTime = GetAcutionEndTime(Days, Hours);
 
                 //lbl_AuctionTimeETA.Text = GetAcutionEndTime(10, 10);
-               
 
-                DateTime formatedDate = GetAcutionEndTime(Days, Hours+1);
+
+                DateTime formatedDate = GetAcutionEndTime(Days, Hours + 1);
 
                 TimeSpan timeSpan = formatedDate - DateTime.Now;
-            
+
                 lbl_AuctionTimeETA.Text = "Me " + formatedDate.ToString() + "\n ose ne " + timeSpan.Days.ToString() + " dite e " + timeSpan.Hours.ToString() + " ore";
                 //txt_Days.Text = formatedDate.Day.ToString();
                 //txt_Hours.Text = formatedDate.Hour.ToString();
@@ -515,9 +514,9 @@ namespace OOP_project
                 DateTime dt = dtp_AuctionEndTime.Value;
                 TimeSpan timeSpan;
                 timeSpan = (dt - DateTime.Now);
-                if (timeSpan.TotalHours <1)
+                if (timeSpan.TotalHours < 1)
                 {
-                    MessageBox.Show("Koha me e vogel duhet te jete se paku 1 ore");                                 
+                    MessageBox.Show("Koha me e vogel duhet te jete se paku 1 ore");
                 }
                 else
                 {
@@ -533,7 +532,7 @@ namespace OOP_project
                     lbl_AuctionTimeETA.Text = "Me " + dtp_AuctionEndTime.Value.ToString() + "\n ose ne " + days.ToString() + " dite e " + hours.ToString() + " ore";
 
                     return formatedDate;
-                }               
+                }
             }
             return DateTime.Now;
         }
@@ -546,9 +545,9 @@ namespace OOP_project
             AuctionETA();
         }
 
-        private void AddAuction(string name, string description,double startingPrice,double currentBidPrice,DateTime auctionEta, string[] images,Contributor seller)
+        private void AddAuction(string name, string description, double startingPrice, double currentBidPrice, DateTime auctionEta, string[] images, Contributor seller)
         {
-            Lists.ApprovedRequests.Add(new Product { Name = name, Description = description, StartingPrice = startingPrice,CurrentBidPrice = currentBidPrice, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller }); 
+            Lists.ApprovedRequests.Add(new Product { Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller });
         }
 
         private void timeTXTnumberenter(object sender, KeyPressEventArgs e)
@@ -557,15 +556,54 @@ namespace OOP_project
             {
                 e.Handled = true;
 
-            }                  
-        } 
-               
+            }
+        }
+
         private void EnterTimeETA(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 AuctionETA();
             }
+        }
+
+        private void MainPanel_Load(object sender, EventArgs e)
+        {
+
+            //dgv_ApprovedListings.ColumnCount = 8;
+
+            //dgv_ApprovedListings.Columns["Name"].DisplayIndex = 0;
+            //dgv_ApprovedListings.Columns[0].Name = "Titulli";
+
+            //dgv_ApprovedListings.Columns["Description"].DisplayIndex = 1;
+            //dgv_ApprovedListings.Columns[1].Name = "Pershkrimi";
+
+            //dgv_ApprovedListings.Columns["StartingPrice"].DisplayIndex = 2;
+            //dgv_ApprovedListings.Columns[2].Name = "Cmimi startues";
+
+            //dgv_ApprovedListings.Columns["CurrentBidPrice"].DisplayIndex = 3;
+            //dgv_ApprovedListings.Columns[3].Name = "Cmimi aktual";
+
+            //dgv_ApprovedListings.Columns["Category"].DisplayIndex = 4;
+            //dgv_ApprovedListings.Columns[4].Name = "Kategoria";
+
+            //dgv_ApprovedListings.Columns["AuctionStartDateTime"].DisplayIndex = 5;
+            //dgv_ApprovedListings.Columns[5].Name = "Fillimi";
+
+            //dgv_ApprovedListings.Columns["AuctionEndDateTime"].DisplayIndex = 6;
+            //dgv_ApprovedListings.Columns[6].Name = "Mbarimi";
+
+            //dgv_ApprovedListings.Columns["sellersUsername"].DisplayIndex = 7;
+            //dgv_ApprovedListings.Columns[7].Name = "Shitesi";
+
+            var result = Lists.ApprovedRequests.Select(r => new {Shitesi = r.sellersUsername.Username ,Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, }).ToList();
+
+           dgv_ApprovedListings.DataSource = result;
+        }
+
+        private void btn_RefreshDataGrid_Click(object sender, EventArgs e)
+        {
+            dgv_ApprovedListings.Update();
         }
     }
 }
