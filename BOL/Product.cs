@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace BOL
 {
-    public enum ProductCategory
-    {
-        Automjet,
-        TeknikeEBardhe,
-        PaisjeTeknologjike,
-
-    }
-
+   
     
 
     public class Product
@@ -38,8 +31,14 @@ namespace BOL
         public double _startingPrice;
         public double _currentBidPrice;
         private double _soldPrice;
-       
+        public enum ProductCategory
+        {
+            Gjeneral,
+            Automjet,
+            Teknike_e_bardhe,
+            Teknologji
 
+        }
 
         public string ProductID { get; set; }
         public string Name { get; set; }

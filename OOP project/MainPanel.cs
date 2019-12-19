@@ -547,7 +547,7 @@ namespace OOP_project
 
         private void AddAuction(string name, string description, double startingPrice, double currentBidPrice, DateTime auctionEta, string[] images, Contributor seller)
         {
-            Lists.ApprovedRequests.Add(new Product { Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller });
+            Lists.ApprovedRequests.Add(new Product { Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime= DateTime.Now ,AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller });
         }
 
         private void timeTXTnumberenter(object sender, KeyPressEventArgs e)
@@ -567,9 +567,24 @@ namespace OOP_project
             }
         }
 
+        public void PopulateListingsDataGrid()
+        {
+            dgv_ApprovedListings.DataSource = null;
+
+            dgv_ApprovedListings.ForeColor = Color.Black;
+
+            var result = Lists.ApprovedRequests.Select(r => new {  Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
+
+            dgv_ApprovedListings.DataSource = result;
+        }
+
         private void MainPanel_Load(object sender, EventArgs e)
         {
 
+            cmb_Category.DataSource = Enum.GetValues(typeof(Product.ProductCategory));
+
+            PopulateListingsDataGrid();
+           
             //dgv_ApprovedListings.ColumnCount = 8;
 
             //dgv_ApprovedListings.Columns["Name"].DisplayIndex = 0;
@@ -596,14 +611,12 @@ namespace OOP_project
             //dgv_ApprovedListings.Columns["sellersUsername"].DisplayIndex = 7;
             //dgv_ApprovedListings.Columns[7].Name = "Shitesi";
 
-            var result = Lists.ApprovedRequests.Select(r => new {Shitesi = r.sellersUsername.Username ,Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, }).ToList();
-
-           dgv_ApprovedListings.DataSource = result;
+            
         }
 
         private void btn_RefreshDataGrid_Click(object sender, EventArgs e)
         {
-            dgv_ApprovedListings.Update();
+            PopulateListingsDataGrid();
         }
     }
 }
