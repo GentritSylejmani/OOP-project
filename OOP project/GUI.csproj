@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuctionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuctionDialog.Designer.cs">
+      <DependentUpon>AuctionDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="SignupDialog.Designer.cs">
       <DependentUpon>SignupDialog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AuctionDialog.resx">
+      <DependentUpon>AuctionDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>

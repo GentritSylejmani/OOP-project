@@ -33,6 +33,8 @@
             this.btn_RefreshDataGrid = new System.Windows.Forms.Button();
             this.dgv_ApprovedListings = new System.Windows.Forms.DataGridView();
             this.tab_AddListing = new System.Windows.Forms.TabPage();
+            this.lbl_Category = new System.Windows.Forms.Label();
+            this.cmb_Category = new System.Windows.Forms.ComboBox();
             this.lbl_AuctionTimeETA = new System.Windows.Forms.Label();
             this.lbl_AuctionTime = new System.Windows.Forms.Label();
             this.lbl_EndDateTime = new System.Windows.Forms.Label();
@@ -63,6 +65,8 @@
             this.lbl_Descripton = new System.Windows.Forms.Label();
             this.lbl_Title = new System.Windows.Forms.Label();
             this.tab_MyListings = new System.Windows.Forms.TabPage();
+            this.btn_RefreshMyListings = new System.Windows.Forms.Button();
+            this.dgv_PersonalListings = new System.Windows.Forms.DataGridView();
             this.tab_Llogaria = new System.Windows.Forms.TabPage();
             this.txt_AddCredit = new System.Windows.Forms.TextBox();
             this.btn_AddCredit = new System.Windows.Forms.Button();
@@ -83,8 +87,6 @@
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.pcb_LogOut = new System.Windows.Forms.PictureBox();
             this.pcb_eAnkandiLogo = new System.Windows.Forms.PictureBox();
-            this.cmb_Category = new System.Windows.Forms.ComboBox();
-            this.lbl_Category = new System.Windows.Forms.Label();
             this.tab_Tabs.SuspendLayout();
             this.tab_Listings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ApprovedListings)).BeginInit();
@@ -100,6 +102,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Small2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Small1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).BeginInit();
+            this.tab_MyListings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_PersonalListings)).BeginInit();
             this.tab_Llogaria.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_LogOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_eAnkandiLogo)).BeginInit();
@@ -137,7 +141,7 @@
             // btn_RefreshDataGrid
             // 
             this.btn_RefreshDataGrid.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_RefreshDataGrid.Location = new System.Drawing.Point(630, 34);
+            this.btn_RefreshDataGrid.Location = new System.Drawing.Point(1502, 706);
             this.btn_RefreshDataGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_RefreshDataGrid.Name = "btn_RefreshDataGrid";
             this.btn_RefreshDataGrid.Size = new System.Drawing.Size(112, 45);
@@ -195,6 +199,24 @@
             this.tab_AddListing.Size = new System.Drawing.Size(2012, 767);
             this.tab_AddListing.TabIndex = 3;
             this.tab_AddListing.Text = "Posto shpallje";
+            // 
+            // lbl_Category
+            // 
+            this.lbl_Category.AutoSize = true;
+            this.lbl_Category.Location = new System.Drawing.Point(88, 254);
+            this.lbl_Category.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Category.Name = "lbl_Category";
+            this.lbl_Category.Size = new System.Drawing.Size(116, 29);
+            this.lbl_Category.TabIndex = 25;
+            this.lbl_Category.Text = "Kategoria:";
+            // 
+            // cmb_Category
+            // 
+            this.cmb_Category.FormattingEnabled = true;
+            this.cmb_Category.Location = new System.Drawing.Point(212, 251);
+            this.cmb_Category.Name = "cmb_Category";
+            this.cmb_Category.Size = new System.Drawing.Size(218, 37);
+            this.cmb_Category.TabIndex = 24;
             // 
             // lbl_AuctionTimeETA
             // 
@@ -499,6 +521,8 @@
             // tab_MyListings
             // 
             this.tab_MyListings.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_MyListings.Controls.Add(this.btn_RefreshMyListings);
+            this.tab_MyListings.Controls.Add(this.dgv_PersonalListings);
             this.tab_MyListings.Location = new System.Drawing.Point(4, 38);
             this.tab_MyListings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tab_MyListings.Name = "tab_MyListings";
@@ -506,6 +530,29 @@
             this.tab_MyListings.Size = new System.Drawing.Size(2012, 767);
             this.tab_MyListings.TabIndex = 4;
             this.tab_MyListings.Text = "Shpalljet e mia";
+            // 
+            // btn_RefreshMyListings
+            // 
+            this.btn_RefreshMyListings.Location = new System.Drawing.Point(611, 42);
+            this.btn_RefreshMyListings.Name = "btn_RefreshMyListings";
+            this.btn_RefreshMyListings.Size = new System.Drawing.Size(145, 44);
+            this.btn_RefreshMyListings.TabIndex = 1;
+            this.btn_RefreshMyListings.Text = "Fresko!";
+            this.btn_RefreshMyListings.UseVisualStyleBackColor = true;
+            this.btn_RefreshMyListings.Click += new System.EventHandler(this.Btn_RefreshMyListings_Click);
+            // 
+            // dgv_PersonalListings
+            // 
+            this.dgv_PersonalListings.AllowUserToAddRows = false;
+            this.dgv_PersonalListings.AllowUserToDeleteRows = false;
+            this.dgv_PersonalListings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_PersonalListings.Location = new System.Drawing.Point(7, 92);
+            this.dgv_PersonalListings.Name = "dgv_PersonalListings";
+            this.dgv_PersonalListings.ReadOnly = true;
+            this.dgv_PersonalListings.RowHeadersWidth = 62;
+            this.dgv_PersonalListings.RowTemplate.Height = 28;
+            this.dgv_PersonalListings.Size = new System.Drawing.Size(1534, 667);
+            this.dgv_PersonalListings.TabIndex = 0;
             // 
             // tab_Llogaria
             // 
@@ -757,24 +804,6 @@
             this.pcb_eAnkandiLogo.TabIndex = 2;
             this.pcb_eAnkandiLogo.TabStop = false;
             // 
-            // cmb_Category
-            // 
-            this.cmb_Category.FormattingEnabled = true;
-            this.cmb_Category.Location = new System.Drawing.Point(212, 251);
-            this.cmb_Category.Name = "cmb_Category";
-            this.cmb_Category.Size = new System.Drawing.Size(218, 37);
-            this.cmb_Category.TabIndex = 24;
-            // 
-            // lbl_Category
-            // 
-            this.lbl_Category.AutoSize = true;
-            this.lbl_Category.Location = new System.Drawing.Point(88, 254);
-            this.lbl_Category.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_Category.Name = "lbl_Category";
-            this.lbl_Category.Size = new System.Drawing.Size(116, 29);
-            this.lbl_Category.TabIndex = 25;
-            this.lbl_Category.Text = "Kategoria:";
-            // 
             // MainPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -811,6 +840,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Small2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Small1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).EndInit();
+            this.tab_MyListings.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_PersonalListings)).EndInit();
             this.tab_Llogaria.ResumeLayout(false);
             this.tab_Llogaria.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_LogOut)).EndInit();
@@ -879,5 +910,7 @@
         private System.Windows.Forms.DataGridView dgv_ApprovedListings;
         private System.Windows.Forms.Label lbl_Category;
         private System.Windows.Forms.ComboBox cmb_Category;
+        private System.Windows.Forms.DataGridView dgv_PersonalListings;
+        private System.Windows.Forms.Button btn_RefreshMyListings;
     }
 }

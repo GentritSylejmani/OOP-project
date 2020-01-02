@@ -573,7 +573,7 @@ namespace OOP_project
 
             dgv_ApprovedListings.ForeColor = Color.Black;
 
-            var result = Lists.ApprovedRequests.Select(r => new {  Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
+            var result = Lists.ApprovedRequests.Select( r => new {  Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
 
             dgv_ApprovedListings.DataSource = result;
         }
@@ -617,6 +617,14 @@ namespace OOP_project
         private void btn_RefreshDataGrid_Click(object sender, EventArgs e)
         {
             PopulateListingsDataGrid();
+        }
+
+        private void Btn_RefreshMyListings_Click(object sender, EventArgs e)
+        {
+            dgv_PersonalListings.DataSource = null;
+            dgv_PersonalListings.ForeColor = Color.Black;
+
+           
         }
     }
 }
