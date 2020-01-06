@@ -545,9 +545,13 @@ namespace OOP_project
             AuctionETA();
         }
 
+
+
         private void AddAuction(string name, string description, double startingPrice, double currentBidPrice, DateTime auctionEta, string[] images, Contributor seller)
         {
-            Lists.ApprovedRequests.Add(new Product { Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime= DateTime.Now ,AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller });
+            Product p = new Product();
+            
+            Lists.ApprovedRequests.Add(new Product {ProductID = p.GetLastID() + 1 ,Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime= DateTime.Now ,AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller });
         }
 
         private void timeTXTnumberenter(object sender, KeyPressEventArgs e)
@@ -573,45 +577,14 @@ namespace OOP_project
 
             dgv_ApprovedListings.ForeColor = Color.Black;
 
-            var result = Lists.ApprovedRequests.Select( r => new {  Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
+            var result = Lists.ApprovedRequests.Select( r => new {ID = r.ProductID,  Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
 
             dgv_ApprovedListings.DataSource = result;
         }
 
         private void MainPanel_Load(object sender, EventArgs e)
         {
-
-            cmb_Category.DataSource = Enum.GetValues(typeof(Product.ProductCategory));
-
-            PopulateListingsDataGrid();
-           
-            //dgv_ApprovedListings.ColumnCount = 8;
-
-            //dgv_ApprovedListings.Columns["Name"].DisplayIndex = 0;
-            //dgv_ApprovedListings.Columns[0].Name = "Titulli";
-
-            //dgv_ApprovedListings.Columns["Description"].DisplayIndex = 1;
-            //dgv_ApprovedListings.Columns[1].Name = "Pershkrimi";
-
-            //dgv_ApprovedListings.Columns["StartingPrice"].DisplayIndex = 2;
-            //dgv_ApprovedListings.Columns[2].Name = "Cmimi startues";
-
-            //dgv_ApprovedListings.Columns["CurrentBidPrice"].DisplayIndex = 3;
-            //dgv_ApprovedListings.Columns[3].Name = "Cmimi aktual";
-
-            //dgv_ApprovedListings.Columns["Category"].DisplayIndex = 4;
-            //dgv_ApprovedListings.Columns[4].Name = "Kategoria";
-
-            //dgv_ApprovedListings.Columns["AuctionStartDateTime"].DisplayIndex = 5;
-            //dgv_ApprovedListings.Columns[5].Name = "Fillimi";
-
-            //dgv_ApprovedListings.Columns["AuctionEndDateTime"].DisplayIndex = 6;
-            //dgv_ApprovedListings.Columns[6].Name = "Mbarimi";
-
-            //dgv_ApprovedListings.Columns["sellersUsername"].DisplayIndex = 7;
-            //dgv_ApprovedListings.Columns[7].Name = "Shitesi";
-
-            
+            cmb_Category.DataSource = Enum.GetValues(typeof(Product.ProductCategory));                   
         }
 
         private void btn_RefreshDataGrid_Click(object sender, EventArgs e)
@@ -624,7 +597,25 @@ namespace OOP_project
             dgv_PersonalListings.DataSource = null;
             dgv_PersonalListings.ForeColor = Color.Black;
 
-           
+            List<Product> personalListings = new List<Product> { };
+
+            foreach(var product in Lists.ApprovedRequests)
+            {
+                if(product.sellersUsername.Username==_user)
+                {
+                    personalListings.Add(new Product {ProductID = product.ProductID, Name = product.Name, Description = product.Description, StartingPrice = product.StartingPrice, CurrentBidPrice = product.CurrentBidPrice, AuctionStartDateTime = product.AuctionStartDateTime, AuctionEndDateTime = product.AuctionEndDateTime, productPicture = product.productPicture, sellersUsername = product.sellersUsername });
+                }
+            }
+
+            var personalList = personalListings.Select(r => new {ProductID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
+
+            dgv_PersonalListings.DataSource = personalList;
+        }
+
+        private void dgv_ApprovedListings_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AuctionDialog ad = new AuctionDialog();
+            ad.ShowDialog();
         }
     }
 }

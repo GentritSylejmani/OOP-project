@@ -26,7 +26,7 @@ namespace BOL
             sellersUsername = seller;
         }
 
-        private string _productID;
+        private int _productID;
         private string _name;      
         public double _startingPrice;
         public double _currentBidPrice;
@@ -40,7 +40,7 @@ namespace BOL
 
         }
 
-        public string ProductID { get; set; }
+        public int ProductID { get; set; }
         public string Name { get; set; }
         public string Description{get;set;}
         public double StartingPrice { get; set; }    
@@ -53,7 +53,27 @@ namespace BOL
         public Client buyerID { get; set; }
         public string[] productPicture { get; set; }
 
+        public int GetLastID()
+        {
+            int maxValue = 0;
 
+            if (Lists.ApprovedRequests.Count() == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                foreach (var item in Lists.ApprovedRequests)
+                {
+                    if (item.ProductID > maxValue)
+                    {
+                        maxValue = item.ProductID;
+                    }
+                }
+
+                return maxValue;
+            }
+        }
 
 
     }
