@@ -7,14 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BOL;
 
 namespace OOP_project
 {
     public partial class AuctionDialog : Form
     {
+        Product product;
+
         public AuctionDialog()
         {
             InitializeComponent();
+        }
+
+        public AuctionDialog(Product item)
+        {
+            lbl_TitleValue.Text = item.Name;
+            rtxt_Description.Text = item.Description;
+            lbl_StartDateTimeValue.Text = item.AuctionStartDateTime.ToString();
+            lbl_EndDatTimeValue.Text = item.AuctionEndDateTime.ToString();
+            lbl_SellersIDValue.Text = item.sellersUsername.ToString();
         }
 
         private bool mouseDown;

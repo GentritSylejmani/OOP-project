@@ -21,7 +21,7 @@ namespace OOP_project
         public PictureBox[] pcb = new PictureBox[6];
         public string[] image = new string[] { "", "", "", "", "", "" };
         public int selectedImg;
-        
+
 
 
 
@@ -31,7 +31,7 @@ namespace OOP_project
             ToolTip logoutExplanation = new ToolTip();
             logoutExplanation.ShowAlways = true;
             logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
-            
+
 
         }
 
@@ -440,6 +440,7 @@ namespace OOP_project
             }
             else MessageBox.Show("Zgjedhni date valide!");
 
+
             //ARSYE TESTUESE
 
             foreach (var product in Lists.ApprovedRequests)
@@ -550,8 +551,8 @@ namespace OOP_project
         private void AddAuction(string name, string description, double startingPrice, double currentBidPrice, DateTime auctionEta, string[] images, Contributor seller)
         {
             Product p = new Product();
-            
-            Lists.ApprovedRequests.Add(new Product {ProductID = p.GetLastID() + 1 ,Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime= DateTime.Now ,AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller });
+
+            Lists.ApprovedRequests.Add(new Product { ProductID = p.GetLastID() + 1, Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime = DateTime.Now, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller });
         }
 
         private void timeTXTnumberenter(object sender, KeyPressEventArgs e)
@@ -577,14 +578,14 @@ namespace OOP_project
 
             dgv_ApprovedListings.ForeColor = Color.Black;
 
-            var result = Lists.ApprovedRequests.Select( r => new {ID = r.ProductID,  Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
+            var result = Lists.ApprovedRequests.Select(r => new { ID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
 
             dgv_ApprovedListings.DataSource = result;
         }
 
         private void MainPanel_Load(object sender, EventArgs e)
         {
-            cmb_Category.DataSource = Enum.GetValues(typeof(Product.ProductCategory));                   
+            cmb_Category.DataSource = Enum.GetValues(typeof(Product.ProductCategory));
         }
 
         private void btn_RefreshDataGrid_Click(object sender, EventArgs e)
@@ -599,23 +600,57 @@ namespace OOP_project
 
             List<Product> personalListings = new List<Product> { };
 
-            foreach(var product in Lists.ApprovedRequests)
+            foreach (var product in Lists.ApprovedRequests)
             {
-                if(product.sellersUsername.Username==_user)
+                if (product.sellersUsername.Username == _user)
                 {
-                    personalListings.Add(new Product {ProductID = product.ProductID, Name = product.Name, Description = product.Description, StartingPrice = product.StartingPrice, CurrentBidPrice = product.CurrentBidPrice, AuctionStartDateTime = product.AuctionStartDateTime, AuctionEndDateTime = product.AuctionEndDateTime, productPicture = product.productPicture, sellersUsername = product.sellersUsername });
+                    personalListings.Add(new Product { ProductID = product.ProductID, Name = product.Name, Description = product.Description, StartingPrice = product.StartingPrice, CurrentBidPrice = product.CurrentBidPrice, AuctionStartDateTime = product.AuctionStartDateTime, AuctionEndDateTime = product.AuctionEndDateTime, productPicture = product.productPicture, sellersUsername = product.sellersUsername });
                 }
             }
 
-            var personalList = personalListings.Select(r => new {ProductID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
+            var personalList = personalListings.Select(r => new { ProductID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
 
             dgv_PersonalListings.DataSource = personalList;
         }
 
         private void dgv_ApprovedListings_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            AuctionDialog ad = new AuctionDialog();
+
+            AuctionDialog ad = new AuctionDialog(SelectedProduct());
             ad.ShowDialog();
+        }
+
+        private Product SelectedProduct()
+        {
+            Product product = new Product();
+
+            int productid = 0;
+
+            int selectedrowindex = dgv_ApprovedListings.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedrow = dgv_ApprovedListings.Rows[selectedrowindex];
+            productid = Convert.ToInt32(selectedrow.Cells[0].Value.ToString());
+
+            foreach (var item in Lists.ApprovedRequests)
+            {
+                if (item.ProductID == productid)
+                {               
+                    product.ProductID = item.ProductID;
+                    product.Name = item.Name;
+                    product.Description = item.Description;
+                    product.StartingPrice = item.StartingPrice;
+                    product.CurrentBidPrice = item.CurrentBidPrice;
+                    product.Category = item.Category;
+                    product.AuctionStartDateTime = item.AuctionStartDateTime;
+                    product.AuctionEndDateTime = item.AuctionEndDateTime;
+                    product.sellersUsername = item.sellersUsername;
+                    product.biddersID = item.biddersID;
+                    product.productPicture = item.productPicture;
+
+                    return product;
+                }
+                else return null;
+            }
+            return null;            
         }
     }
 }

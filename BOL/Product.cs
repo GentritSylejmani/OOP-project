@@ -50,7 +50,8 @@ namespace BOL
         public DateTime AuctionStartDateTime { get; set; }
         public DateTime AuctionEndDateTime { get; set; }
         public Contributor sellersUsername { get; set; }
-        public Client buyerID { get; set; }
+        public Person buyerID { get; set; }
+        public Person biddersID { get; set; }
         public string[] productPicture { get; set; }
 
         public int GetLastID()

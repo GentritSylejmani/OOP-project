@@ -43,6 +43,12 @@
             this.pcb_small6 = new System.Windows.Forms.PictureBox();
             this.lbl_Seller = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.lbl_TitleValue = new System.Windows.Forms.Label();
+            this.lbl_StartDateTimeValue = new System.Windows.Forms.Label();
+            this.lbl_EndDatTimeValue = new System.Windows.Forms.Label();
+            this.lbl_SellersIDValue = new System.Windows.Forms.Label();
+            this.rtxt_Description = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_small1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_small2)).BeginInit();
@@ -197,11 +203,70 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Shitesi:";
             // 
+            // lbl_TitleValue
+            // 
+            this.lbl_TitleValue.AutoSize = true;
+            this.lbl_TitleValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_TitleValue.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_TitleValue.Location = new System.Drawing.Point(104, 16);
+            this.lbl_TitleValue.Name = "lbl_TitleValue";
+            this.lbl_TitleValue.Size = new System.Drawing.Size(36, 19);
+            this.lbl_TitleValue.TabIndex = 17;
+            this.lbl_TitleValue.Text = "N/A";
+            // 
+            // lbl_StartDateTimeValue
+            // 
+            this.lbl_StartDateTimeValue.AutoSize = true;
+            this.lbl_StartDateTimeValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_StartDateTimeValue.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_StartDateTimeValue.Location = new System.Drawing.Point(104, 164);
+            this.lbl_StartDateTimeValue.Name = "lbl_StartDateTimeValue";
+            this.lbl_StartDateTimeValue.Size = new System.Drawing.Size(36, 19);
+            this.lbl_StartDateTimeValue.TabIndex = 18;
+            this.lbl_StartDateTimeValue.Text = "N/A";
+            // 
+            // lbl_EndDatTimeValue
+            // 
+            this.lbl_EndDatTimeValue.AutoSize = true;
+            this.lbl_EndDatTimeValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_EndDatTimeValue.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_EndDatTimeValue.Location = new System.Drawing.Point(104, 193);
+            this.lbl_EndDatTimeValue.Name = "lbl_EndDatTimeValue";
+            this.lbl_EndDatTimeValue.Size = new System.Drawing.Size(36, 19);
+            this.lbl_EndDatTimeValue.TabIndex = 19;
+            this.lbl_EndDatTimeValue.Text = "N/A";
+            // 
+            // lbl_SellersIDValue
+            // 
+            this.lbl_SellersIDValue.AutoSize = true;
+            this.lbl_SellersIDValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_SellersIDValue.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_SellersIDValue.Location = new System.Drawing.Point(392, 183);
+            this.lbl_SellersIDValue.Name = "lbl_SellersIDValue";
+            this.lbl_SellersIDValue.Size = new System.Drawing.Size(36, 19);
+            this.lbl_SellersIDValue.TabIndex = 20;
+            this.lbl_SellersIDValue.Text = "N/A";
+            // 
+            // rtxt_Description
+            // 
+            this.rtxt_Description.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.rtxt_Description.Location = new System.Drawing.Point(104, 39);
+            this.rtxt_Description.Name = "rtxt_Description";
+            this.rtxt_Description.ReadOnly = true;
+            this.rtxt_Description.Size = new System.Drawing.Size(338, 122);
+            this.rtxt_Description.TabIndex = 21;
+            this.rtxt_Description.Text = "";
+            // 
             // AuctionDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 715);
+            this.Controls.Add(this.rtxt_Description);
+            this.Controls.Add(this.lbl_SellersIDValue);
+            this.Controls.Add(this.lbl_EndDatTimeValue);
+            this.Controls.Add(this.lbl_StartDateTimeValue);
+            this.Controls.Add(this.lbl_TitleValue);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_Seller);
             this.Controls.Add(this.pcb_small6);
@@ -221,7 +286,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AuctionDialog";
             this.Text = "AuctionDialog";
-            
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
@@ -254,5 +318,11 @@
         private System.Windows.Forms.PictureBox pcb_small6;
         private System.Windows.Forms.Label lbl_Seller;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label lbl_TitleValue;
+        private System.Windows.Forms.Label lbl_StartDateTimeValue;
+        private System.Windows.Forms.Label lbl_EndDatTimeValue;
+        private System.Windows.Forms.Label lbl_SellersIDValue;
+        private System.Windows.Forms.RichTextBox rtxt_Description;
     }
 }
