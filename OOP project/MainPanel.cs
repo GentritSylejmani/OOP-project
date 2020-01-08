@@ -624,33 +624,34 @@ namespace OOP_project
         {
             Product product = new Product();
 
-            int productid = 0;
+            int productid;
 
             int selectedrowindex = dgv_ApprovedListings.SelectedCells[0].RowIndex;
             DataGridViewRow selectedrow = dgv_ApprovedListings.Rows[selectedrowindex];
             productid = Convert.ToInt32(selectedrow.Cells[0].Value.ToString());
 
-            foreach (var item in Lists.ApprovedRequests)
-            {
-                if (item.ProductID == productid)
-                {               
-                    product.ProductID = item.ProductID;
-                    product.Name = item.Name;
-                    product.Description = item.Description;
-                    product.StartingPrice = item.StartingPrice;
-                    product.CurrentBidPrice = item.CurrentBidPrice;
-                    product.Category = item.Category;
-                    product.AuctionStartDateTime = item.AuctionStartDateTime;
-                    product.AuctionEndDateTime = item.AuctionEndDateTime;
-                    product.sellersUsername = item.sellersUsername;
-                    product.biddersID = item.biddersID;
-                    product.productPicture = item.productPicture;
+           
+            var item = Lists.ApprovedRequests.Where(x => x.ProductID == productid).FirstOrDefault();
 
-                    return product;
-                }
-                else return null;
+            if (item != null)
+            {
+                product.ProductID = item.ProductID;
+                product.Name = item.Name;
+                product.Description = item.Description;
+                product.StartingPrice = item.StartingPrice;
+                product.CurrentBidPrice = item.CurrentBidPrice;
+                product.Category = item.Category;
+                product.AuctionStartDateTime = item.AuctionStartDateTime;
+                product.AuctionEndDateTime = item.AuctionEndDateTime;
+                product.sellersUsername = item.sellersUsername;
+                product.biddersID = item.biddersID;
+                product.productPicture = item.productPicture;
+
+                return product;
             }
-            return null;            
+
+
+            return null;
         }
     }
 }

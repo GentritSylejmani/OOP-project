@@ -17,12 +17,15 @@ namespace OOP_project
 
         public AuctionDialog()
         {
-            InitializeComponent();
+            
+
         }
 
         public AuctionDialog(Product item)
         {
-            lbl_TitleValue.Text = item.Name;
+            InitializeComponent();
+
+            lbl_TitleValue.Text= item.Name;
             rtxt_Description.Text = item.Description;
             lbl_StartDateTimeValue.Text = item.AuctionStartDateTime.ToString();
             lbl_EndDatTimeValue.Text = item.AuctionEndDateTime.ToString();
