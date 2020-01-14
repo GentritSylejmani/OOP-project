@@ -28,9 +28,9 @@ namespace OOP_project
         public MainPanel()
         {
             InitializeComponent();
-            ToolTip logoutExplanation = new ToolTip();
-            logoutExplanation.ShowAlways = true;
-            logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
+            //ToolTip logoutExplanation = new ToolTip();
+            //logoutExplanation.ShowAlways = true;
+            //logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
 
 
         }
@@ -66,6 +66,7 @@ namespace OOP_project
             logoutExplanation.ShowAlways = true;
             logoutExplanation.SetToolTip(pcb_LogOut, "Ckycuni!");
             _user = user;
+            dtp_AuctionEndTime.Value = DateTime.Now.AddDays(1);
 
             pcb[0] = pcb_Small1;
             pcb[1] = pcb_Small2;
@@ -74,11 +75,15 @@ namespace OOP_project
             pcb[4] = pcb_Small5;
             pcb[5] = pcb_Small6;
 
+
+
             userType = usertype;
 
             if (userType == Person.usertype.Client)
             {
                 userPerson = new Client();
+                tab_MyListings.Enabled = false;
+                tab_AddListing.Enabled = false;
             }
             else
             {
@@ -92,6 +97,7 @@ namespace OOP_project
             if (usertype == Person.usertype.Client)
             {
                 userPerson = (Client)client.GetUserInfo(_user);
+                // userPerson = userperson;
 
                 lbl_Welcome.Text = ((Client)userPerson).Name.ToString() + " miresevini ne ";
                 lbl_Emri.Text = ((Client)userPerson).Name.ToString();
@@ -107,7 +113,7 @@ namespace OOP_project
             {
                 client = new Contributor();
                 userPerson = (Contributor)client.GetUserInfo(_user);
-
+                //userPerson = userperson;
                 lbl_Welcome.Text = ((Contributor)userPerson).Name.ToString() + " miresevini ne :";
                 lbl_Emri.Text = ((Contributor)userPerson).Name.ToString();
                 lbl_Mbiemri.Text = ((Contributor)userPerson).Surname.ToString();
@@ -432,6 +438,13 @@ namespace OOP_project
 
         private void btn_AddListingRequest_Click(object sender, EventArgs e)
         {
+            
+            if (txt_ProductTitle.Text == null || txt_ProductTitle.Text == "" || txt_StartingPrice.Text == null || txt_StartingPrice.Text == "" || rtxt_Description == null || rtxt_Description.Text=="")
+            {
+                MessageBox.Show("Ju lutem plotesoni te gjitha fushat e nevojshme!");
+                return;
+            }
+
             string message = "";
 
             if (AuctionETA() > DateTime.Now)
@@ -499,7 +512,8 @@ namespace OOP_project
                 //lbl_AuctionTimeETA.Text = GetAcutionEndTime(10, 10);
 
 
-                DateTime formatedDate = GetAcutionEndTime(Days, Hours + 1);
+                DateTime formatedDate = DateTime.Now.AddDays(Days);
+                formatedDate = formatedDate.AddHours(Hours);
 
                 TimeSpan timeSpan = formatedDate - DateTime.Now;
 
@@ -521,7 +535,7 @@ namespace OOP_project
                 }
                 else
                 {
-                    DateTime formatedDate = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0);
+                    DateTime formatedDate = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second);
 
                     //dtp_AuctionEndTime.Value = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0);
                     //MessageBox.Show(formatedDate.ToString());
@@ -541,7 +555,7 @@ namespace OOP_project
         private void dtp_AuctionEndTime_ValueChanged(object sender, EventArgs e)
         {
             DateTime dt = dtp_AuctionEndTime.Value;
-            dtp_AuctionEndTime.Value = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, 0, 0);
+            dtp_AuctionEndTime.Value = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second);
 
             AuctionETA();
         }
@@ -552,7 +566,7 @@ namespace OOP_project
         {
             Product p = new Product();
 
-            Lists.ApprovedRequests.Add(new Product { ProductID = p.GetLastID() + 1, Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime = DateTime.Now, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller });
+            Lists.ApprovedRequests.Add(new Product { ProductID = p.GetLastID() + 1, Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime = DateTime.Now, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller});
         }
 
         private void timeTXTnumberenter(object sender, KeyPressEventArgs e)
@@ -604,20 +618,27 @@ namespace OOP_project
             {
                 if (product.sellersUsername.Username == _user)
                 {
-                    personalListings.Add(new Product { ProductID = product.ProductID, Name = product.Name, Description = product.Description, StartingPrice = product.StartingPrice, CurrentBidPrice = product.CurrentBidPrice, AuctionStartDateTime = product.AuctionStartDateTime, AuctionEndDateTime = product.AuctionEndDateTime, productPicture = product.productPicture, sellersUsername = product.sellersUsername });
+                    personalListings.Add(new Product { ProductID = product.ProductID, Name = product.Name, Description = product.Description, StartingPrice = product.StartingPrice, CurrentBidPrice = product.CurrentBidPrice, AuctionStartDateTime = product.AuctionStartDateTime, AuctionEndDateTime = product.AuctionEndDateTime, productPicture = product.productPicture, sellersUsername = product.sellersUsername,bidder = product.bidder });
                 }
             }
-
-            var personalList = personalListings.Select(r => new { ProductID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
+            
+            var personalList = personalListings.Select(r => new { Produkt_ID = r.ProductID, Titulli = r.Name, Pershkrimi = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username, OfertuesiFundit=r.bidder != null?r.bidder.Username:"S'ka ofertues" }).ToList();
 
             dgv_PersonalListings.DataSource = personalList;
         }
 
         private void dgv_ApprovedListings_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            AuctionDialog ad = new AuctionDialog(SelectedProduct());
-            ad.ShowDialog();
+            if (SelectedProduct().sellersUsername.Username == _user)
+            {
+                MessageBox.Show("Nuk mund te ofertoni ne shpalljen tuaj!");
+                return;
+            }
+            else
+            {
+                AuctionDialog ad = new AuctionDialog(SelectedProduct(), (Person)userPerson);
+                ad.ShowDialog();
+            }
         }
 
         private Product SelectedProduct()
@@ -644,7 +665,7 @@ namespace OOP_project
                 product.AuctionStartDateTime = item.AuctionStartDateTime;
                 product.AuctionEndDateTime = item.AuctionEndDateTime;
                 product.sellersUsername = item.sellersUsername;
-                product.biddersID = item.biddersID;
+                product.bidder = item.bidder;
                 product.productPicture = item.productPicture;
 
                 return product;
@@ -653,5 +674,45 @@ namespace OOP_project
 
             return null;
         }
+
+        private void dgv_PersonalListings_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+            dgv_PersonalListings.DataSource = null;
+            dgv_PersonalListings.ForeColor = Color.Black;
+
+            //string[] stringList = searchedWords();
+
+            List<Product> productList = new List<Product>();            
+
+            
+                foreach(var product in Lists.ApprovedRequests)
+                {
+                    if(product.Name.Contains(txt_Article.Text))
+                    {
+                        productList.Add(new Product { ProductID = product.ProductID, Name = product.Name, Description = product.Description, StartingPrice = product.StartingPrice, CurrentBidPrice = product.CurrentBidPrice, AuctionStartDateTime = product.AuctionStartDateTime, AuctionEndDateTime = product.AuctionEndDateTime, productPicture = product.productPicture, sellersUsername = product.sellersUsername, bidder = product.bidder });
+                    }
+             
+                //Lists.ApprovedRequests.FindAll(x => x.Name.Contains(stringList[i]));
+            }
+
+            var searchedList = productList.Select(r => new { ID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
+
+            dgv_ApprovedListings.DataSource = searchedList;
+        }
+
+        public string[] searchedWords()
+        {
+            string stringu = txt_Article.Text;
+
+            string[] searchedWords = stringu.Split(' ');
+
+            return searchedWords;
+        }
+       
     }
 }

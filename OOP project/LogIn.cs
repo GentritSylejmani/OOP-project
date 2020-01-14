@@ -16,10 +16,7 @@ namespace OOP_project
         public LogIn()
         {
             InitializeComponent();
-           
-            //test me ndryshim
-            //tash ndryshimi tjeter
-            //hajde edhe nje ndryshim
+            rbt_Client.Checked = true;
 
         }
 
@@ -63,6 +60,7 @@ namespace OOP_project
 
         private void btn_LogIn_Click(object sender, EventArgs e)
         {
+
             Client user = new Client();
           
 

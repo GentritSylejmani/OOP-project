@@ -51,10 +51,13 @@
             this.pcb_exclamationmark = new System.Windows.Forms.PictureBox();
             this.txt_Username = new System.Windows.Forms.TextBox();
             this.lbl_Username = new System.Windows.Forms.Label();
+            this.btn_AddID = new System.Windows.Forms.Button();
+            this.pcb_UserNameCheck = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_Confirmation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_exclamationmark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_UserNameCheck)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_Name
@@ -212,7 +215,7 @@
             this.btn_Register.FlatAppearance.BorderSize = 50;
             this.btn_Register.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btn_Register.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.btn_Register.Location = new System.Drawing.Point(145, 363);
+            this.btn_Register.Location = new System.Drawing.Point(145, 375);
             this.btn_Register.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Register.Name = "btn_Register";
             this.btn_Register.Size = new System.Drawing.Size(147, 34);
@@ -276,6 +279,7 @@
             this.rb_Contributor.TabStop = true;
             this.rb_Contributor.Text = "Shites";
             this.rb_Contributor.UseVisualStyleBackColor = true;
+            this.rb_Contributor.CheckedChanged += new System.EventHandler(this.rb_Contributor_CheckedChanged);
             // 
             // pcb_exclamationmark
             // 
@@ -296,6 +300,7 @@
             this.txt_Username.Size = new System.Drawing.Size(236, 20);
             this.txt_Username.TabIndex = 4;
             this.txt_Username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_Username.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Username_KeyDown);
             // 
             // lbl_Username
             // 
@@ -307,11 +312,36 @@
             this.lbl_Username.TabIndex = 23;
             this.lbl_Username.Text = "Nofka";
             // 
+            // btn_AddID
+            // 
+            this.btn_AddID.FlatAppearance.BorderSize = 50;
+            this.btn_AddID.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_AddID.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.btn_AddID.Location = new System.Drawing.Point(145, 336);
+            this.btn_AddID.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_AddID.Name = "btn_AddID";
+            this.btn_AddID.Size = new System.Drawing.Size(147, 35);
+            this.btn_AddID.TabIndex = 24;
+            this.btn_AddID.Text = "Shto ID";
+            this.btn_AddID.UseVisualStyleBackColor = true;
+            // 
+            // pcb_UserNameCheck
+            // 
+            this.pcb_UserNameCheck.Image = global::OOP_project.Properties.Resources.x;
+            this.pcb_UserNameCheck.Location = new System.Drawing.Point(385, 156);
+            this.pcb_UserNameCheck.Name = "pcb_UserNameCheck";
+            this.pcb_UserNameCheck.Size = new System.Drawing.Size(27, 24);
+            this.pcb_UserNameCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcb_UserNameCheck.TabIndex = 25;
+            this.pcb_UserNameCheck.TabStop = false;
+            // 
             // SignupDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 417);
+            this.ClientSize = new System.Drawing.Size(460, 419);
+            this.Controls.Add(this.pcb_UserNameCheck);
+            this.Controls.Add(this.btn_AddID);
             this.Controls.Add(this.lbl_Username);
             this.Controls.Add(this.txt_Username);
             this.Controls.Add(this.pcb_exclamationmark);
@@ -346,6 +376,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcb_X)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_exclamationmark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_UserNameCheck)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,5 +407,7 @@
         private System.Windows.Forms.PictureBox pcb_exclamationmark;
         private System.Windows.Forms.TextBox txt_Username;
         private System.Windows.Forms.Label lbl_Username;
+        private System.Windows.Forms.Button btn_AddID;
+        private System.Windows.Forms.PictureBox pcb_UserNameCheck;
     }
 }

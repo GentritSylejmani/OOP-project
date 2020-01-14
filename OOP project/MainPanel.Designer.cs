@@ -87,6 +87,15 @@
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.pcb_LogOut = new System.Windows.Forms.PictureBox();
             this.pcb_eAnkandiLogo = new System.Windows.Forms.PictureBox();
+            this.lbl_Article = new System.Windows.Forms.Label();
+            this.lbl_ProductCategory = new System.Windows.Forms.Label();
+            this.txt_Article = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lbl_MinPrice = new System.Windows.Forms.Label();
+            this.lbl_CmimiMax = new System.Windows.Forms.Label();
+            this.txt_MinPrice = new System.Windows.Forms.TextBox();
+            this.txt_MaxPrice = new System.Windows.Forms.TextBox();
+            this.btn_Search = new System.Windows.Forms.Button();
             this.tab_Tabs.SuspendLayout();
             this.tab_Listings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ApprovedListings)).BeginInit();
@@ -125,6 +134,15 @@
             // tab_Listings
             // 
             this.tab_Listings.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_Listings.Controls.Add(this.btn_Search);
+            this.tab_Listings.Controls.Add(this.txt_MaxPrice);
+            this.tab_Listings.Controls.Add(this.txt_MinPrice);
+            this.tab_Listings.Controls.Add(this.lbl_CmimiMax);
+            this.tab_Listings.Controls.Add(this.lbl_MinPrice);
+            this.tab_Listings.Controls.Add(this.comboBox1);
+            this.tab_Listings.Controls.Add(this.txt_Article);
+            this.tab_Listings.Controls.Add(this.lbl_ProductCategory);
+            this.tab_Listings.Controls.Add(this.lbl_Article);
             this.tab_Listings.Controls.Add(this.btn_RefreshDataGrid);
             this.tab_Listings.Controls.Add(this.dgv_ApprovedListings);
             this.tab_Listings.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
@@ -139,7 +157,7 @@
             // btn_RefreshDataGrid
             // 
             this.btn_RefreshDataGrid.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_RefreshDataGrid.Location = new System.Drawing.Point(921, 41);
+            this.btn_RefreshDataGrid.Location = new System.Drawing.Point(921, 39);
             this.btn_RefreshDataGrid.Name = "btn_RefreshDataGrid";
             this.btn_RefreshDataGrid.Size = new System.Drawing.Size(75, 29);
             this.btn_RefreshDataGrid.TabIndex = 1;
@@ -154,11 +172,11 @@
             this.dgv_ApprovedListings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_ApprovedListings.BackgroundColor = System.Drawing.Color.White;
             this.dgv_ApprovedListings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_ApprovedListings.Location = new System.Drawing.Point(6, 76);
+            this.dgv_ApprovedListings.Location = new System.Drawing.Point(6, 74);
             this.dgv_ApprovedListings.Name = "dgv_ApprovedListings";
             this.dgv_ApprovedListings.ReadOnly = true;
             this.dgv_ApprovedListings.RowHeadersWidth = 62;
-            this.dgv_ApprovedListings.Size = new System.Drawing.Size(990, 412);
+            this.dgv_ApprovedListings.Size = new System.Drawing.Size(990, 414);
             this.dgv_ApprovedListings.TabIndex = 0;
             this.dgv_ApprovedListings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ApprovedListings_CellContentClick);
             // 
@@ -512,6 +530,8 @@
             // 
             this.dgv_PersonalListings.AllowUserToAddRows = false;
             this.dgv_PersonalListings.AllowUserToDeleteRows = false;
+            this.dgv_PersonalListings.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_PersonalListings.BackgroundColor = System.Drawing.Color.White;
             this.dgv_PersonalListings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_PersonalListings.Location = new System.Drawing.Point(5, 60);
             this.dgv_PersonalListings.Margin = new System.Windows.Forms.Padding(2);
@@ -521,6 +541,7 @@
             this.dgv_PersonalListings.RowTemplate.Height = 28;
             this.dgv_PersonalListings.Size = new System.Drawing.Size(1023, 434);
             this.dgv_PersonalListings.TabIndex = 0;
+            this.dgv_PersonalListings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_PersonalListings_CellContentClick);
             // 
             // tab_Llogaria
             // 
@@ -752,6 +773,90 @@
             this.pcb_eAnkandiLogo.TabIndex = 2;
             this.pcb_eAnkandiLogo.TabStop = false;
             // 
+            // lbl_Article
+            // 
+            this.lbl_Article.AutoSize = true;
+            this.lbl_Article.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Article.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_Article.Location = new System.Drawing.Point(14, 9);
+            this.lbl_Article.Name = "lbl_Article";
+            this.lbl_Article.Size = new System.Drawing.Size(67, 19);
+            this.lbl_Article.TabIndex = 5;
+            this.lbl_Article.Text = "Artikulli:";
+            // 
+            // lbl_ProductCategory
+            // 
+            this.lbl_ProductCategory.AutoSize = true;
+            this.lbl_ProductCategory.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_ProductCategory.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_ProductCategory.Location = new System.Drawing.Point(6, 42);
+            this.lbl_ProductCategory.Name = "lbl_ProductCategory";
+            this.lbl_ProductCategory.Size = new System.Drawing.Size(75, 19);
+            this.lbl_ProductCategory.TabIndex = 6;
+            this.lbl_ProductCategory.Text = "Kategoria";
+            // 
+            // txt_Article
+            // 
+            this.txt_Article.Location = new System.Drawing.Point(87, 6);
+            this.txt_Article.Name = "txt_Article";
+            this.txt_Article.Size = new System.Drawing.Size(270, 27);
+            this.txt_Article.TabIndex = 16;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(87, 39);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(270, 27);
+            this.comboBox1.TabIndex = 17;
+            // 
+            // lbl_MinPrice
+            // 
+            this.lbl_MinPrice.AutoSize = true;
+            this.lbl_MinPrice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_MinPrice.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_MinPrice.Location = new System.Drawing.Point(363, 9);
+            this.lbl_MinPrice.Name = "lbl_MinPrice";
+            this.lbl_MinPrice.Size = new System.Drawing.Size(85, 19);
+            this.lbl_MinPrice.TabIndex = 18;
+            this.lbl_MinPrice.Text = "Cmimi min:";
+            // 
+            // lbl_CmimiMax
+            // 
+            this.lbl_CmimiMax.AutoSize = true;
+            this.lbl_CmimiMax.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_CmimiMax.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_CmimiMax.Location = new System.Drawing.Point(363, 42);
+            this.lbl_CmimiMax.Name = "lbl_CmimiMax";
+            this.lbl_CmimiMax.Size = new System.Drawing.Size(87, 19);
+            this.lbl_CmimiMax.TabIndex = 19;
+            this.lbl_CmimiMax.Text = "Cmimi max:";
+            // 
+            // txt_MinPrice
+            // 
+            this.txt_MinPrice.Location = new System.Drawing.Point(454, 6);
+            this.txt_MinPrice.Name = "txt_MinPrice";
+            this.txt_MinPrice.Size = new System.Drawing.Size(111, 27);
+            this.txt_MinPrice.TabIndex = 20;
+            // 
+            // txt_MaxPrice
+            // 
+            this.txt_MaxPrice.Location = new System.Drawing.Point(454, 39);
+            this.txt_MaxPrice.Name = "txt_MaxPrice";
+            this.txt_MaxPrice.Size = new System.Drawing.Size(111, 27);
+            this.txt_MaxPrice.TabIndex = 21;
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_Search.Location = new System.Drawing.Point(840, 39);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(75, 29);
+            this.btn_Search.TabIndex = 22;
+            this.btn_Search.Text = "Kerko!";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
             // MainPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -772,6 +877,7 @@
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             this.tab_Tabs.ResumeLayout(false);
             this.tab_Listings.ResumeLayout(false);
+            this.tab_Listings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ApprovedListings)).EndInit();
             this.tab_AddListing.ResumeLayout(false);
             this.tab_AddListing.PerformLayout();
@@ -859,5 +965,14 @@
         private System.Windows.Forms.ComboBox cmb_Category;
         private System.Windows.Forms.DataGridView dgv_PersonalListings;
         private System.Windows.Forms.Button btn_RefreshMyListings;
+        private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.TextBox txt_MaxPrice;
+        private System.Windows.Forms.TextBox txt_MinPrice;
+        private System.Windows.Forms.Label lbl_CmimiMax;
+        private System.Windows.Forms.Label lbl_MinPrice;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txt_Article;
+        private System.Windows.Forms.Label lbl_ProductCategory;
+        private System.Windows.Forms.Label lbl_Article;
     }
 }

@@ -31,13 +31,21 @@ namespace BOL
         public double _startingPrice;
         public double _currentBidPrice;
         private double _soldPrice;
+
+        public enum Priority
+        {
+            Ulet,
+            Mesem, 
+            Larte
+        }
+
         public enum ProductCategory
         {
-            Gjeneral,
+            Gjenrale,
             Automjet,
             Teknike_e_bardhe,
-            Teknologji
-
+            Teknologji,
+            Agrokulture
         }
 
         public int ProductID { get; set; }
@@ -51,7 +59,7 @@ namespace BOL
         public DateTime AuctionEndDateTime { get; set; }
         public Contributor sellersUsername { get; set; }
         public Person buyerID { get; set; }
-        public Person biddersID { get; set; }
+        public Person bidder { get; set; }
         public string[] productPicture { get; set; }
 
         public int GetLastID()

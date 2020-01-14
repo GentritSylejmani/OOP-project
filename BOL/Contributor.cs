@@ -14,6 +14,8 @@ namespace BOL
            
         }
 
+        public double Rating { get; set; }
+
         public override bool LogInCheck(string username, string password)
         {
             foreach (var user in Lists.ContributorsList)
