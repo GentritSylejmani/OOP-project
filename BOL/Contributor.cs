@@ -29,20 +29,9 @@ namespace BOL
             {
                 return currentRating = (currentRating + rateValue) / 2;
             }
-
-
-
         }
 
         public Rating rejtingu { get; set; }
-
-        //public double currentRating { get; set; }
-        //public int ratingCount { get; set; }
-            
-        //public double calculateRating(double rateValue)
-        //    {
-        //        return currentRating = (currentRating + rateValue) /2;
-        //    }
 
         public override bool LogInCheck(string username, string password)
         {
