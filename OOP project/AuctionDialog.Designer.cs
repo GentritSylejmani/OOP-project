@@ -35,13 +35,6 @@
             this.lbl_Description = new System.Windows.Forms.Label();
             this.lbl_StartDateTime = new System.Windows.Forms.Label();
             this.lbl_EndDateTime = new System.Windows.Forms.Label();
-            this.pcb_Main = new System.Windows.Forms.PictureBox();
-            this.pcb_small1 = new System.Windows.Forms.PictureBox();
-            this.pcb_small2 = new System.Windows.Forms.PictureBox();
-            this.pcb_small3 = new System.Windows.Forms.PictureBox();
-            this.pcb_small4 = new System.Windows.Forms.PictureBox();
-            this.pcb_small5 = new System.Windows.Forms.PictureBox();
-            this.pcb_small6 = new System.Windows.Forms.PictureBox();
             this.lbl_Seller = new System.Windows.Forms.Label();
             this.lbl_AuctenETA = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -62,13 +55,20 @@
             this.lbl_ActualPrice = new System.Windows.Forms.Label();
             this.lbl_StartingPriceValue = new System.Windows.Forms.Label();
             this.lbl_ActualPriceValue = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small5)).BeginInit();
+            this.pcb_small6 = new System.Windows.Forms.PictureBox();
+            this.pcb_small5 = new System.Windows.Forms.PictureBox();
+            this.pcb_small4 = new System.Windows.Forms.PictureBox();
+            this.pcb_small3 = new System.Windows.Forms.PictureBox();
+            this.pcb_small2 = new System.Windows.Forms.PictureBox();
+            this.pcb_small1 = new System.Windows.Forms.PictureBox();
+            this.pcb_Main = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_small6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Bid
@@ -139,68 +139,6 @@
             this.lbl_EndDateTime.TabIndex = 7;
             this.lbl_EndDateTime.Text = "Mbarimi:";
             // 
-            // pcb_Main
-            // 
-            this.pcb_Main.Location = new System.Drawing.Point(31, 240);
-            this.pcb_Main.Name = "pcb_Main";
-            this.pcb_Main.Size = new System.Drawing.Size(432, 279);
-            this.pcb_Main.TabIndex = 8;
-            this.pcb_Main.TabStop = false;
-            // 
-            // pcb_small1
-            // 
-            this.pcb_small1.Location = new System.Drawing.Point(31, 525);
-            this.pcb_small1.Name = "pcb_small1";
-            this.pcb_small1.Size = new System.Drawing.Size(67, 55);
-            this.pcb_small1.TabIndex = 9;
-            this.pcb_small1.TabStop = false;
-            this.pcb_small1.Click += new System.EventHandler(this.pcb_small1_Click);
-            // 
-            // pcb_small2
-            // 
-            this.pcb_small2.Location = new System.Drawing.Point(104, 525);
-            this.pcb_small2.Name = "pcb_small2";
-            this.pcb_small2.Size = new System.Drawing.Size(67, 55);
-            this.pcb_small2.TabIndex = 10;
-            this.pcb_small2.TabStop = false;
-            this.pcb_small2.Click += new System.EventHandler(this.pcb_small2_Click);
-            // 
-            // pcb_small3
-            // 
-            this.pcb_small3.Location = new System.Drawing.Point(177, 525);
-            this.pcb_small3.Name = "pcb_small3";
-            this.pcb_small3.Size = new System.Drawing.Size(67, 55);
-            this.pcb_small3.TabIndex = 11;
-            this.pcb_small3.TabStop = false;
-            this.pcb_small3.Click += new System.EventHandler(this.pcb_small3_Click);
-            // 
-            // pcb_small4
-            // 
-            this.pcb_small4.Location = new System.Drawing.Point(250, 525);
-            this.pcb_small4.Name = "pcb_small4";
-            this.pcb_small4.Size = new System.Drawing.Size(67, 55);
-            this.pcb_small4.TabIndex = 12;
-            this.pcb_small4.TabStop = false;
-            this.pcb_small4.Click += new System.EventHandler(this.pcb_small4_Click);
-            // 
-            // pcb_small5
-            // 
-            this.pcb_small5.Location = new System.Drawing.Point(323, 525);
-            this.pcb_small5.Name = "pcb_small5";
-            this.pcb_small5.Size = new System.Drawing.Size(67, 55);
-            this.pcb_small5.TabIndex = 13;
-            this.pcb_small5.TabStop = false;
-            this.pcb_small5.Click += new System.EventHandler(this.pcb_small5_Click);
-            // 
-            // pcb_small6
-            // 
-            this.pcb_small6.Location = new System.Drawing.Point(396, 525);
-            this.pcb_small6.Name = "pcb_small6";
-            this.pcb_small6.Size = new System.Drawing.Size(67, 55);
-            this.pcb_small6.TabIndex = 14;
-            this.pcb_small6.TabStop = false;
-            this.pcb_small6.Click += new System.EventHandler(this.pcb_small6_Click);
-            // 
             // lbl_Seller
             // 
             this.lbl_Seller.AutoSize = true;
@@ -266,6 +204,7 @@
             this.lbl_SellersIDValue.Size = new System.Drawing.Size(36, 19);
             this.lbl_SellersIDValue.TabIndex = 20;
             this.lbl_SellersIDValue.Text = "N/A";
+            this.lbl_SellersIDValue.Click += new System.EventHandler(this.lbl_SellersIDValue_Click);
             // 
             // rtxt_Description
             // 
@@ -358,7 +297,7 @@
             // 
             this.Timer.Enabled = true;
             this.Timer.Interval = 1000;
-            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
+           // this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // lbl_StartingPrice
             // 
@@ -406,11 +345,73 @@
             this.lbl_ActualPriceValue.Text = "N/A";
             this.lbl_ActualPriceValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pcb_small6
+            // 
+            this.pcb_small6.Location = new System.Drawing.Point(396, 525);
+            this.pcb_small6.Name = "pcb_small6";
+            this.pcb_small6.Size = new System.Drawing.Size(67, 55);
+            this.pcb_small6.TabIndex = 14;
+            this.pcb_small6.TabStop = false;
+            this.pcb_small6.Click += new System.EventHandler(this.pcb_small6_Click);
+            // 
+            // pcb_small5
+            // 
+            this.pcb_small5.Location = new System.Drawing.Point(323, 525);
+            this.pcb_small5.Name = "pcb_small5";
+            this.pcb_small5.Size = new System.Drawing.Size(67, 55);
+            this.pcb_small5.TabIndex = 13;
+            this.pcb_small5.TabStop = false;
+            this.pcb_small5.Click += new System.EventHandler(this.pcb_small5_Click);
+            // 
+            // pcb_small4
+            // 
+            this.pcb_small4.Location = new System.Drawing.Point(250, 525);
+            this.pcb_small4.Name = "pcb_small4";
+            this.pcb_small4.Size = new System.Drawing.Size(67, 55);
+            this.pcb_small4.TabIndex = 12;
+            this.pcb_small4.TabStop = false;
+            this.pcb_small4.Click += new System.EventHandler(this.pcb_small4_Click);
+            // 
+            // pcb_small3
+            // 
+            this.pcb_small3.Location = new System.Drawing.Point(177, 525);
+            this.pcb_small3.Name = "pcb_small3";
+            this.pcb_small3.Size = new System.Drawing.Size(67, 55);
+            this.pcb_small3.TabIndex = 11;
+            this.pcb_small3.TabStop = false;
+            this.pcb_small3.Click += new System.EventHandler(this.pcb_small3_Click);
+            // 
+            // pcb_small2
+            // 
+            this.pcb_small2.Location = new System.Drawing.Point(104, 525);
+            this.pcb_small2.Name = "pcb_small2";
+            this.pcb_small2.Size = new System.Drawing.Size(67, 55);
+            this.pcb_small2.TabIndex = 10;
+            this.pcb_small2.TabStop = false;
+            this.pcb_small2.Click += new System.EventHandler(this.pcb_small2_Click);
+            // 
+            // pcb_small1
+            // 
+            this.pcb_small1.Location = new System.Drawing.Point(31, 525);
+            this.pcb_small1.Name = "pcb_small1";
+            this.pcb_small1.Size = new System.Drawing.Size(67, 55);
+            this.pcb_small1.TabIndex = 9;
+            this.pcb_small1.TabStop = false;
+            this.pcb_small1.Click += new System.EventHandler(this.pcb_small1_Click);
+            // 
+            // pcb_Main
+            // 
+            this.pcb_Main.Location = new System.Drawing.Point(31, 240);
+            this.pcb_Main.Name = "pcb_Main";
+            this.pcb_Main.Size = new System.Drawing.Size(432, 279);
+            this.pcb_Main.TabIndex = 8;
+            this.pcb_Main.TabStop = false;
+            // 
             // AuctionDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 774);
+            this.ClientSize = new System.Drawing.Size(489, 774);
             this.Controls.Add(this.lbl_ActualPriceValue);
             this.Controls.Add(this.lbl_StartingPriceValue);
             this.Controls.Add(this.lbl_ActualPrice);
@@ -449,13 +450,13 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_small5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_small6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_small1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcb_Main)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

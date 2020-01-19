@@ -51,6 +51,12 @@
     <Compile Include="AuctionDialog.Designer.cs">
       <DependentUpon>AuctionDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="ContributorRating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContributorRating.Designer.cs">
+      <DependentUpon>ContributorRating.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </Compile>
     <EmbeddedResource Include="AuctionDialog.resx">
       <DependentUpon>AuctionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContributorRating.resx">
+      <DependentUpon>ContributorRating.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>

@@ -153,10 +153,10 @@ namespace OOP_project
             else return;
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            lbl_AuctionCountDown.Text = GetTimeString(product.AuctionEndDateTime - DateTime.Now);
-        }
+        //private void Timer_Tick(object sender, EventArgs e)
+        //{
+        //    lbl_AuctionCountDown.Text = GetTimeString(product.AuctionEndDateTime - DateTime.Now);
+        //}
 
         private void btn_Bid_Click(object sender, EventArgs e)
         {
@@ -189,6 +189,14 @@ namespace OOP_project
                 e.Handled = true;
             }
         }
+
+        private void lbl_SellersIDValue_Click(object sender, EventArgs e)
+        {
+           
+            ContributorRating cr = new ContributorRating(product.sellersUsername.Username);
+            cr.ShowDialog();
+        }
+
     }
     }
 

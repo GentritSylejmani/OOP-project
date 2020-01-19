@@ -14,7 +14,35 @@ namespace BOL
            
         }
 
-        public double Rating { get; set; }
+        public Contributor(Person person)
+        {
+           
+            
+        }
+
+        public class Rating
+        {
+            public double currentRating { get; set; }
+            public int ratingCount { get; set; }
+
+            public double calculateRating(double rateValue)
+            {
+                return currentRating = (currentRating + rateValue) / 2;
+            }
+
+
+
+        }
+
+        public Rating rejtingu { get; set; }
+
+        //public double currentRating { get; set; }
+        //public int ratingCount { get; set; }
+            
+        //public double calculateRating(double rateValue)
+        //    {
+        //        return currentRating = (currentRating + rateValue) /2;
+        //    }
 
         public override bool LogInCheck(string username, string password)
         {
@@ -22,8 +50,6 @@ namespace BOL
             {
                 if (user.Username == username && user.Password == password)
                     return true;
-               
-
             }
             return false;
         }
@@ -46,6 +72,27 @@ namespace BOL
                     person.Credit = user.Credit;
                     return person;
                 }               
+            }
+            return null;
+        }
+
+        public Contributor GetContributorInfo(string username)
+        {
+            Contributor person = new Contributor();
+
+            foreach(Contributor user in Lists.ContributorsList)
+            {
+                if(user.Username==username)
+                {
+                    person.Name = user.Name;
+                    person.Surname = user.Surname;
+                    person.Username = user.Username;
+                    person.rejtingu = new Contributor.Rating() { currentRating = user.rejtingu.currentRating };
+                    person.Email = user.Email;
+                    person.rejtingu = new Contributor.Rating() { ratingCount = user.rejtingu.ratingCount };
+                    
+                    return person;
+                }
             }
             return null;
         }

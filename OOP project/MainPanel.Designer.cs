@@ -30,6 +30,15 @@
         {
             this.tab_Tabs = new System.Windows.Forms.TabControl();
             this.tab_Listings = new System.Windows.Forms.TabPage();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.txt_MaxPrice = new System.Windows.Forms.TextBox();
+            this.txt_MinPrice = new System.Windows.Forms.TextBox();
+            this.lbl_CmimiMax = new System.Windows.Forms.Label();
+            this.lbl_MinPrice = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txt_Article = new System.Windows.Forms.TextBox();
+            this.lbl_ProductCategory = new System.Windows.Forms.Label();
+            this.lbl_Article = new System.Windows.Forms.Label();
             this.btn_RefreshDataGrid = new System.Windows.Forms.Button();
             this.dgv_ApprovedListings = new System.Windows.Forms.DataGridView();
             this.tab_AddListing = new System.Windows.Forms.TabPage();
@@ -87,15 +96,8 @@
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.pcb_LogOut = new System.Windows.Forms.PictureBox();
             this.pcb_eAnkandiLogo = new System.Windows.Forms.PictureBox();
-            this.lbl_Article = new System.Windows.Forms.Label();
-            this.lbl_ProductCategory = new System.Windows.Forms.Label();
-            this.txt_Article = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lbl_MinPrice = new System.Windows.Forms.Label();
-            this.lbl_CmimiMax = new System.Windows.Forms.Label();
-            this.txt_MinPrice = new System.Windows.Forms.TextBox();
-            this.txt_MaxPrice = new System.Windows.Forms.TextBox();
-            this.btn_Search = new System.Windows.Forms.Button();
+            this.lbl_SellersUsername = new System.Windows.Forms.Label();
+            this.txt_SellersUsername = new System.Windows.Forms.TextBox();
             this.tab_Tabs.SuspendLayout();
             this.tab_Listings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ApprovedListings)).BeginInit();
@@ -134,6 +136,8 @@
             // tab_Listings
             // 
             this.tab_Listings.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_Listings.Controls.Add(this.txt_SellersUsername);
+            this.tab_Listings.Controls.Add(this.lbl_SellersUsername);
             this.tab_Listings.Controls.Add(this.btn_Search);
             this.tab_Listings.Controls.Add(this.txt_MaxPrice);
             this.tab_Listings.Controls.Add(this.txt_MinPrice);
@@ -153,6 +157,90 @@
             this.tab_Listings.Size = new System.Drawing.Size(1339, 494);
             this.tab_Listings.TabIndex = 2;
             this.tab_Listings.Text = "Shpalljet";
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_Search.Location = new System.Drawing.Point(840, 39);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(75, 29);
+            this.btn_Search.TabIndex = 22;
+            this.btn_Search.Text = "Kerko!";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // txt_MaxPrice
+            // 
+            this.txt_MaxPrice.Location = new System.Drawing.Point(454, 39);
+            this.txt_MaxPrice.Name = "txt_MaxPrice";
+            this.txt_MaxPrice.Size = new System.Drawing.Size(111, 27);
+            this.txt_MaxPrice.TabIndex = 21;
+            // 
+            // txt_MinPrice
+            // 
+            this.txt_MinPrice.Location = new System.Drawing.Point(454, 6);
+            this.txt_MinPrice.Name = "txt_MinPrice";
+            this.txt_MinPrice.Size = new System.Drawing.Size(111, 27);
+            this.txt_MinPrice.TabIndex = 20;
+            // 
+            // lbl_CmimiMax
+            // 
+            this.lbl_CmimiMax.AutoSize = true;
+            this.lbl_CmimiMax.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_CmimiMax.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_CmimiMax.Location = new System.Drawing.Point(363, 42);
+            this.lbl_CmimiMax.Name = "lbl_CmimiMax";
+            this.lbl_CmimiMax.Size = new System.Drawing.Size(87, 19);
+            this.lbl_CmimiMax.TabIndex = 19;
+            this.lbl_CmimiMax.Text = "Cmimi max:";
+            // 
+            // lbl_MinPrice
+            // 
+            this.lbl_MinPrice.AutoSize = true;
+            this.lbl_MinPrice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_MinPrice.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_MinPrice.Location = new System.Drawing.Point(363, 9);
+            this.lbl_MinPrice.Name = "lbl_MinPrice";
+            this.lbl_MinPrice.Size = new System.Drawing.Size(85, 19);
+            this.lbl_MinPrice.TabIndex = 18;
+            this.lbl_MinPrice.Text = "Cmimi min:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(87, 39);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(270, 27);
+            this.comboBox1.TabIndex = 17;
+            // 
+            // txt_Article
+            // 
+            this.txt_Article.Location = new System.Drawing.Point(87, 6);
+            this.txt_Article.Name = "txt_Article";
+            this.txt_Article.Size = new System.Drawing.Size(270, 27);
+            this.txt_Article.TabIndex = 16;
+            // 
+            // lbl_ProductCategory
+            // 
+            this.lbl_ProductCategory.AutoSize = true;
+            this.lbl_ProductCategory.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_ProductCategory.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_ProductCategory.Location = new System.Drawing.Point(6, 42);
+            this.lbl_ProductCategory.Name = "lbl_ProductCategory";
+            this.lbl_ProductCategory.Size = new System.Drawing.Size(75, 19);
+            this.lbl_ProductCategory.TabIndex = 6;
+            this.lbl_ProductCategory.Text = "Kategoria";
+            // 
+            // lbl_Article
+            // 
+            this.lbl_Article.AutoSize = true;
+            this.lbl_Article.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Article.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_Article.Location = new System.Drawing.Point(14, 9);
+            this.lbl_Article.Name = "lbl_Article";
+            this.lbl_Article.Size = new System.Drawing.Size(67, 19);
+            this.lbl_Article.TabIndex = 5;
+            this.lbl_Article.Text = "Artikulli:";
             // 
             // btn_RefreshDataGrid
             // 
@@ -773,89 +861,23 @@
             this.pcb_eAnkandiLogo.TabIndex = 2;
             this.pcb_eAnkandiLogo.TabStop = false;
             // 
-            // lbl_Article
+            // lbl_SellersUsername
             // 
-            this.lbl_Article.AutoSize = true;
-            this.lbl_Article.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_Article.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_Article.Location = new System.Drawing.Point(14, 9);
-            this.lbl_Article.Name = "lbl_Article";
-            this.lbl_Article.Size = new System.Drawing.Size(67, 19);
-            this.lbl_Article.TabIndex = 5;
-            this.lbl_Article.Text = "Artikulli:";
+            this.lbl_SellersUsername.AutoSize = true;
+            this.lbl_SellersUsername.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_SellersUsername.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_SellersUsername.Location = new System.Drawing.Point(571, 42);
+            this.lbl_SellersUsername.Name = "lbl_SellersUsername";
+            this.lbl_SellersUsername.Size = new System.Drawing.Size(58, 19);
+            this.lbl_SellersUsername.TabIndex = 23;
+            this.lbl_SellersUsername.Text = "Shitesi:";
             // 
-            // lbl_ProductCategory
+            // txt_SellersUsername
             // 
-            this.lbl_ProductCategory.AutoSize = true;
-            this.lbl_ProductCategory.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_ProductCategory.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_ProductCategory.Location = new System.Drawing.Point(6, 42);
-            this.lbl_ProductCategory.Name = "lbl_ProductCategory";
-            this.lbl_ProductCategory.Size = new System.Drawing.Size(75, 19);
-            this.lbl_ProductCategory.TabIndex = 6;
-            this.lbl_ProductCategory.Text = "Kategoria";
-            // 
-            // txt_Article
-            // 
-            this.txt_Article.Location = new System.Drawing.Point(87, 6);
-            this.txt_Article.Name = "txt_Article";
-            this.txt_Article.Size = new System.Drawing.Size(270, 27);
-            this.txt_Article.TabIndex = 16;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(87, 39);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(270, 27);
-            this.comboBox1.TabIndex = 17;
-            // 
-            // lbl_MinPrice
-            // 
-            this.lbl_MinPrice.AutoSize = true;
-            this.lbl_MinPrice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_MinPrice.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_MinPrice.Location = new System.Drawing.Point(363, 9);
-            this.lbl_MinPrice.Name = "lbl_MinPrice";
-            this.lbl_MinPrice.Size = new System.Drawing.Size(85, 19);
-            this.lbl_MinPrice.TabIndex = 18;
-            this.lbl_MinPrice.Text = "Cmimi min:";
-            // 
-            // lbl_CmimiMax
-            // 
-            this.lbl_CmimiMax.AutoSize = true;
-            this.lbl_CmimiMax.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_CmimiMax.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_CmimiMax.Location = new System.Drawing.Point(363, 42);
-            this.lbl_CmimiMax.Name = "lbl_CmimiMax";
-            this.lbl_CmimiMax.Size = new System.Drawing.Size(87, 19);
-            this.lbl_CmimiMax.TabIndex = 19;
-            this.lbl_CmimiMax.Text = "Cmimi max:";
-            // 
-            // txt_MinPrice
-            // 
-            this.txt_MinPrice.Location = new System.Drawing.Point(454, 6);
-            this.txt_MinPrice.Name = "txt_MinPrice";
-            this.txt_MinPrice.Size = new System.Drawing.Size(111, 27);
-            this.txt_MinPrice.TabIndex = 20;
-            // 
-            // txt_MaxPrice
-            // 
-            this.txt_MaxPrice.Location = new System.Drawing.Point(454, 39);
-            this.txt_MaxPrice.Name = "txt_MaxPrice";
-            this.txt_MaxPrice.Size = new System.Drawing.Size(111, 27);
-            this.txt_MaxPrice.TabIndex = 21;
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_Search.Location = new System.Drawing.Point(840, 39);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(75, 29);
-            this.btn_Search.TabIndex = 22;
-            this.btn_Search.Text = "Kerko!";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            this.txt_SellersUsername.Location = new System.Drawing.Point(635, 39);
+            this.txt_SellersUsername.Name = "txt_SellersUsername";
+            this.txt_SellersUsername.Size = new System.Drawing.Size(133, 27);
+            this.txt_SellersUsername.TabIndex = 24;
             // 
             // MainPanel
             // 
@@ -974,5 +996,7 @@
         private System.Windows.Forms.TextBox txt_Article;
         private System.Windows.Forms.Label lbl_ProductCategory;
         private System.Windows.Forms.Label lbl_Article;
+        private System.Windows.Forms.TextBox txt_SellersUsername;
+        private System.Windows.Forms.Label lbl_SellersUsername;
     }
 }
