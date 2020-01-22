@@ -18,14 +18,14 @@ namespace BOL
 
         }
 
-       
+
         #region ProductLists
+        public static List<Product> productListings = new List<Product>();
         public static List<Product> PendingRequests = new List<Product>();
         public static List<Product> ApprovedRequests = new List<Product>();
         public static List<Product> DeniedRequests = new List<Product>();
         public static List<Product> SoldProducts = new List<Product>();
         public static List<Product> CanceledAuctions = new List<Product>();
-
 
         public List<Product> listings
         {

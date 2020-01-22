@@ -45,6 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminApproveDiallog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminApproveDiallog.Designer.cs">
+      <DependentUpon>AdminApproveDiallog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminAuthentication.Designer.cs">
+      <DependentUpon>AdminAuthentication.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,12 @@
     <Compile Include="SignupDialog.Designer.cs">
       <DependentUpon>SignupDialog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminApproveDiallog.resx">
+      <DependentUpon>AdminApproveDiallog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminAuthentication.resx">
+      <DependentUpon>AdminAuthentication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminPanel.resx">
       <DependentUpon>AdminPanel.cs</DependentUpon>
     </EmbeddedResource>

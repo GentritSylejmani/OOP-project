@@ -255,7 +255,7 @@
             this.lbl_AuctionCountDown.AutoSize = true;
             this.lbl_AuctionCountDown.Font = new System.Drawing.Font("Calibri", 25F, System.Drawing.FontStyle.Bold);
             this.lbl_AuctionCountDown.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbl_AuctionCountDown.Location = new System.Drawing.Point(42, 719);
+            this.lbl_AuctionCountDown.Location = new System.Drawing.Point(26, 719);
             this.lbl_AuctionCountDown.Name = "lbl_AuctionCountDown";
             this.lbl_AuctionCountDown.Size = new System.Drawing.Size(181, 41);
             this.lbl_AuctionCountDown.TabIndex = 26;
@@ -297,7 +297,7 @@
             // 
             this.Timer.Enabled = true;
             this.Timer.Interval = 1000;
-           // this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
+            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // lbl_StartingPrice
             // 

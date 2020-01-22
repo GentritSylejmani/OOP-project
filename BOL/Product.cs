@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace BOL
 {
-   
-    
+
 
     public class Product
     {
@@ -39,6 +38,15 @@ namespace BOL
             Larte
         }
 
+        public enum Status
+        {
+            Pending,
+            Active,
+            Canceled,
+            Ended,
+            Sold
+        }
+
         public enum ProductCategory
         {
             Gjenrale,
@@ -48,6 +56,7 @@ namespace BOL
             Agrokulture
         }
 
+        public Status status { get; set; }
         public int ProductID { get; set; }
         public string Name { get; set; }
         public string Description{get;set;}
@@ -61,18 +70,19 @@ namespace BOL
         public Person buyerID { get; set; }
         public Person bidder { get; set; }
         public string[] productPicture { get; set; }
+        public int ViewCount { get; set; }
 
         public int GetLastID()
         {
             int maxValue = 0;
 
-            if (Lists.ApprovedRequests.Count() == 0)
+            if (Lists.productListings.Count() == 0)
             {
                 return 0;
             }
             else
             {
-                foreach (var item in Lists.ApprovedRequests)
+                foreach (var item in Lists.productListings)
                 {
                     if (item.ProductID > maxValue)
                     {

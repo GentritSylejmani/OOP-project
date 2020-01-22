@@ -11,27 +11,78 @@ namespace BOL
         public Contributor()
         {
 
-           
         }
 
         public Contributor(Person person)
         {
-           
-            
+
         }
 
         public class Rating
         {
-            public double currentRating { get; set; }
-            public int ratingCount { get; set; }
-
-            public double calculateRating(double rateValue)
+            public Rating()
             {
-                return currentRating = (currentRating + rateValue) / 2;
+                if (ratings.Count() == 0)
+                {
+                    currentRating = 0;
+                }
+                else
+                {
+                    currentRating = calculateRating();
+                }
+            }
+
+            public void AddRating(int value, Contributor contributor)
+            {
+                var user = Lists.ContributorsList.FirstOrDefault(x => x.Username == contributor.Username);
+                
+                if(user!=null)
+                {
+                    user.rejtingu.ratings.Add(value);
+
+                    currentRating = calculateRating();
+                }             
+
+            }
+
+            public double currentRating;
+
+            public int ratingCount()
+            {
+                return ratings.Count;
+            }
+
+            public List<int> ratings = new List<int>();
+
+            public double calculateRating(int value)
+            {
+                double temprating = value;
+
+                for (int i = 0; i < ratings.Count; i++)
+                {
+                    temprating = temprating + ratings[i];
+                }
+
+                return temprating / ratings.Count;
+            }
+
+            public double calculateRating()
+            {
+                double temprating = 0;
+
+                for (int i = 0; i < ratings.Count(); i++)
+                {
+                    temprating = temprating + ratings[i];
+                }
+
+                return temprating / ratings.Count();
             }
         }
 
-        public Rating rejtingu { get; set; }
+        public Rating rejtingu; // { get; set; }
+        
+
+        //public List<int> ratings;
 
         public override bool LogInCheck(string username, string password)
         {
@@ -43,52 +94,52 @@ namespace BOL
             return false;
         }
 
-        public override Person GetUserInfo(string username)
-        {
-            var person = new Contributor();
+        //public override Person GetUserInfo(string username)
+        //{
+        //    var person = new Contributor();
 
-            foreach (Person user in Lists.ContributorsList)
+        //    foreach (Person user in Lists.ContributorsList)
+        //    {
+        //        if (user.Username == username)
+        //        {
+        //            person.Name = user.Name;
+        //            person.Surname = user.Surname;
+        //            person.PhoneNo = user.PhoneNo;
+        //            person.Username = user.Username;
+        //            person.Email = user.Email;
+        //            person.PersonalNo = user.PersonalNo;
+        //            person.AccountNo = user.AccountNo;
+        //            person.Credit = user.Credit;
+        //            return person;
+        //        }
+        //    }
+        //    return null;
+        //}
+
+        public static new Contributor GetUserInfo(string username)
+        {
+
+          var user=  Lists.ContributorsList.FirstOrDefault(x => x.Username.ToLower() == username);
+
+            if(user!=null)
             {
-                if (user.Username ==username)
-                {
-                    person.Name = user.Name;
-                    person.Surname = user.Surname;
-                    person.PhoneNo = user.PhoneNo;
-                    person.Username = user.Username;
-                    person.Email = user.Email;
-                    person.PersonalNo = user.PersonalNo;
-                    person.AccountNo = user.AccountNo;
-                    person.Credit = user.Credit;
-                    return person;
-                }               
+                return user;
             }
             return null;
+            
         }
 
-        public Contributor GetContributorInfo(string username)
+        public void SubmitAuctionRequest(string name, string description, double startingPrice, double currentBidPrice, DateTime auctionEta, string[] images, Contributor seller, Product.Status Status)
         {
-            Contributor person = new Contributor();
+            Product p = new Product();
 
-            foreach(Contributor user in Lists.ContributorsList)
-            {
-                if(user.Username==username)
-                {
-                    person.Name = user.Name;
-                    person.Surname = user.Surname;
-                    person.Username = user.Username;
-                    person.rejtingu = new Contributor.Rating() { currentRating = user.rejtingu.currentRating };
-                    person.Email = user.Email;
-                    person.rejtingu = new Contributor.Rating() { ratingCount = user.rejtingu.ratingCount };
-                    
-                    return person;
-                }
-            }
-            return null;
+            Lists.productListings.Add(new Product { ProductID = p.GetLastID() + 1, Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime = DateTime.Now, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller, status = Status});
+
         }
-
-        public void SubmitAuctionRequest() { }
         public void EditAuction() { }
         public void CancelAuction() { }
 
+
     }
 }
+

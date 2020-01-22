@@ -17,7 +17,6 @@ namespace OOP_project
         {
             InitializeComponent();
             rbt_Client.Checked = true;
-
         }
 
 
@@ -54,42 +53,81 @@ namespace OOP_project
         private void lbl_SignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             SignupDialog sd = new SignupDialog();
-            sd.ShowDialog();
-            
+            sd.ShowDialog();          
+        }
+
+        private void tryLogin()
+        {
+
+            Client user = new Client();
+
+
+            if (rbt_Client.Checked == true)
+            {
+                if (user.LogInCheck(txt_User.Text, txt_Password.Text) == true)
+                {
+                    MainPanel mp = new MainPanel(txt_User.Text, Person.usertype.Client);
+                    this.Hide();
+                    mp.Show();
+
+                }
+            }
+            else if (rbt_Contributor.Checked == true)
+            {
+                user = new Contributor();
+                if (user.LogInCheck(txt_User.Text, txt_Password.Text) == true)
+                {
+                    MainPanel mp = new MainPanel(txt_User.Text, Person.usertype.Contributor);
+                    this.Hide();
+                    mp.Show();
+
+                }
+            }
+
         }
 
         private void btn_LogIn_Click(object sender, EventArgs e)
         {
-
-            Client user = new Client();
-          
-
-            if (rbt_Client.Checked==true)
-            {
-                if(user.LogInCheck(txt_User.Text,txt_Password.Text)==true)
-                {
-                    MainPanel mp = new MainPanel(txt_User.Text,Person.usertype.Client) ;
-                    this.Hide();
-                    mp.Show();
-                    
-                }
-            }
-            else if(rbt_Contributor.Checked==true)
-            {
-                user = new Contributor();
-                if(user.LogInCheck(txt_User.Text,txt_Password.Text)==true)
-                {
-                    MainPanel mp = new MainPanel(txt_User.Text,Person.usertype.Contributor);
-                    this.Hide();
-                    mp.Show();
-                   
-                }
-            }
-
-            
-            
+            tryLogin();
         }
 
-       
+        private void pcb_MainLogo_Click(object sender, EventArgs e)
+        {
+            AdminAuthentication a = new AdminAuthentication();
+            a.ShowDialog();
+            this.Hide();
+        }
+
+        private void txt_User_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tryLogin();
+            }
+
+        }
+        private void txt_Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tryLogin();
+            }
+        }
+
+        private void rbt_Client_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tryLogin();
+            }
+        }
+
+        private void rbt_Contributor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tryLogin();
+            }
+        }
     }
 }

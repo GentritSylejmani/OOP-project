@@ -27,32 +27,33 @@ namespace BOL
             
         }
 
-        public override Person GetUserInfo(string username)
+        public static new Client GetUserInfo(string username)
         {
-            
-            var person = new Client();          
 
-            foreach(Person user in Lists.ClientsList)
+            var user = Lists.ClientsList.FirstOrDefault(x => x.Username.ToLower() == username);
+
+            if (user != null)
             {
-                 if(user.Username==username)
-                 {
-                    person.Name = user.Name;
-                    person.Surname = user.Surname;
-                    person.PhoneNo = user.PhoneNo;
-                    person.Username = user.Username;
-                    person.Email = user.Email;
-                    person.PersonalNo = user.PersonalNo;
-                    person.AccountNo = user.AccountNo;
-                    person.Credit = user.Credit;
-                    return person;
-                }
-                
+                return user;
             }
-            return null; ;
+            return null;
         }
 
         public void PayProduct() { }
-        public void BidOnProduct() { }
+        public void BidOnProduct(Product product,double bidValue,Person loggedUser)
+        {
+            var item = Lists.productListings.FirstOrDefault(x => x.ProductID == product.ProductID);
+            if (item != null)
+            {
+                item.CurrentBidPrice = bidValue;
+                item.bidder = loggedUser;
+            }
+        }
+
+        public void RateUser(int rateValue,Contributor seller)
+        {
+            seller.rejtingu.AddRating(rateValue, seller);
+        }
 
     }
 }

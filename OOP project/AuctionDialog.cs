@@ -84,8 +84,8 @@ namespace OOP_project
         {
             if (mouseDown)
             {
-                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
-                this.Update();
+                Location = new Point((Location.X - lastLocation.X) + e.X, (Location.Y - lastLocation.Y) + e.Y);
+                Update();
             }
         }
 
@@ -153,14 +153,14 @@ namespace OOP_project
             else return;
         }
 
-        //private void Timer_Tick(object sender, EventArgs e)
-        //{
-        //    lbl_AuctionCountDown.Text = GetTimeString(product.AuctionEndDateTime - DateTime.Now);
-        //}
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            lbl_AuctionCountDown.Text = GetTimeString(product.AuctionEndDateTime - DateTime.Now);
+        }
 
         private void btn_Bid_Click(object sender, EventArgs e)
         {
-            var item = Lists.ApprovedRequests.Where(x => x.ProductID == product.ProductID).FirstOrDefault();
+            //var item = Lists.ApprovedRequests.Where(x => x.ProductID == product.ProductID).FirstOrDefault();
 
             if (Convert.ToInt32(txt_BiddingValue.Text) < product.CurrentBidPrice + 1 )
             {
@@ -168,17 +168,11 @@ namespace OOP_project
             }
             else
             {
-                
-                if(item!=null)
-                {
-                    product.CurrentBidPrice= Convert.ToInt32(txt_BiddingValue.Text);
-                    item.CurrentBidPrice = Convert.ToInt32(txt_BiddingValue.Text);
-                    item.bidder = loggedUser;
-                }
+                ((Client)loggedUser).BidOnProduct(product, Convert.ToDouble(txt_BiddingValue.Text),loggedUser);
             }
 
-            lbl_StartingPriceValue.Text = item.StartingPrice.ToString();
-            lbl_ActualPriceValue.Text = item.CurrentBidPrice.ToString();
+            lbl_StartingPriceValue.Text = product.StartingPrice.ToString();
+            lbl_ActualPriceValue.Text = product.CurrentBidPrice.ToString();
 
         }
 

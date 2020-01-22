@@ -39,8 +39,6 @@
             this.lbl_RatingValue = new System.Windows.Forms.Label();
             this.txt_RatingValue = new System.Windows.Forms.TextBox();
             this.btn_Rate = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_Username
@@ -113,7 +111,7 @@
             // 
             this.btn_Back.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btn_Back.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_Back.Location = new System.Drawing.Point(452, 45);
+            this.btn_Back.Location = new System.Drawing.Point(320, 44);
             this.btn_Back.Name = "btn_Back";
             this.btn_Back.Size = new System.Drawing.Size(75, 29);
             this.btn_Back.TabIndex = 13;
@@ -126,7 +124,7 @@
             this.lbl_Rating.AutoSize = true;
             this.lbl_Rating.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lbl_Rating.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbl_Rating.Location = new System.Drawing.Point(12, 79);
+            this.lbl_Rating.Location = new System.Drawing.Point(12, 66);
             this.lbl_Rating.Name = "lbl_Rating";
             this.lbl_Rating.Size = new System.Drawing.Size(71, 19);
             this.lbl_Rating.TabIndex = 14;
@@ -137,26 +135,27 @@
             this.lbl_RatingValue.AutoSize = true;
             this.lbl_RatingValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lbl_RatingValue.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbl_RatingValue.Location = new System.Drawing.Point(89, 79);
+            this.lbl_RatingValue.Location = new System.Drawing.Point(89, 66);
             this.lbl_RatingValue.Name = "lbl_RatingValue";
             this.lbl_RatingValue.Size = new System.Drawing.Size(36, 19);
             this.lbl_RatingValue.TabIndex = 15;
             this.lbl_RatingValue.Text = "N/A";
+            //this.lbl_RatingValue.Click += new System.EventHandler(this.lbl_RatingValue_Click);
             // 
             // txt_RatingValue
             // 
-            this.txt_RatingValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.txt_RatingValue.Font = new System.Drawing.Font("Calibri", 35F, System.Drawing.FontStyle.Bold);
             this.txt_RatingValue.ForeColor = System.Drawing.Color.DarkGray;
-            this.txt_RatingValue.Location = new System.Drawing.Point(371, 12);
+            this.txt_RatingValue.Location = new System.Drawing.Point(401, 9);
             this.txt_RatingValue.Name = "txt_RatingValue";
-            this.txt_RatingValue.Size = new System.Drawing.Size(156, 27);
+            this.txt_RatingValue.Size = new System.Drawing.Size(61, 64);
             this.txt_RatingValue.TabIndex = 29;
             // 
             // btn_Rate
             // 
             this.btn_Rate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btn_Rate.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_Rate.Location = new System.Drawing.Point(371, 45);
+            this.btn_Rate.Location = new System.Drawing.Point(320, 9);
             this.btn_Rate.Name = "btn_Rate";
             this.btn_Rate.Size = new System.Drawing.Size(75, 29);
             this.btn_Rate.TabIndex = 30;
@@ -164,20 +163,11 @@
             this.btn_Rate.UseVisualStyleBackColor = true;
             this.btn_Rate.Click += new System.EventHandler(this.btn_Rate_Click);
             // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(246, 199);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
-            this.trackBar1.TabIndex = 31;
-            this.trackBar1.TickFrequency = 5;
-            // 
             // ContributorRating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 491);
-            this.Controls.Add(this.trackBar1);
+            this.ClientSize = new System.Drawing.Size(474, 97);
             this.Controls.Add(this.btn_Rate);
             this.Controls.Add(this.txt_RatingValue);
             this.Controls.Add(this.lbl_RatingValue);
@@ -195,7 +185,6 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,6 +203,5 @@
         private System.Windows.Forms.Label lbl_RatingValue;
         private System.Windows.Forms.TextBox txt_RatingValue;
         private System.Windows.Forms.Button btn_Rate;
-        private System.Windows.Forms.TrackBar trackBar1;
     }
 }

@@ -16,28 +16,28 @@ namespace OOP_project
         public ContributorRating()
         {
             InitializeComponent();
+      
         }
 
-        Contributor seller = new Contributor();
+        Contributor seller = null;
 
-        public ContributorRating(string username)
+
+    public ContributorRating(string username)
         {
             InitializeComponent();
-            seller = seller.GetContributorInfo(username);
-
+            seller = Contributor.GetUserInfo(username);
+            //seller.rejtingu = new Contributor.Rating();
             lbl_UsernameValue.Text = seller.Username;
             lbl_NameValue.Text = seller.Name;
             lbl_SurnameValue.Text = seller.Surname;
-            
+            //lbl_RatingValue.Text = Formated(seller.rejtingu.calculateRating().ToString() + "    (" + seller.rejtingu.ratingCount().ToString() + ")");
+            lbl_RatingValue.Text = seller.rejtingu.calculateRating().ToString("0.##") + "    (" + seller.rejtingu.ratingCount().ToString("") + ")";
+        }
 
-            if (seller.rejtingu.currentRating == 0)
-            {
-                lbl_RatingValue.Text = "Ky perdorues ka 0 vleresime";
-            }
-            else
-            {
-                lbl_RatingValue.Text = String.Format("{0:0.#}", seller.rejtingu.currentRating.ToString()) + "    ("+ seller.rejtingu.ratingCount +")";
-            }
+
+        private string Formated(string stringu)
+        {
+            return String.Format("{0:0.}", stringu);
         }
 
         private bool mouseDown;
@@ -70,13 +70,22 @@ namespace OOP_project
 
         private void btn_Rate_Click(object sender, EventArgs e)
         {
-            var user = Lists.ContributorsList.Where(x => x.Username == seller.Username).First();
-            if (user != null)
-            {
-                user.rejtingu.currentRating = user.rejtingu.calculateRating(Convert.ToDouble(txt_RatingValue.Text));
-                user.rejtingu.ratingCount += 1;
-                lbl_RatingValue.Text = String.Format("{0:0.#}", user.rejtingu.currentRating.ToString()) + "    (" + user.rejtingu.ratingCount + ")";
-            }
+            Client c = new Client();
+
+            c.RateUser(Convert.ToInt32(txt_RatingValue.Text), seller);
+
+            //lbl_RatingValue.Text = Formated(seller.rejtingu.currentRating.ToString() + "    (" + seller.rejtingu.ratingCount().ToString() + ")");
+            lbl_RatingValue.Text = seller.rejtingu.calculateRating().ToString("0.##") + "    (" + seller.rejtingu.ratingCount().ToString("") + ")";
         }
+        //private void ratingTXTkeypress(object sender, KeyPressEventArgs e)
+        //{
+        //    txt_RatingValue.Text = "";
+
+        //    if ((e.KeyChar.ToString() != "1") || (e.KeyChar.ToString() != "2") || (e.KeyChar.ToString() != "3") || (e.KeyChar.ToString() != "4") || (e.KeyChar.ToString() != "5"))
+        //    {
+        //        e.Handled = true;
+
+        //    }
+        //}
     }
 }

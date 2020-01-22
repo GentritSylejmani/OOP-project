@@ -30,6 +30,8 @@
         {
             this.tab_Tabs = new System.Windows.Forms.TabControl();
             this.tab_Listings = new System.Windows.Forms.TabPage();
+            this.txt_SellersUsername = new System.Windows.Forms.TextBox();
+            this.lbl_SellersUsername = new System.Windows.Forms.Label();
             this.btn_Search = new System.Windows.Forms.Button();
             this.txt_MaxPrice = new System.Windows.Forms.TextBox();
             this.txt_MinPrice = new System.Windows.Forms.TextBox();
@@ -77,6 +79,8 @@
             this.btn_RefreshMyListings = new System.Windows.Forms.Button();
             this.dgv_PersonalListings = new System.Windows.Forms.DataGridView();
             this.tab_Llogaria = new System.Windows.Forms.TabPage();
+            this.lbl_RatingValue = new System.Windows.Forms.Label();
+            this.lbl_Rating = new System.Windows.Forms.Label();
             this.txt_AddCredit = new System.Windows.Forms.TextBox();
             this.btn_AddCredit = new System.Windows.Forms.Button();
             this.lbl_Balanci = new System.Windows.Forms.Label();
@@ -96,8 +100,6 @@
             this.lbl_Welcome = new System.Windows.Forms.Label();
             this.pcb_LogOut = new System.Windows.Forms.PictureBox();
             this.pcb_eAnkandiLogo = new System.Windows.Forms.PictureBox();
-            this.lbl_SellersUsername = new System.Windows.Forms.Label();
-            this.txt_SellersUsername = new System.Windows.Forms.TextBox();
             this.tab_Tabs.SuspendLayout();
             this.tab_Listings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ApprovedListings)).BeginInit();
@@ -157,6 +159,24 @@
             this.tab_Listings.Size = new System.Drawing.Size(1339, 494);
             this.tab_Listings.TabIndex = 2;
             this.tab_Listings.Text = "Shpalljet";
+            // 
+            // txt_SellersUsername
+            // 
+            this.txt_SellersUsername.Location = new System.Drawing.Point(635, 39);
+            this.txt_SellersUsername.Name = "txt_SellersUsername";
+            this.txt_SellersUsername.Size = new System.Drawing.Size(133, 27);
+            this.txt_SellersUsername.TabIndex = 24;
+            // 
+            // lbl_SellersUsername
+            // 
+            this.lbl_SellersUsername.AutoSize = true;
+            this.lbl_SellersUsername.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_SellersUsername.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_SellersUsername.Location = new System.Drawing.Point(571, 42);
+            this.lbl_SellersUsername.Name = "lbl_SellersUsername";
+            this.lbl_SellersUsername.Size = new System.Drawing.Size(58, 19);
+            this.lbl_SellersUsername.TabIndex = 23;
+            this.lbl_SellersUsername.Text = "Shitesi:";
             // 
             // btn_Search
             // 
@@ -605,14 +625,14 @@
             // 
             // btn_RefreshMyListings
             // 
-            this.btn_RefreshMyListings.Location = new System.Drawing.Point(931, 27);
+            this.btn_RefreshMyListings.Location = new System.Drawing.Point(1237, 27);
             this.btn_RefreshMyListings.Margin = new System.Windows.Forms.Padding(2);
             this.btn_RefreshMyListings.Name = "btn_RefreshMyListings";
             this.btn_RefreshMyListings.Size = new System.Drawing.Size(97, 29);
             this.btn_RefreshMyListings.TabIndex = 1;
             this.btn_RefreshMyListings.Text = "Fresko!";
             this.btn_RefreshMyListings.UseVisualStyleBackColor = true;
-            this.btn_RefreshMyListings.Click += new System.EventHandler(this.Btn_RefreshMyListings_Click);
+            this.btn_RefreshMyListings.Click += new System.EventHandler(this.btn_RefreshMyListings_Click);
             // 
             // dgv_PersonalListings
             // 
@@ -627,13 +647,15 @@
             this.dgv_PersonalListings.ReadOnly = true;
             this.dgv_PersonalListings.RowHeadersWidth = 62;
             this.dgv_PersonalListings.RowTemplate.Height = 28;
-            this.dgv_PersonalListings.Size = new System.Drawing.Size(1023, 434);
+            this.dgv_PersonalListings.Size = new System.Drawing.Size(1329, 434);
             this.dgv_PersonalListings.TabIndex = 0;
             this.dgv_PersonalListings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_PersonalListings_CellContentClick);
             // 
             // tab_Llogaria
             // 
             this.tab_Llogaria.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_Llogaria.Controls.Add(this.lbl_RatingValue);
+            this.tab_Llogaria.Controls.Add(this.lbl_Rating);
             this.tab_Llogaria.Controls.Add(this.txt_AddCredit);
             this.tab_Llogaria.Controls.Add(this.btn_AddCredit);
             this.tab_Llogaria.Controls.Add(this.lbl_Balanci);
@@ -656,6 +678,28 @@
             this.tab_Llogaria.Size = new System.Drawing.Size(1339, 494);
             this.tab_Llogaria.TabIndex = 5;
             this.tab_Llogaria.Text = "Llogaria";
+            // 
+            // lbl_RatingValue
+            // 
+            this.lbl_RatingValue.AutoSize = true;
+            this.lbl_RatingValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_RatingValue.ForeColor = System.Drawing.Color.Black;
+            this.lbl_RatingValue.Location = new System.Drawing.Point(106, 169);
+            this.lbl_RatingValue.Name = "lbl_RatingValue";
+            this.lbl_RatingValue.Size = new System.Drawing.Size(36, 19);
+            this.lbl_RatingValue.TabIndex = 20;
+            this.lbl_RatingValue.Text = "N/A";
+            // 
+            // lbl_Rating
+            // 
+            this.lbl_Rating.AutoSize = true;
+            this.lbl_Rating.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Rating.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_Rating.Location = new System.Drawing.Point(44, 169);
+            this.lbl_Rating.Name = "lbl_Rating";
+            this.lbl_Rating.Size = new System.Drawing.Size(56, 19);
+            this.lbl_Rating.TabIndex = 19;
+            this.lbl_Rating.Text = "Rating:";
             // 
             // txt_AddCredit
             // 
@@ -861,24 +905,6 @@
             this.pcb_eAnkandiLogo.TabIndex = 2;
             this.pcb_eAnkandiLogo.TabStop = false;
             // 
-            // lbl_SellersUsername
-            // 
-            this.lbl_SellersUsername.AutoSize = true;
-            this.lbl_SellersUsername.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_SellersUsername.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_SellersUsername.Location = new System.Drawing.Point(571, 42);
-            this.lbl_SellersUsername.Name = "lbl_SellersUsername";
-            this.lbl_SellersUsername.Size = new System.Drawing.Size(58, 19);
-            this.lbl_SellersUsername.TabIndex = 23;
-            this.lbl_SellersUsername.Text = "Shitesi:";
-            // 
-            // txt_SellersUsername
-            // 
-            this.txt_SellersUsername.Location = new System.Drawing.Point(635, 39);
-            this.txt_SellersUsername.Name = "txt_SellersUsername";
-            this.txt_SellersUsername.Size = new System.Drawing.Size(133, 27);
-            this.txt_SellersUsername.TabIndex = 24;
-            // 
             // MainPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -998,5 +1024,7 @@
         private System.Windows.Forms.Label lbl_Article;
         private System.Windows.Forms.TextBox txt_SellersUsername;
         private System.Windows.Forms.Label lbl_SellersUsername;
+        private System.Windows.Forms.Label lbl_RatingValue;
+        private System.Windows.Forms.Label lbl_Rating;
     }
 }
