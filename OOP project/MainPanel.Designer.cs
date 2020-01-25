@@ -37,7 +37,7 @@
             this.txt_MinPrice = new System.Windows.Forms.TextBox();
             this.lbl_CmimiMax = new System.Windows.Forms.Label();
             this.lbl_MinPrice = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmb_CategorySearch = new System.Windows.Forms.ComboBox();
             this.txt_Article = new System.Windows.Forms.TextBox();
             this.lbl_ProductCategory = new System.Windows.Forms.Label();
             this.lbl_Article = new System.Windows.Forms.Label();
@@ -58,10 +58,16 @@
             this.lb_Hours = new System.Windows.Forms.Label();
             this.lbl_Day = new System.Windows.Forms.Label();
             this.btn_AddListingRequest = new System.Windows.Forms.Button();
-            this.pcb_Delete = new System.Windows.Forms.PictureBox();
             this.txt_StartingPrice = new System.Windows.Forms.TextBox();
             this.rtxt_Description = new System.Windows.Forms.RichTextBox();
             this.txt_ProductTitle = new System.Windows.Forms.TextBox();
+            this.btn_AddImage = new System.Windows.Forms.Button();
+            this.lbl_Image = new System.Windows.Forms.Label();
+            this.lbl_imagePath = new System.Windows.Forms.Label();
+            this.lbl_StartingPrice = new System.Windows.Forms.Label();
+            this.lbl_Descripton = new System.Windows.Forms.Label();
+            this.lbl_Title = new System.Windows.Forms.Label();
+            this.pcb_Delete = new System.Windows.Forms.PictureBox();
             this.pcb_Small6 = new System.Windows.Forms.PictureBox();
             this.pcb_Small5 = new System.Windows.Forms.PictureBox();
             this.pcb_Small4 = new System.Windows.Forms.PictureBox();
@@ -69,16 +75,18 @@
             this.pcb_Small2 = new System.Windows.Forms.PictureBox();
             this.pcb_Small1 = new System.Windows.Forms.PictureBox();
             this.pcb_Main = new System.Windows.Forms.PictureBox();
-            this.btn_AddImage = new System.Windows.Forms.Button();
-            this.lbl_Image = new System.Windows.Forms.Label();
-            this.lbl_imagePath = new System.Windows.Forms.Label();
-            this.lbl_StartingPrice = new System.Windows.Forms.Label();
-            this.lbl_Descripton = new System.Windows.Forms.Label();
-            this.lbl_Title = new System.Windows.Forms.Label();
             this.tab_MyListings = new System.Windows.Forms.TabPage();
             this.btn_RefreshMyListings = new System.Windows.Forms.Button();
             this.dgv_PersonalListings = new System.Windows.Forms.DataGridView();
             this.tab_Llogaria = new System.Windows.Forms.TabPage();
+            this.btn_RefreshAccountTab = new System.Windows.Forms.Button();
+            this.tabcontrol_RelatedAuctions = new System.Windows.Forms.TabControl();
+            this.tab_OngoingAuction = new System.Windows.Forms.TabPage();
+            this.dgv_ActiveAuctions = new System.Windows.Forms.DataGridView();
+            this.tab_WonAuctions = new System.Windows.Forms.TabPage();
+            this.dgv_WonAuctions = new System.Windows.Forms.DataGridView();
+            this.tab_Purchased = new System.Windows.Forms.TabPage();
+            this.dgv_Purchased = new System.Windows.Forms.DataGridView();
             this.lbl_RatingValue = new System.Windows.Forms.Label();
             this.lbl_Rating = new System.Windows.Forms.Label();
             this.txt_AddCredit = new System.Windows.Forms.TextBox();
@@ -118,6 +126,13 @@
             this.tab_MyListings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_PersonalListings)).BeginInit();
             this.tab_Llogaria.SuspendLayout();
+            this.tabcontrol_RelatedAuctions.SuspendLayout();
+            this.tab_OngoingAuction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ActiveAuctions)).BeginInit();
+            this.tab_WonAuctions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_WonAuctions)).BeginInit();
+            this.tab_Purchased.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Purchased)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_LogOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_eAnkandiLogo)).BeginInit();
             this.SuspendLayout();
@@ -145,7 +160,7 @@
             this.tab_Listings.Controls.Add(this.txt_MinPrice);
             this.tab_Listings.Controls.Add(this.lbl_CmimiMax);
             this.tab_Listings.Controls.Add(this.lbl_MinPrice);
-            this.tab_Listings.Controls.Add(this.comboBox1);
+            this.tab_Listings.Controls.Add(this.cmb_CategorySearch);
             this.tab_Listings.Controls.Add(this.txt_Article);
             this.tab_Listings.Controls.Add(this.lbl_ProductCategory);
             this.tab_Listings.Controls.Add(this.lbl_Article);
@@ -166,6 +181,7 @@
             this.txt_SellersUsername.Name = "txt_SellersUsername";
             this.txt_SellersUsername.Size = new System.Drawing.Size(133, 27);
             this.txt_SellersUsername.TabIndex = 24;
+            this.txt_SellersUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SellersUsername_KeyDown);
             // 
             // lbl_SellersUsername
             // 
@@ -195,6 +211,7 @@
             this.txt_MaxPrice.Name = "txt_MaxPrice";
             this.txt_MaxPrice.Size = new System.Drawing.Size(111, 27);
             this.txt_MaxPrice.TabIndex = 21;
+            this.txt_MaxPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_MaxPrice_KeyDown);
             // 
             // txt_MinPrice
             // 
@@ -202,6 +219,7 @@
             this.txt_MinPrice.Name = "txt_MinPrice";
             this.txt_MinPrice.Size = new System.Drawing.Size(111, 27);
             this.txt_MinPrice.TabIndex = 20;
+            this.txt_MinPrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_MinPrice_KeyDown);
             // 
             // lbl_CmimiMax
             // 
@@ -225,13 +243,14 @@
             this.lbl_MinPrice.TabIndex = 18;
             this.lbl_MinPrice.Text = "Cmimi min:";
             // 
-            // comboBox1
+            // cmb_CategorySearch
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(87, 39);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(270, 27);
-            this.comboBox1.TabIndex = 17;
+            this.cmb_CategorySearch.FormattingEnabled = true;
+            this.cmb_CategorySearch.Location = new System.Drawing.Point(87, 39);
+            this.cmb_CategorySearch.Name = "cmb_CategorySearch";
+            this.cmb_CategorySearch.Size = new System.Drawing.Size(270, 27);
+            this.cmb_CategorySearch.TabIndex = 17;
+            this.cmb_CategorySearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmb_CategorySearch_KeyDown);
             // 
             // txt_Article
             // 
@@ -239,6 +258,7 @@
             this.txt_Article.Name = "txt_Article";
             this.txt_Article.Size = new System.Drawing.Size(270, 27);
             this.txt_Article.TabIndex = 16;
+            this.txt_Article.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Article_KeyDown);
             // 
             // lbl_ProductCategory
             // 
@@ -298,10 +318,16 @@
             this.tab_AddListing.Controls.Add(this.lbl_EndDateTime);
             this.tab_AddListing.Controls.Add(this.tab_auctionTimes);
             this.tab_AddListing.Controls.Add(this.btn_AddListingRequest);
-            this.tab_AddListing.Controls.Add(this.pcb_Delete);
             this.tab_AddListing.Controls.Add(this.txt_StartingPrice);
             this.tab_AddListing.Controls.Add(this.rtxt_Description);
             this.tab_AddListing.Controls.Add(this.txt_ProductTitle);
+            this.tab_AddListing.Controls.Add(this.btn_AddImage);
+            this.tab_AddListing.Controls.Add(this.lbl_Image);
+            this.tab_AddListing.Controls.Add(this.lbl_imagePath);
+            this.tab_AddListing.Controls.Add(this.lbl_StartingPrice);
+            this.tab_AddListing.Controls.Add(this.lbl_Descripton);
+            this.tab_AddListing.Controls.Add(this.lbl_Title);
+            this.tab_AddListing.Controls.Add(this.pcb_Delete);
             this.tab_AddListing.Controls.Add(this.pcb_Small6);
             this.tab_AddListing.Controls.Add(this.pcb_Small5);
             this.tab_AddListing.Controls.Add(this.pcb_Small4);
@@ -309,12 +335,6 @@
             this.tab_AddListing.Controls.Add(this.pcb_Small2);
             this.tab_AddListing.Controls.Add(this.pcb_Small1);
             this.tab_AddListing.Controls.Add(this.pcb_Main);
-            this.tab_AddListing.Controls.Add(this.btn_AddImage);
-            this.tab_AddListing.Controls.Add(this.lbl_Image);
-            this.tab_AddListing.Controls.Add(this.lbl_imagePath);
-            this.tab_AddListing.Controls.Add(this.lbl_StartingPrice);
-            this.tab_AddListing.Controls.Add(this.lbl_Descripton);
-            this.tab_AddListing.Controls.Add(this.lbl_Title);
             this.tab_AddListing.Location = new System.Drawing.Point(4, 28);
             this.tab_AddListing.Name = "tab_AddListing";
             this.tab_AddListing.Padding = new System.Windows.Forms.Padding(3);
@@ -458,17 +478,6 @@
             this.btn_AddListingRequest.UseVisualStyleBackColor = true;
             this.btn_AddListingRequest.Click += new System.EventHandler(this.btn_AddListingRequest_Click);
             // 
-            // pcb_Delete
-            // 
-            this.pcb_Delete.Image = global::OOP_project.Properties.Resources.bin;
-            this.pcb_Delete.Location = new System.Drawing.Point(633, 59);
-            this.pcb_Delete.Name = "pcb_Delete";
-            this.pcb_Delete.Size = new System.Drawing.Size(50, 33);
-            this.pcb_Delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcb_Delete.TabIndex = 19;
-            this.pcb_Delete.TabStop = false;
-            this.pcb_Delete.Click += new System.EventHandler(this.pcb_Delete_Click);
-            // 
             // txt_StartingPrice
             // 
             this.txt_StartingPrice.Location = new System.Drawing.Point(141, 192);
@@ -491,6 +500,74 @@
             this.txt_ProductTitle.Name = "txt_ProductTitle";
             this.txt_ProductTitle.Size = new System.Drawing.Size(482, 27);
             this.txt_ProductTitle.TabIndex = 15;
+            // 
+            // btn_AddImage
+            // 
+            this.btn_AddImage.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.btn_AddImage.Location = new System.Drawing.Point(633, 25);
+            this.btn_AddImage.Name = "btn_AddImage";
+            this.btn_AddImage.Size = new System.Drawing.Size(50, 28);
+            this.btn_AddImage.TabIndex = 6;
+            this.btn_AddImage.Text = "+";
+            this.btn_AddImage.UseVisualStyleBackColor = true;
+            this.btn_AddImage.Click += new System.EventHandler(this.btn_AddImage_Click);
+            // 
+            // lbl_Image
+            // 
+            this.lbl_Image.AutoSize = true;
+            this.lbl_Image.Location = new System.Drawing.Point(629, 3);
+            this.lbl_Image.Name = "lbl_Image";
+            this.lbl_Image.Size = new System.Drawing.Size(54, 19);
+            this.lbl_Image.TabIndex = 5;
+            this.lbl_Image.Text = "Image:";
+            // 
+            // lbl_imagePath
+            // 
+            this.lbl_imagePath.AutoSize = true;
+            this.lbl_imagePath.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_imagePath.Location = new System.Drawing.Point(689, 3);
+            this.lbl_imagePath.Name = "lbl_imagePath";
+            this.lbl_imagePath.Size = new System.Drawing.Size(36, 19);
+            this.lbl_imagePath.TabIndex = 4;
+            this.lbl_imagePath.Text = "N/A";
+            // 
+            // lbl_StartingPrice
+            // 
+            this.lbl_StartingPrice.AutoSize = true;
+            this.lbl_StartingPrice.Location = new System.Drawing.Point(25, 195);
+            this.lbl_StartingPrice.Name = "lbl_StartingPrice";
+            this.lbl_StartingPrice.Size = new System.Drawing.Size(110, 19);
+            this.lbl_StartingPrice.TabIndex = 2;
+            this.lbl_StartingPrice.Text = "Cmimi fillestar:";
+            // 
+            // lbl_Descripton
+            // 
+            this.lbl_Descripton.AutoSize = true;
+            this.lbl_Descripton.Location = new System.Drawing.Point(49, 43);
+            this.lbl_Descripton.Name = "lbl_Descripton";
+            this.lbl_Descripton.Size = new System.Drawing.Size(86, 19);
+            this.lbl_Descripton.TabIndex = 1;
+            this.lbl_Descripton.Text = "Pershkrimi:";
+            // 
+            // lbl_Title
+            // 
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Location = new System.Drawing.Point(83, 9);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(52, 19);
+            this.lbl_Title.TabIndex = 0;
+            this.lbl_Title.Text = "Titulli:";
+            // 
+            // pcb_Delete
+            // 
+            this.pcb_Delete.Image = global::OOP_project.Properties.Resources.bin;
+            this.pcb_Delete.Location = new System.Drawing.Point(633, 59);
+            this.pcb_Delete.Name = "pcb_Delete";
+            this.pcb_Delete.Size = new System.Drawing.Size(50, 33);
+            this.pcb_Delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcb_Delete.TabIndex = 19;
+            this.pcb_Delete.TabStop = false;
+            this.pcb_Delete.Click += new System.EventHandler(this.pcb_Delete_Click);
             // 
             // pcb_Small6
             // 
@@ -554,63 +631,6 @@
             this.pcb_Main.TabIndex = 7;
             this.pcb_Main.TabStop = false;
             // 
-            // btn_AddImage
-            // 
-            this.btn_AddImage.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.btn_AddImage.Location = new System.Drawing.Point(633, 25);
-            this.btn_AddImage.Name = "btn_AddImage";
-            this.btn_AddImage.Size = new System.Drawing.Size(50, 28);
-            this.btn_AddImage.TabIndex = 6;
-            this.btn_AddImage.Text = "+";
-            this.btn_AddImage.UseVisualStyleBackColor = true;
-            this.btn_AddImage.Click += new System.EventHandler(this.btn_AddImage_Click);
-            // 
-            // lbl_Image
-            // 
-            this.lbl_Image.AutoSize = true;
-            this.lbl_Image.Location = new System.Drawing.Point(629, 3);
-            this.lbl_Image.Name = "lbl_Image";
-            this.lbl_Image.Size = new System.Drawing.Size(54, 19);
-            this.lbl_Image.TabIndex = 5;
-            this.lbl_Image.Text = "Image:";
-            // 
-            // lbl_imagePath
-            // 
-            this.lbl_imagePath.AutoSize = true;
-            this.lbl_imagePath.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl_imagePath.Location = new System.Drawing.Point(689, 3);
-            this.lbl_imagePath.Name = "lbl_imagePath";
-            this.lbl_imagePath.Size = new System.Drawing.Size(36, 19);
-            this.lbl_imagePath.TabIndex = 4;
-            this.lbl_imagePath.Text = "N/A";
-            // 
-            // lbl_StartingPrice
-            // 
-            this.lbl_StartingPrice.AutoSize = true;
-            this.lbl_StartingPrice.Location = new System.Drawing.Point(25, 195);
-            this.lbl_StartingPrice.Name = "lbl_StartingPrice";
-            this.lbl_StartingPrice.Size = new System.Drawing.Size(110, 19);
-            this.lbl_StartingPrice.TabIndex = 2;
-            this.lbl_StartingPrice.Text = "Cmimi fillestar:";
-            // 
-            // lbl_Descripton
-            // 
-            this.lbl_Descripton.AutoSize = true;
-            this.lbl_Descripton.Location = new System.Drawing.Point(49, 43);
-            this.lbl_Descripton.Name = "lbl_Descripton";
-            this.lbl_Descripton.Size = new System.Drawing.Size(86, 19);
-            this.lbl_Descripton.TabIndex = 1;
-            this.lbl_Descripton.Text = "Pershkrimi:";
-            // 
-            // lbl_Title
-            // 
-            this.lbl_Title.AutoSize = true;
-            this.lbl_Title.Location = new System.Drawing.Point(83, 9);
-            this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(52, 19);
-            this.lbl_Title.TabIndex = 0;
-            this.lbl_Title.Text = "Titulli:";
-            // 
             // tab_MyListings
             // 
             this.tab_MyListings.BackColor = System.Drawing.SystemColors.Control;
@@ -649,11 +669,12 @@
             this.dgv_PersonalListings.RowTemplate.Height = 28;
             this.dgv_PersonalListings.Size = new System.Drawing.Size(1329, 434);
             this.dgv_PersonalListings.TabIndex = 0;
-            this.dgv_PersonalListings.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_PersonalListings_CellContentClick);
             // 
             // tab_Llogaria
             // 
             this.tab_Llogaria.BackColor = System.Drawing.SystemColors.Control;
+            this.tab_Llogaria.Controls.Add(this.btn_RefreshAccountTab);
+            this.tab_Llogaria.Controls.Add(this.tabcontrol_RelatedAuctions);
             this.tab_Llogaria.Controls.Add(this.lbl_RatingValue);
             this.tab_Llogaria.Controls.Add(this.lbl_Rating);
             this.tab_Llogaria.Controls.Add(this.txt_AddCredit);
@@ -678,6 +699,89 @@
             this.tab_Llogaria.Size = new System.Drawing.Size(1339, 494);
             this.tab_Llogaria.TabIndex = 5;
             this.tab_Llogaria.Text = "Llogaria";
+            // 
+            // btn_RefreshAccountTab
+            // 
+            this.btn_RefreshAccountTab.Location = new System.Drawing.Point(376, 459);
+            this.btn_RefreshAccountTab.Name = "btn_RefreshAccountTab";
+            this.btn_RefreshAccountTab.Size = new System.Drawing.Size(95, 29);
+            this.btn_RefreshAccountTab.TabIndex = 22;
+            this.btn_RefreshAccountTab.Text = "Fresko!";
+            this.btn_RefreshAccountTab.UseVisualStyleBackColor = true;
+            this.btn_RefreshAccountTab.Click += new System.EventHandler(this.btn_RefreshAccountTab_Click);
+            // 
+            // tabcontrol_RelatedAuctions
+            // 
+            this.tabcontrol_RelatedAuctions.Controls.Add(this.tab_OngoingAuction);
+            this.tabcontrol_RelatedAuctions.Controls.Add(this.tab_WonAuctions);
+            this.tabcontrol_RelatedAuctions.Controls.Add(this.tab_Purchased);
+            this.tabcontrol_RelatedAuctions.Location = new System.Drawing.Point(473, 6);
+            this.tabcontrol_RelatedAuctions.Name = "tabcontrol_RelatedAuctions";
+            this.tabcontrol_RelatedAuctions.SelectedIndex = 0;
+            this.tabcontrol_RelatedAuctions.Size = new System.Drawing.Size(590, 482);
+            this.tabcontrol_RelatedAuctions.TabIndex = 21;
+            // 
+            // tab_OngoingAuction
+            // 
+            this.tab_OngoingAuction.Controls.Add(this.dgv_ActiveAuctions);
+            this.tab_OngoingAuction.Location = new System.Drawing.Point(4, 28);
+            this.tab_OngoingAuction.Name = "tab_OngoingAuction";
+            this.tab_OngoingAuction.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_OngoingAuction.Size = new System.Drawing.Size(582, 450);
+            this.tab_OngoingAuction.TabIndex = 0;
+            this.tab_OngoingAuction.Text = "Aktive";
+            this.tab_OngoingAuction.UseVisualStyleBackColor = true;
+            // 
+            // dgv_ActiveAuctions
+            // 
+            this.dgv_ActiveAuctions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_ActiveAuctions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ActiveAuctions.Location = new System.Drawing.Point(7, 7);
+            this.dgv_ActiveAuctions.Name = "dgv_ActiveAuctions";
+            this.dgv_ActiveAuctions.Size = new System.Drawing.Size(569, 437);
+            this.dgv_ActiveAuctions.TabIndex = 0;
+            this.dgv_ActiveAuctions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ActiveAuctions_CellContentClick);
+            // 
+            // tab_WonAuctions
+            // 
+            this.tab_WonAuctions.Controls.Add(this.dgv_WonAuctions);
+            this.tab_WonAuctions.Location = new System.Drawing.Point(4, 28);
+            this.tab_WonAuctions.Name = "tab_WonAuctions";
+            this.tab_WonAuctions.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_WonAuctions.Size = new System.Drawing.Size(582, 450);
+            this.tab_WonAuctions.TabIndex = 1;
+            this.tab_WonAuctions.Text = "Te fituara";
+            this.tab_WonAuctions.UseVisualStyleBackColor = true;
+            // 
+            // dgv_WonAuctions
+            // 
+            this.dgv_WonAuctions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_WonAuctions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_WonAuctions.Location = new System.Drawing.Point(6, 6);
+            this.dgv_WonAuctions.Name = "dgv_WonAuctions";
+            this.dgv_WonAuctions.Size = new System.Drawing.Size(570, 438);
+            this.dgv_WonAuctions.TabIndex = 0;
+            this.dgv_WonAuctions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_WonAuctions_CellContentClick);
+            // 
+            // tab_Purchased
+            // 
+            this.tab_Purchased.Controls.Add(this.dgv_Purchased);
+            this.tab_Purchased.Location = new System.Drawing.Point(4, 28);
+            this.tab_Purchased.Name = "tab_Purchased";
+            this.tab_Purchased.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Purchased.Size = new System.Drawing.Size(582, 450);
+            this.tab_Purchased.TabIndex = 2;
+            this.tab_Purchased.Text = "Te paguara";
+            this.tab_Purchased.UseVisualStyleBackColor = true;
+            // 
+            // dgv_Purchased
+            // 
+            this.dgv_Purchased.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_Purchased.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Purchased.Location = new System.Drawing.Point(6, 6);
+            this.dgv_Purchased.Name = "dgv_Purchased";
+            this.dgv_Purchased.Size = new System.Drawing.Size(570, 438);
+            this.dgv_Purchased.TabIndex = 0;
             // 
             // lbl_RatingValue
             // 
@@ -945,6 +1049,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_PersonalListings)).EndInit();
             this.tab_Llogaria.ResumeLayout(false);
             this.tab_Llogaria.PerformLayout();
+            this.tabcontrol_RelatedAuctions.ResumeLayout(false);
+            this.tab_OngoingAuction.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ActiveAuctions)).EndInit();
+            this.tab_WonAuctions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_WonAuctions)).EndInit();
+            this.tab_Purchased.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Purchased)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_LogOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_eAnkandiLogo)).EndInit();
             this.ResumeLayout(false);
@@ -1018,7 +1129,7 @@
         private System.Windows.Forms.TextBox txt_MinPrice;
         private System.Windows.Forms.Label lbl_CmimiMax;
         private System.Windows.Forms.Label lbl_MinPrice;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmb_CategorySearch;
         private System.Windows.Forms.TextBox txt_Article;
         private System.Windows.Forms.Label lbl_ProductCategory;
         private System.Windows.Forms.Label lbl_Article;
@@ -1026,5 +1137,13 @@
         private System.Windows.Forms.Label lbl_SellersUsername;
         private System.Windows.Forms.Label lbl_RatingValue;
         private System.Windows.Forms.Label lbl_Rating;
+        private System.Windows.Forms.TabControl tabcontrol_RelatedAuctions;
+        private System.Windows.Forms.TabPage tab_OngoingAuction;
+        private System.Windows.Forms.DataGridView dgv_ActiveAuctions;
+        private System.Windows.Forms.TabPage tab_WonAuctions;
+        private System.Windows.Forms.DataGridView dgv_WonAuctions;
+        private System.Windows.Forms.Button btn_RefreshAccountTab;
+        private System.Windows.Forms.TabPage tab_Purchased;
+        private System.Windows.Forms.DataGridView dgv_Purchased;
     }
 }

@@ -49,7 +49,7 @@ namespace BOL
 
         public enum ProductCategory
         {
-            Gjenrale,
+            Gjenerale,
             Automjet,
             Teknike_e_bardhe,
             Teknologji,

@@ -15,6 +15,7 @@ namespace OOP_project
     {
         Product product;
         Person loggedUser;
+        Client c = new Client();
 
         public PictureBox[] pcb = new PictureBox[7];
 
@@ -28,8 +29,12 @@ namespace OOP_project
             InitializeComponent();
 
             product = item;
-
             loggedUser = loggeduser;
+
+            if(((Client)loggedUser).bidProducts.Contains(item.ProductID)==false)
+            {
+                item.ViewCount += 1;
+            }
 
             pcb[0] = pcb_small1;
             pcb[1] = pcb_small2;
@@ -62,14 +67,22 @@ namespace OOP_project
             lbl_StartDateTimeValue.Text = item.AuctionStartDateTime.ToString();
             lbl_EndDatTimeValue.Text = item.AuctionEndDateTime.ToString();
             lbl_SellersIDValue.Text = item.sellersUsername.Username;
+            lbl_ViewCountValue.Text = item.ViewCount.ToString();
 
         }
 
         private string GetTimeString(TimeSpan AuctionEta)
         {
-            return string.Format("{0:000}:{1:00}:{2:00}:{3:00}",
-            AuctionEta.Days, AuctionEta.Hours, AuctionEta.Minutes, AuctionEta.Seconds);
-        }
+            if (AuctionEta <TimeSpan.FromSeconds(0))
+            {
+                return "Ka perfunduar";
+            }
+            else
+            {
+                return string.Format("{0:000}:{1:00}:{2:00}:{3:00}",
+                AuctionEta.Days, AuctionEta.Hours, AuctionEta.Minutes, AuctionEta.Seconds);
+            }
+            }
 
         private bool mouseDown;
         private static Point lastLocation;
@@ -160,15 +173,19 @@ namespace OOP_project
 
         private void btn_Bid_Click(object sender, EventArgs e)
         {
-            //var item = Lists.ApprovedRequests.Where(x => x.ProductID == product.ProductID).FirstOrDefault();
-
+ 
             if (Convert.ToInt32(txt_BiddingValue.Text) < product.CurrentBidPrice + 1 )
             {
                 MessageBox.Show("Vlera duhet te jete me e madhe se 1 euro");
             }
             else
             {
-                ((Client)loggedUser).BidOnProduct(product, Convert.ToDouble(txt_BiddingValue.Text),loggedUser);
+                DialogResult dg = MessageBox.Show( "Jeni te sigurt qe doni te ofertoni " + txt_BiddingValue.Text + " ?","Konfirmoni", MessageBoxButtons.YesNo);
+                if (dg == DialogResult.Yes)
+                {
+                    ((Client)loggedUser).BidOnProduct(product, Convert.ToDouble(txt_BiddingValue.Text), loggedUser);
+                    MessageBox.Show("Oferta e sukseshme!");
+                }
             }
 
             lbl_StartingPriceValue.Text = product.StartingPrice.ToString();

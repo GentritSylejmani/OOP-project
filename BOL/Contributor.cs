@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PersonLib;
 
 namespace BOL
 {
-    public class Contributor : Client
+    public class Contributor:Client
     {
         public Contributor()
         {
@@ -18,6 +19,7 @@ namespace BOL
 
         }
 
+        
         public class Rating
         {
             public Rating()
@@ -129,15 +131,18 @@ namespace BOL
             
         }
 
-        public void SubmitAuctionRequest(string name, string description, double startingPrice, double currentBidPrice, DateTime auctionEta, string[] images, Contributor seller, Product.Status Status)
+        public void SubmitAuctionRequest(string name, string description, double startingPrice, double currentBidPrice, DateTime auctionEta, string[] images, Contributor seller,Product.ProductCategory Category ,Product.Status Status)
         {
             Product p = new Product();
 
-            Lists.productListings.Add(new Product { ProductID = p.GetLastID() + 1, Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime = DateTime.Now, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller, status = Status});
+            Lists.productListings.Add(new Product { ProductID = p.GetLastID() + 1, Name = name, Description = description, StartingPrice = startingPrice, CurrentBidPrice = currentBidPrice, AuctionStartDateTime = DateTime.Now, AuctionEndDateTime = auctionEta, productPicture = images, sellersUsername = seller, Category = Category ,status = Status});
 
         }
+
         public void EditAuction() { }
         public void CancelAuction() { }
+
+       
 
 
     }

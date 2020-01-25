@@ -35,7 +35,7 @@
             this.tab_Active = new System.Windows.Forms.TabPage();
             this.dgv_Active = new System.Windows.Forms.DataGridView();
             this.tab_Canceled = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_Canceled = new System.Windows.Forms.DataGridView();
             this.tab_Users = new System.Windows.Forms.TabPage();
             this.dgv_Users = new System.Windows.Forms.DataGridView();
             this.tab_control.SuspendLayout();
@@ -44,7 +44,7 @@
             this.tab_Active.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Active)).BeginInit();
             this.tab_Canceled.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Canceled)).BeginInit();
             this.tab_Users.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Users)).BeginInit();
             this.SuspendLayout();
@@ -114,11 +114,11 @@
             this.dgv_Active.Name = "dgv_Active";
             this.dgv_Active.Size = new System.Drawing.Size(1139, 404);
             this.dgv_Active.TabIndex = 0;
-            
+            this.dgv_Active.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Active_CellContentClick);
             // 
             // tab_Canceled
             // 
-            this.tab_Canceled.Controls.Add(this.dataGridView1);
+            this.tab_Canceled.Controls.Add(this.dgv_Canceled);
             this.tab_Canceled.Location = new System.Drawing.Point(4, 22);
             this.tab_Canceled.Name = "tab_Canceled";
             this.tab_Canceled.Padding = new System.Windows.Forms.Padding(3);
@@ -127,13 +127,15 @@
             this.tab_Canceled.Text = "Canceled";
             this.tab_Canceled.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgv_Canceled
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1139, 405);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_Canceled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_Canceled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Canceled.Location = new System.Drawing.Point(6, 6);
+            this.dgv_Canceled.Name = "dgv_Canceled";
+            this.dgv_Canceled.Size = new System.Drawing.Size(1139, 405);
+            this.dgv_Canceled.TabIndex = 0;
+            this.dgv_Canceled.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Canceled_CellContentClick);
             // 
             // tab_Users
             // 
@@ -175,7 +177,7 @@
             this.tab_Active.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Active)).EndInit();
             this.tab_Canceled.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Canceled)).EndInit();
             this.tab_Users.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Users)).EndInit();
             this.ResumeLayout(false);
@@ -191,7 +193,7 @@
         private System.Windows.Forms.TabPage tab_Active;
         private System.Windows.Forms.DataGridView dgv_Active;
         private System.Windows.Forms.TabPage tab_Canceled;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_Canceled;
         private System.Windows.Forms.TabPage tab_Users;
         private System.Windows.Forms.DataGridView dgv_Users;
     }

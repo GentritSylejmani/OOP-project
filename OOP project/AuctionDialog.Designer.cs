@@ -31,18 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.btn_Bid = new System.Windows.Forms.Button();
             this.btn_Back = new System.Windows.Forms.Button();
-            this.lbl_Title = new System.Windows.Forms.Label();
-            this.lbl_Description = new System.Windows.Forms.Label();
             this.lbl_StartDateTime = new System.Windows.Forms.Label();
             this.lbl_EndDateTime = new System.Windows.Forms.Label();
             this.lbl_Seller = new System.Windows.Forms.Label();
             this.lbl_AuctenETA = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lbl_TitleValue = new System.Windows.Forms.Label();
             this.lbl_StartDateTimeValue = new System.Windows.Forms.Label();
             this.lbl_EndDatTimeValue = new System.Windows.Forms.Label();
             this.lbl_SellersIDValue = new System.Windows.Forms.Label();
-            this.rtxt_Description = new System.Windows.Forms.RichTextBox();
             this.lbl_Days = new System.Windows.Forms.Label();
             this.lbl_Hours = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,6 +58,12 @@
             this.pcb_small2 = new System.Windows.Forms.PictureBox();
             this.pcb_small1 = new System.Windows.Forms.PictureBox();
             this.pcb_Main = new System.Windows.Forms.PictureBox();
+            this.lbl_Title = new System.Windows.Forms.Label();
+            this.lbl_TitleValue = new System.Windows.Forms.Label();
+            this.rtxt_Description = new System.Windows.Forms.RichTextBox();
+            this.lbl_Description = new System.Windows.Forms.Label();
+            this.lbl_ViewCount = new System.Windows.Forms.Label();
+            this.lbl_ViewCountValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_small6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_small5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcb_small4)).BeginInit();
@@ -94,28 +96,6 @@
             this.btn_Back.Text = "Prapa!";
             this.btn_Back.UseVisualStyleBackColor = true;
             this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
-            // 
-            // lbl_Title
-            // 
-            this.lbl_Title.AutoSize = true;
-            this.lbl_Title.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_Title.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbl_Title.Location = new System.Drawing.Point(46, 16);
-            this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(52, 19);
-            this.lbl_Title.TabIndex = 4;
-            this.lbl_Title.Text = "Titulli:";
-            // 
-            // lbl_Description
-            // 
-            this.lbl_Description.AutoSize = true;
-            this.lbl_Description.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_Description.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbl_Description.Location = new System.Drawing.Point(12, 35);
-            this.lbl_Description.Name = "lbl_Description";
-            this.lbl_Description.Size = new System.Drawing.Size(86, 19);
-            this.lbl_Description.TabIndex = 5;
-            this.lbl_Description.Text = "Pershkrimi:";
             // 
             // lbl_StartDateTime
             // 
@@ -161,17 +141,6 @@
             this.lbl_AuctenETA.TabIndex = 16;
             this.lbl_AuctenETA.Text = "Koha e mbetur e ankandit";
             // 
-            // lbl_TitleValue
-            // 
-            this.lbl_TitleValue.AutoSize = true;
-            this.lbl_TitleValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_TitleValue.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lbl_TitleValue.Location = new System.Drawing.Point(104, 16);
-            this.lbl_TitleValue.Name = "lbl_TitleValue";
-            this.lbl_TitleValue.Size = new System.Drawing.Size(36, 19);
-            this.lbl_TitleValue.TabIndex = 17;
-            this.lbl_TitleValue.Text = "N/A";
-            // 
             // lbl_StartDateTimeValue
             // 
             this.lbl_StartDateTimeValue.AutoSize = true;
@@ -205,17 +174,6 @@
             this.lbl_SellersIDValue.TabIndex = 20;
             this.lbl_SellersIDValue.Text = "N/A";
             this.lbl_SellersIDValue.Click += new System.EventHandler(this.lbl_SellersIDValue_Click);
-            // 
-            // rtxt_Description
-            // 
-            this.rtxt_Description.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.rtxt_Description.ForeColor = System.Drawing.Color.DarkGray;
-            this.rtxt_Description.Location = new System.Drawing.Point(104, 39);
-            this.rtxt_Description.Name = "rtxt_Description";
-            this.rtxt_Description.ReadOnly = true;
-            this.rtxt_Description.Size = new System.Drawing.Size(338, 122);
-            this.rtxt_Description.TabIndex = 21;
-            this.rtxt_Description.Text = "";
             // 
             // lbl_Days
             // 
@@ -407,11 +365,84 @@
             this.pcb_Main.TabIndex = 8;
             this.pcb_Main.TabStop = false;
             // 
+            // lbl_Title
+            // 
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Title.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_Title.Location = new System.Drawing.Point(45, 9);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(52, 19);
+            this.lbl_Title.TabIndex = 34;
+            this.lbl_Title.Text = "Titulli:";
+            // 
+            // lbl_TitleValue
+            // 
+            this.lbl_TitleValue.AutoSize = true;
+            this.lbl_TitleValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_TitleValue.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_TitleValue.Location = new System.Drawing.Point(103, 9);
+            this.lbl_TitleValue.Name = "lbl_TitleValue";
+            this.lbl_TitleValue.Size = new System.Drawing.Size(36, 19);
+            this.lbl_TitleValue.TabIndex = 35;
+            this.lbl_TitleValue.Text = "N/A";
+            // 
+            // rtxt_Description
+            // 
+            this.rtxt_Description.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.rtxt_Description.ForeColor = System.Drawing.Color.DarkGray;
+            this.rtxt_Description.Location = new System.Drawing.Point(107, 31);
+            this.rtxt_Description.Name = "rtxt_Description";
+            this.rtxt_Description.ReadOnly = true;
+            this.rtxt_Description.Size = new System.Drawing.Size(338, 122);
+            this.rtxt_Description.TabIndex = 36;
+            this.rtxt_Description.Text = "";
+            // 
+            // lbl_Description
+            // 
+            this.lbl_Description.AutoSize = true;
+            this.lbl_Description.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_Description.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_Description.Location = new System.Drawing.Point(19, 34);
+            this.lbl_Description.Name = "lbl_Description";
+            this.lbl_Description.Size = new System.Drawing.Size(82, 19);
+            this.lbl_Description.TabIndex = 37;
+            this.lbl_Description.Text = "Pershkrimi";
+            // 
+            // lbl_ViewCount
+            // 
+            this.lbl_ViewCount.AutoSize = true;
+            this.lbl_ViewCount.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_ViewCount.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_ViewCount.Location = new System.Drawing.Point(27, 654);
+            this.lbl_ViewCount.Name = "lbl_ViewCount";
+            this.lbl_ViewCount.Size = new System.Drawing.Size(98, 19);
+            this.lbl_ViewCount.TabIndex = 38;
+            this.lbl_ViewCount.Text = "Nr.klikimeve:";
+            // 
+            // lbl_ViewCountValue
+            // 
+            this.lbl_ViewCountValue.AutoSize = true;
+            this.lbl_ViewCountValue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_ViewCountValue.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lbl_ViewCountValue.Location = new System.Drawing.Point(131, 654);
+            this.lbl_ViewCountValue.Name = "lbl_ViewCountValue";
+            this.lbl_ViewCountValue.Size = new System.Drawing.Size(36, 19);
+            this.lbl_ViewCountValue.TabIndex = 39;
+            this.lbl_ViewCountValue.Text = "N/A";
+            this.lbl_ViewCountValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // AuctionDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 774);
+            this.Controls.Add(this.lbl_ViewCountValue);
+            this.Controls.Add(this.lbl_ViewCount);
+            this.Controls.Add(this.lbl_Description);
+            this.Controls.Add(this.rtxt_Description);
+            this.Controls.Add(this.lbl_TitleValue);
+            this.Controls.Add(this.lbl_Title);
             this.Controls.Add(this.lbl_ActualPriceValue);
             this.Controls.Add(this.lbl_StartingPriceValue);
             this.Controls.Add(this.lbl_ActualPrice);
@@ -423,11 +454,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_Hours);
             this.Controls.Add(this.lbl_Days);
-            this.Controls.Add(this.rtxt_Description);
             this.Controls.Add(this.lbl_SellersIDValue);
             this.Controls.Add(this.lbl_EndDatTimeValue);
             this.Controls.Add(this.lbl_StartDateTimeValue);
-            this.Controls.Add(this.lbl_TitleValue);
             this.Controls.Add(this.lbl_AuctenETA);
             this.Controls.Add(this.lbl_Seller);
             this.Controls.Add(this.pcb_small6);
@@ -439,8 +468,6 @@
             this.Controls.Add(this.pcb_Main);
             this.Controls.Add(this.lbl_EndDateTime);
             this.Controls.Add(this.lbl_StartDateTime);
-            this.Controls.Add(this.lbl_Description);
-            this.Controls.Add(this.lbl_Title);
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.btn_Bid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -466,8 +493,6 @@
 
         private System.Windows.Forms.Button btn_Bid;
         private System.Windows.Forms.Button btn_Back;
-        private System.Windows.Forms.Label lbl_Title;
-        private System.Windows.Forms.Label lbl_Description;
         private System.Windows.Forms.Label lbl_StartDateTime;
         private System.Windows.Forms.Label lbl_EndDateTime;
         private System.Windows.Forms.PictureBox pcb_Main;
@@ -480,11 +505,9 @@
         private System.Windows.Forms.Label lbl_Seller;
         private System.Windows.Forms.Label lbl_AuctenETA;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label lbl_TitleValue;
         private System.Windows.Forms.Label lbl_StartDateTimeValue;
         private System.Windows.Forms.Label lbl_EndDatTimeValue;
         private System.Windows.Forms.Label lbl_SellersIDValue;
-        private System.Windows.Forms.RichTextBox rtxt_Description;
         private System.Windows.Forms.Label lbl_Days;
         private System.Windows.Forms.Label lbl_Hours;
         private System.Windows.Forms.Label label1;
@@ -497,5 +520,11 @@
         private System.Windows.Forms.Label lbl_ActualPrice;
         private System.Windows.Forms.Label lbl_StartingPriceValue;
         private System.Windows.Forms.Label lbl_ActualPriceValue;
+        private System.Windows.Forms.Label lbl_Title;
+        private System.Windows.Forms.Label lbl_TitleValue;
+        private System.Windows.Forms.RichTextBox rtxt_Description;
+        private System.Windows.Forms.Label lbl_Description;
+        private System.Windows.Forms.Label lbl_ViewCount;
+        private System.Windows.Forms.Label lbl_ViewCountValue;
     }
 }

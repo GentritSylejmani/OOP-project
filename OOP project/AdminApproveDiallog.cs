@@ -34,6 +34,12 @@ namespace OOP_project
 
         private void btn_Deny_Click(object sender, EventArgs e)
         {
+            var itemToBeCanceled = Lists.productListings.SingleOrDefault(x => x.ProductID == Product.ProductID);
+            if(itemToBeCanceled!=null)
+            {
+                itemToBeCanceled.status = Product.Status.Canceled;
+            }
+
             this.Close();
         }
 
@@ -49,6 +55,9 @@ namespace OOP_project
             this.Close();
         }
 
-        
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

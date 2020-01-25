@@ -32,6 +32,7 @@
             this.btn_Deny = new System.Windows.Forms.Button();
             this.lbl_ProductID = new System.Windows.Forms.Label();
             this.lbl_ProductIDValue = new System.Windows.Forms.Label();
+            this.btn_Back = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Approve
@@ -72,17 +73,29 @@
             this.lbl_ProductIDValue.TabIndex = 3;
             this.lbl_ProductIDValue.Text = "n/a";
             // 
+            // btn_Back
+            // 
+            this.btn_Back.Location = new System.Drawing.Point(5, 92);
+            this.btn_Back.Name = "btn_Back";
+            this.btn_Back.Size = new System.Drawing.Size(156, 23);
+            this.btn_Back.TabIndex = 4;
+            this.btn_Back.Text = "Prapa!";
+            this.btn_Back.UseVisualStyleBackColor = true;
+            this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
+            // 
             // AdminApproveDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(169, 98);
+            this.ClientSize = new System.Drawing.Size(169, 120);
+            this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.lbl_ProductIDValue);
             this.Controls.Add(this.lbl_ProductID);
             this.Controls.Add(this.btn_Deny);
             this.Controls.Add(this.btn_Approve);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminApproveDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminApproveDialog";
             this.Load += new System.EventHandler(this.AdminApproveDialog_Load);
             this.ResumeLayout(false);
@@ -96,5 +109,6 @@
         private System.Windows.Forms.Button btn_Deny;
         private System.Windows.Forms.Label lbl_ProductID;
         private System.Windows.Forms.Label lbl_ProductIDValue;
+        private System.Windows.Forms.Button btn_Back;
     }
 }

@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PersonLib;
 namespace BOL
 {
-    public abstract class Person
+    public abstract class Person:IDisplayable
     {
-       
+
+        PersonLib.Person person = new PersonLib.Person();
+
+        public void Display()
+        {
+            testPerDispay = "U IMPLEMENTUA";        }
 
         public Person()
         {
 
         }
-
-        //public Person(string username, int accountNo, double moneyAmount)
-        //{
-        //    Username = username;
-        //    finances.AccountNo = accountNo;
-        //    finances.Balance = moneyAmount;
-        //}
-
+        
         public Person(string name, string surname, string username, string personalno, string password, string email, int accountNo, double moneyAmount)
         {
-            Name = name;
+            person.Name = name;
+            //Name = name;
             Surname = surname;
             Username = username;
             PersonalNo = personalno;
@@ -48,6 +47,8 @@ namespace BOL
         private string _email;
         private int _accountNo;
         private double _balance;
+
+        public string testPerDispay { get; set; }
 
         public string Name
         {
@@ -111,24 +112,22 @@ namespace BOL
 
             if (ct == 2)
             {
-                Lists.ClientsList.Add(new Client { Name = name, Surname = surname, Username = username, PersonalNo = personalNo, PhoneNo = phoneNo, Password = password, Email = email, UserType = Person.usertype.Client, AccountNo=account,Credit = balance});               
+                Lists.ClientsList.Add(new Client { bidProducts = new List<int>() { }, Name = name, Surname = surname, Username = username, PersonalNo = personalNo, PhoneNo = phoneNo, Password = password, Email = email, UserType = Person.usertype.Client, AccountNo=account,Credit = balance});               
                 return true;               
             }
             else if (ct == 3)
             {
-                Lists.ContributorsList.Add(new Contributor { Name = name, Surname = surname, Username = username, PersonalNo = personalNo, PhoneNo = phoneNo, Password = password, Email = email, UserType = Person.usertype.Client, AccountNo=account,Credit=balance});             
+                Lists.ContributorsList.Add(new Contributor { bidProducts = new List<int>() { }, Name = name, Surname = surname, Username = username, PersonalNo = personalNo, PhoneNo = phoneNo, Password = password, Email = email, UserType = Person.usertype.Client, AccountNo=account,Credit=balance});             
                 return true;
             }
             else return false;
         }
-
-        
 
         public virtual Person GetUserInfo(string username)
         {
             throw new NotImplementedException();
         }
 
-        
+    
     }
 }

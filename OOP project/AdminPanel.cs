@@ -44,24 +44,55 @@ namespace OOP_project
             mouseDown = false;
         }
 
-        private Product SelectedProduct()
+        private Product SelectedProduct(int dgv)
         {
-            Product product = new Product();
 
+            Product product = new Product();
             int productid;
 
-            int selectedrowindex = dgv_PendingRequests.SelectedCells[0].RowIndex;
-            DataGridViewRow selectedrow = dgv_PendingRequests.Rows[selectedrowindex];
-            productid = Convert.ToInt32(selectedrow.Cells[0].Value.ToString());
-
-
-            var item = Lists.productListings.Where(x => x.ProductID == productid).FirstOrDefault();
-
-            if (item != null)
+            if (dgv == 1)
             {
-                return item;
+                int selectedrowindex = dgv_PendingRequests.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedrow = dgv_PendingRequests.Rows[selectedrowindex];
+                productid = Convert.ToInt32(selectedrow.Cells[0].Value.ToString());
+
+                var item = Lists.productListings.Where(x => x.ProductID == productid).FirstOrDefault();
+
+                if (item != null)
+                {
+                    return item;
+                }
+                return null;
             }
-            return null;
+            else if (dgv == 2)
+            {
+                int selectedrowindex = dgv_Active.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedrow = dgv_Active.Rows[selectedrowindex];
+                productid = Convert.ToInt32(selectedrow.Cells[0].Value.ToString());
+
+                var item = Lists.productListings.Where(x => x.ProductID == productid).FirstOrDefault();
+
+                if (item != null)
+                {
+                    return item;
+                }
+                return null;
+            }
+            else if (dgv == 3)
+            {
+                int selectedrowindex = dgv_Canceled.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedrow = dgv_Canceled.Rows[selectedrowindex];
+                productid = Convert.ToInt32(selectedrow.Cells[0].Value.ToString());
+
+                var item = Lists.productListings.Where(x => x.ProductID == productid).FirstOrDefault();
+
+                if (item != null)
+                {
+                    return item;
+                }
+                return null;
+            }
+            else return null;
         }
 
         public void LoadDataGrids()
@@ -78,7 +109,7 @@ namespace OOP_project
             var Contributors = Lists.ContributorsList.Select(r => new { Username = r.Username, Name = r.Name, Surname = r.Surname, TYPE = r.UserType.ToString() }).ToList();
             var ApprovedRequests = Lists.productListings.Where(x => x.status == Product.Status.Active).Select(r => new { ID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
             var PendingRequests = Lists.productListings.Where(x => x.status == Product.Status.Pending).Select(r => new { ID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
-
+            var CanceledRequests = Lists.productListings.Where(x=> x.status ==Product.Status.Canceled).Select(r => new { ID = r.ProductID, Titulli = r.Name, Description = r.Description, Cmimi_Startues = r.StartingPrice, Cmimi_Akutal = r.CurrentBidPrice, Fillimi = r.AuctionStartDateTime.ToString(), Mbarimi = r.AuctionEndDateTime.ToString(), Shitesi = r.sellersUsername.Username }).ToList();
 
             var users = Clients.Concat(Contributors).ToList();
 
@@ -99,6 +130,11 @@ namespace OOP_project
                 dgv_PendingRequests.DataSource = PendingRequests;
                 dgv_PendingRequests.ForeColor = Color.Black;
             }
+            if(CanceledRequests.Count!=0)
+            {
+                dgv_Canceled.DataSource = CanceledRequests;
+                dgv_Canceled.ForeColor = Color.Black;
+            }
 
         }
 
@@ -118,7 +154,23 @@ namespace OOP_project
 
         private void dgv_PendingRequests_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            AdminApproveDialog aad = new AdminApproveDialog(SelectedProduct());
+            AdminApproveDialog aad = new AdminApproveDialog(SelectedProduct(1));
+            aad.ShowDialog();
+
+            LoadDataGrids();
+        }
+
+        private void dgv_Active_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AdminApproveDialog aad = new AdminApproveDialog(SelectedProduct(2));
+            aad.ShowDialog();
+
+            LoadDataGrids();
+        }
+
+        private void dgv_Canceled_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AdminApproveDialog aad = new AdminApproveDialog(SelectedProduct(3));
             aad.ShowDialog();
 
             LoadDataGrids();
